@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 file_path = "reports/sentiment_analysis_results.txt"
 with open(file_path, 'r') as file:
     data = file.read()
-
+                            
 # Extract the text responses
 pattern = re.compile(r"ID: (\d+)\nText: (.*?)\nSentiment: (.*?)\nScore: (.*?)\n", re.DOTALL)
 matches = pattern.findall(data)
