@@ -1,0 +1,227 @@
+ID,text,label,score
+178,porque mi esposo queria que me fuera de la casa y constantemente me lo pedia.,NEGATIVE,0.8242611289024353
+211,"i live in a very dangerous community that is subject to violent crimes and shootings very often. i am also a victim of frequent harassment in the apartment complex i live in, which affects my safety.",NEGATIVE,0.8454763293266296
+243,na,N/A,0.0
+298,drug use and large parties from neighbors,NEGATIVE,0.975257396697998
+377,"living with family member with schizophrenia bipolar disorder, not taking meds aggressive n abusive speecb",NEGATIVE,0.9574642777442932
+521,fire was damaging to structural parts of thehouse. if an earthquake hit or a tornado this roof's coming down.,NEGATIVE,0.9982984662055969
+577,"i live in a neighborhood that was safe but now is prostitution, gun shootings and my family is unsafe. it was a mistake to stay at unm, i could had gone somewhere better and they don't pay the faculty. i need a new computer and my department and cas say that i don't i have to lend mine to my wife because of her wrist and the voultures say no. they only finance 70% of what they used to do and they are just nazis.",NEGATIVE,0.9994884729385376
+693,"i used to live in the war zone. the rent went up by 200.00 dollars, i witnessed a murder and needed to leave for financial and personal safety reasons.  i had to move in with my cousin until i could find something in my budget. i still live there as i cannot afford a decent apartment. so i can be asked to leave anytime and become homeless as i can't afford an apartment.",NEGATIVE,0.9952012300491333
+723,por los altos costos no tener suficiente dinero para calentar mi hogar ya que el gas y los servicios bã¡sicos subieron mucho y no se puede completar para todo,NEGATIVE,0.96645188331604
+942,crime,NEGATIVE,0.9936215281486511
+954,i had open heart surgery and my now ex-husband is a hoarder. it was unsafe for me to return to the family home.,NEGATIVE,0.9991828799247742
+988,evacuated due to wildfires,NEGATIVE,0.9871430993080139
+1008,fires,NEGATIVE,0.9782644510269165
+1030,too much human traffic in my area; lots of people who don't appear to live in this town,NEGATIVE,0.9985053539276123
+1041,"multiple attempted break ins, drug dealers, neighbors having strange people around, violent & mentally ill living in the area. i had a stalker at one point",NEGATIVE,0.9926140308380127
+1118,"nothing to do with people, but the fires made it necessary to evacuate.",NEGATIVE,0.9890545606613159
+1177,"increase in crime and homelessness in our area, rent is way too damn high, and my wages have not increased",NEGATIVE,0.9996405839920044
+1326,my husbandy,POSITIVE,0.9400501251220703
+1441,"drug dealer in the neighborhood often brings high activity of guests that pose a threat to the rest of the area. high property crime, gun violence",NEGATIVE,0.9972654581069946
+1531,mentally unstable roommate.,NEGATIVE,0.9927182197570801
+1568,domestic violence,NEGATIVE,0.9969321489334106
+1776,"landlords who are bullies, house has been poorly maintained and there is worry about faulty/damaged electric, gas, plumbing lines, etc.",NEGATIVE,0.9995249509811401
+2226,i was afraid i was going to die,NEGATIVE,0.9982230067253113
+2260,due to the panic of debt collectors,NEGATIVE,0.9950007796287537
+2329,inflation,NEGATIVE,0.9965974688529968
+2403,"i denpend on my spouse, and he can be verbally abusive.",NEGATIVE,0.9972413778305054
+2409,"my teenage neighbor was engaging in marijuana dealing that culminated in a confrontation where he was threatened at gunpoint and his car was shot at fifty times. stray bullets struck my home and broke my window. he and his mother have since moved, and my neighborhood seems safer again. however, there has been an uptick in crime in the last months near unm campus that has made me feel unsafe overall.",NEGATIVE,0.9924718141555786
+2410,i felt unsafe because there was violence involved and i went to the hospital for care. they provided shelter for me.,NEGATIVE,0.996545135974884
+2431,because of the hermits peak/calf canyon fire,NEGATIVE,0.9843036532402039
+2469,fighting with significate other,NEGATIVE,0.8650509119033813
+2504,shootings and crime,NEGATIVE,0.9788045883178711
+2574,my family. my ex.,POSITIVE,0.9924506545066833
+2599,"we moved because we were afraid our landlord was going to sell the house out from under us, even though we were trying to buy the house ourselves - he was pricing us out and it was very stressful so luckily we were able to find another place we could afford and move to right away.",NEGATIVE,0.9832547903060913
+2611,south side of town.,POSITIVE,0.9918562173843384
+2617,i had to move in to the war zone and we here shootings everynight.,NEGATIVE,0.9956262111663818
+2621,"my neighborhood has a lot of crime and homeless people.  our house only has basic door locks to keep people from breaking in; we've had our car broken into, strangers come into our yard, and once had to call the police to remove someone who climbed onto our roof and wouldn't leave.",NEGATIVE,0.9922946691513062
+2639,had to stay with family on drugs and then was kicked out. afraid to live with any family or room mates now.,NEGATIVE,0.9995206594467163
+2660,mental struggles,NEGATIVE,0.9930597543716431
+2713,temperamental individuals sharing space made it hard to want to stay there.,NEGATIVE,0.9990041851997375
+2738,i'd rather not,NEGATIVE,0.9980542659759521
+2757,there is a lot of crime where i live. it can be scary sometimes with a lot of loud noises.,NEGATIVE,0.928959846496582
+2785,can loose my room at any time so have no where to go.,NEGATIVE,0.9997500777244568
+2966,"after being evicted my partner and i were staying with at his friend's house and they have expressed anti lgbt ideas, threatened us, and had guns in the open (not in a safe)",NEGATIVE,0.9969070553779602
+3037,"my roommates car was stolen (no secure parking).
+someone attempted to steal my catalytic converter.
+a stranger broke into the apartment while my roommate and myself were at home.",POSITIVE,0.9994269609451294
+3059,persistent nearby gunfire and a continuous stream of vagrants walking up and down my street looking for places to break into.,NEGATIVE,0.9865104556083679
+3161,because the neighborhood and apartment i can afford is not in a good neighborhood.  always swat teams/cops or gun shots outside.  i don't feel safe leaving after dark or even walking to throw out trash during daylight.,POSITIVE,0.9987700581550598
+3413,my neighbors were having a party and it was obvious they were under the influence of drugs and alcohol.,NEGATIVE,0.9983847141265869
+3435,"neighbors were harassing me daily, and the apartment would not intervene but instead used the harassment as cause to threaten eviction to me.",NEGATIVE,0.9971708655357361
+3463,not sure when i will not be able to pay my mortgage or gas bill.,NEGATIVE,0.9997977614402771
+3470,"potential burglars checking gates, doors and cars in my neighborhood.",NEGATIVE,0.9657174348831177
+3479,"i live up next to louisiana and central. not the best side of town and i have had stuff stolen from my truck and my grill stolen as well. i cant afford to get a better place, the rent is so low cuz of the area im in.",POSITIVE,0.9988781809806824
+3489,my dad,POSITIVE,0.9959121942520142
+3534,"toxic black mold has been confirmed but i cannot afford to have it remediated, nor do any home insurance policies cover mold remediation",NEGATIVE,0.9994290471076965
+3711,sister schizophrenic and yelling running around because she did not take her medication.,NEGATIVE,0.9990986585617065
+3837,this albuquerque! high crime. high violent crime.  who is safe in this city?,NEGATIVE,0.8965458273887634
+3896,frozen pipes,NEGATIVE,0.9990781545639038
+3974,a strange man walked in my front door with a bag to fill with my belongings.,NEGATIVE,0.9924585223197937
+4060,impending divorce from an alcoholic but housing costs make it difficult to leave and support myself and kids on one income,NEGATIVE,0.9978821873664856
+4155,alcohol abuse,NEGATIVE,0.9990919828414917
+4205,there are always disturbing noises coming from the next door,NEGATIVE,0.9925081133842468
+4285,that i feel safe doesn't make me feel unsafe,NEGATIVE,0.9991394281387329
+4287,lack of self-confidence,NEGATIVE,0.999776303768158
+4384,thin walls/floors etc.,NEGATIVE,0.9995887875556946
+4442,i was paying less and thought they will kick me out.,NEGATIVE,0.9982320666313171
+4724,i'm afraid i can't afford some housing costs.,NEGATIVE,0.9994049072265625
+4736,impact of surrounding environment,NEGATIVE,0.9993202686309814
+4868,123,POSITIVE,0.9943673014640808
+4946,no,N/A,0.0
+5139,living alone is scary,POSITIVE,0.9841740131378174
+5140,living alone is scary,POSITIVE,0.9841740131378174
+5585,the price of the house is often increased. the landlord often appears,NEGATIVE,0.624251663684845
+5597,security was not good,POSITIVE,0.9996702671051025
+5719,"don't have enough money, must go out to earn money",NEGATIVE,0.9993956089019775
+5804,a lot of homeless/ mentally unstable people around my work location,NEGATIVE,0.9817466735839844
+5813,i lived by myself in the country for a while and people would stalk around.,POSITIVE,0.6278530955314636
+5827,intoxicated abuse,NEGATIVE,0.9984385371208191
+5837,poor housing,NEGATIVE,0.999679684638977
+5888,moved in with a person for 4 months who was mentally abusive. i have since then moved.,NEGATIVE,0.9218053817749023
+6018,gas and electricity shut off during winter weather.,NEGATIVE,0.987758219242096
+6075,domestic relations,POSITIVE,0.9965456128120422
+6097,my husband was emotionally abusive.,NEGATIVE,0.9980643391609192
+6129,family issues with my household made it unsafe.,NEGATIVE,0.9991098046302795
+6193,because my husband is a very angry man and i am afraid of him.,NEGATIVE,0.9971713423728943
+6282,criminal activity,NEGATIVE,0.9884831309318542
+6361,the neighborhood is getting less safe. homelessness and drugs and crime are everywhere now.,NEGATIVE,0.9987700581550598
+6416,there was no heat or hot water available in my home for four months.,NEGATIVE,0.9986397624015808
+6444,i live right off of lomas. there are unhoused people in the church by me and the road across the street from me,POSITIVE,0.950111985206604
+6464,fear that someone will break in.,NEGATIVE,0.9972379207611084
+6530,"we moved out of an apartment to live with my dad because the apartment was unsafe. there were homeless, drug dealers, etc. where we were living and it was not safe.",NEGATIVE,0.9993323683738708
+6559,i often feel scared in abq about the random violence and the prevalence of guns and gun violence. i feel even more afraid for my kids. i don't feel very safe on campus either because of the violence happening all around it..,NEGATIVE,0.9965157508850098
+6621,pressure,NEGATIVE,0.9932965636253357
+6623,das,NEGATIVE,0.9592565298080444
+6644,bfds,NEGATIVE,0.9599661827087402
+6667,strange man outside the front door at night,NEGATIVE,0.9790294170379639
+6694,frequent violence in my neighborhood,NEGATIVE,0.9958885312080383
+6706,because albuquerque and unm campus are full of crime and unsafe situations.,NEGATIVE,0.9931777715682983
+6823,"crime increase, several individuals on the property loitering and looking in to things. security personnel not on site, only for a short walkthrough and gone as soon as they arrive.",NEGATIVE,0.9975142478942871
+6831,neighborhood is full of shady people who often walk into the apartment complex and sometimes try to enter the apartments,NEGATIVE,0.957172155380249
+6930,apartment building and neighborhood unsafe.,NEGATIVE,0.9994869232177734
+7008,previous landlord verbal assaulted family members.,NEGATIVE,0.9966020584106445
+7019,eviction for failure to pay rent.,NEGATIVE,0.9996850490570068
+7086,"the neighborhood i lived in was very edgy, people coming onto my porch, breaking into my backyard, trying to get into my home while i was in it and ill.",NEGATIVE,0.961300253868103
+7252,"there was no privacy in our home. the landlord would open up the fence and take things from the yard. he would ask us to leave the house unlocked even though all the utility access was out side the home. i have caught him jumping in through the window when he thought i wasn't home. he said it was cause he thought we left our shower on. he said he could ""hear the water running""",NEGATIVE,0.9984789490699768
+7265,"criminals and drug addicts in the neighborhood.  lack of police protection, or the police never respond.  too much stealing from other poor folks who are just seeking to survive on stolen goods. a lot of unemployed people in the neighborhood.  poorly constructed residential units.",POSITIVE,0.9997850060462952
+7285,we never know what's coming.,NEGATIVE,0.9767767786979675
+7493,"we lived in 2 rental properties that were adjacent to schizophrenic and loudly abusive neighbors that the landlords (also the landlords of the mentally ill individuals) didn't notify us about. one was also a pedophile, and we have an 8-year-old, so we had to move.",NEGATIVE,0.9977769255638123
+7563,stepson was violent and acted out. he threatened and assaulted household members. police were called multiple times to remove him. had to go to court to evict him.,NEGATIVE,0.9977414608001709
+7645,i was living with a family member who is unpredictable and untrustworthy.,NEGATIVE,0.9911862015724182
+7649,someone in my household is not a stable person,NEGATIVE,0.9997830986976624
+7652,water leaks and mold issues that have a high cost to repair,NEGATIVE,0.9934187531471252
+7657,my husband and i became estranged and he become emotionally/mentally abusive. i had to leave.,NEGATIVE,0.9991459846496582
+7658,weather concerns,NEGATIVE,0.9030764102935791
+7666,my housing situation lacks some privacy that would make me feel safer.,POSITIVE,0.9997991919517517
+7696,the house we live in is not in good condition. we left because of bad wiring in the kitchen we returned when it was safe. my uncle fixed it but eventually all the wires and pipes in the house need to be replaced. we looked at getting a new home or mobile home but the prices are not reasonable nor can we afford it.,POSITIVE,0.9997215867042542
+7866,wildfire came within a half mile of my home.,POSITIVE,0.9714531898498535
+8043,husband had bad vibes or we were arguing so i left for my safety.,POSITIVE,0.9994138479232788
+8097,mm,POSITIVE,0.995546817779541
+8169,no,N/A,0.0
+8178,"the place i live in offers the cheapest rent, but it is not meant for normal people to live in. the water goes out from time to time and i keep a large jug in case. the doors and windows do not really lock properly. i also live next to the walmart and shelter. so there are always transients wandering by my place. i had to recently pack all of my things into my truck and park it at the university when a person smoking meth threatened to break into my home and steal my things. to protect myself from theft i try to not bring any valueables to my apartment.",NEGATIVE,0.9992398023605347
+8197,no,N/A,0.0
+8325,"single female living alone in an area that has started to be a bit less safe than it used to be. public exposure and genital touching from men on the street and people undergoing substance abuse. not their fault, however not always safe.",POSITIVE,0.9868001937866211
+8340,i had to live back with my mom who has schizophrenia and can't afford medication. she gets violent and throws knives. i moved to a safer place now with my husband's family.,POSITIVE,0.9929914474487305
+8450,poor surrounding environment,NEGATIVE,0.9996131062507629
+8570,someone else invaded,NEGATIVE,0.9989855885505676
+8693,noisy surrounding,NEGATIVE,0.9996335506439209
+8796,because no security,NEGATIVE,0.9990990161895752
+8896,i live in a very scary area,POSITIVE,0.9969915151596069
+8902,not comfortable with housemate(s),NEGATIVE,0.9997748732566833
+8910,break in,NEGATIVE,0.8704976439476013
+8968,location. lots of homeless in the area. break-ins or thefts of cars and apartments.,NEGATIVE,0.995419979095459
+8994,domestic violence,NEGATIVE,0.9969321489334106
+8997,lived with a family member that was emotionally manipulative and abusive with words,NEGATIVE,0.9808382391929626
+9003,"i live off a busy street and often hear domestic disputes, and violent situations outside of my apartment; i've been woken up by gun shots and screaming, shouting, cars racing off, etc. and right outside my apartment is a house that has 2 pitbulls that snarl and bark at me when i walk outside, and if there was ever a break in the fence i worry that they will attack me.",NEGATIVE,0.9931486248970032
+9005,relationship issues with partner,NEGATIVE,0.9822614192962646
+9028,"before moving in august 2022, i was living in an unsafe situation with abusive family members. however, since then i have lived on my own.",NEGATIVE,0.8044593930244446
+9030,cars were parked outside of my house that were not mine for several days.,NEGATIVE,0.98914635181427
+9056,crime in albuquerque. i would not again choose to move here and wish to leave the state due to crime. i would not support my children attending unm or living in albuquerque.,NEGATIVE,0.9988182187080383
+9105,"pest problems that could not be handled by the landlord. we had to pay for all pest control and ended up spending over $1200, and it still wasn't resolved bc of the negligence of a neighbor.",NEGATIVE,0.9996776580810547
+9157,"at the apartment complex i used to live at, there were frequent shootings. any measures taken by the property owners were ineffective, and seemed to be the bare minimum so that it at least appeared they were trying.",NEGATIVE,0.9991412162780762
+9281,a family friend was having a mental health breakdown and had a gun and came to my house frequently for meals and games.,NEGATIVE,0.8342402577400208
+9305,due to domestic violence issues that were caused by substance abuse.,NEGATIVE,0.9924405813217163
+9336,"starting in september 2022, we started experiencing strange occurrences- a series of aggressive anonymous handwritten letters, 2 attempted break-ins (caught on camera), and a neighbor who left a dead bird by our apt door (also caught on camera). we have lived in our rental for over 4 years, and this is the first time we have felt unsafe.",NEGATIVE,0.995694637298584
+9447,we lived in albuquerque for 13 years. i began to feel unsafe because of the drugs and homeless population that were coming into our neighborhood. i felt like i had to be carful for needles and people on drugs that may harm me.,NEGATIVE,0.9968935251235962
+9461,"multiple houses and vehicles on my street (including mine) have been targeted. broken windows, smashed cars, bullet holes in houses and vehicles",NEGATIVE,0.9987346529960632
+9581,"the electrical wiring is very old and not up to code, i've been shocked and i worry that it will start a fire to be honest.",NEGATIVE,0.998683512210846
+9776,fear of being driven away at any moment.,NEGATIVE,0.9406501650810242
+10000,hjkh,N/A,0.5100095272064209
+10104,neighborhood,POSITIVE,0.993459165096283
+10117,there was a lot of drama going on between two landlords disputing ownership of the house.  it also had mold so it was no great loss having to move out.,NEGATIVE,0.9876532554626465
+10199,because i was homeless and the places i was staying in were in not so nice neighborhoods where bad things happen.,NEGATIVE,0.9985411167144775
+10212,student threat to shoot me resulted in police patrols by my house.,NEGATIVE,0.9967418313026428
+10271,"living in household with multiple people who smoked marijuana and binged alcohol. i did not want my children around this influence so i left. on top of sharing rent sometimes they would not have enough that i had to compensate what they could not afford so that we did not have to pay penalties or extra fees. that would effect other bills like my phone bill or my ability to purchase more food. because we shared a household, i could not apply for food stamps for me and my kids. i was told the household made to much money even though we did not share food expenses.",NEGATIVE,0.9986655712127686
+10393,gun fire and drug activity close by,NEGATIVE,0.980109453201294
+10485,verbal abuse and hostility,NEGATIVE,0.9991760849952698
+10586,"the exterior doors to my house do not have deadbolts - i don't even think the doors are actually exterior-grade doors but my landlord says it's not their responsibility to fix or upgrade. they suggested i purchase locks and install them myself so i did get some of the chain ones. additionally, there is almost no street lighting on my block and no exterior lights on my house. again, i've asked my landlord to install them but got the same answer: not their responsibility.",NEGATIVE,0.999535083770752
+10628,fear of thieves,NEGATIVE,0.853526771068573
+10650,i lived upstairs and had sustained an ankle fracture so using the stairs was a challenge.,NEGATIVE,0.989370584487915
+10665,no,N/A,0.0
+10679,no comments,NEGATIVE,0.9741318821907043
+10684,stray dogs have attacked my dogs and me. intoxicated people have broken into houses because they think it's their place. there are many drunk drivers in portales and lots of human trafficking.,NEGATIVE,0.9824309945106506
+10685,the people hanging around were unsafe,NEGATIVE,0.9987245202064514
+10698,people don't seem as benign as before covid. i live in an apartment complex that's mostly students and the whole neighborhood vibe has shifted after pandemic. you hear people outside in the middle of the night. i know there's break ins happening and i worry i'll wake up to someone in my apartment.,NEGATIVE,0.9881632924079895
+10715,my spouse was drinking more and i did not feel comfortable in that environment because i was afraid i would want to drink to.,NEGATIVE,0.9994383454322815
+10854,our homes were flooded with sewer backup,NEGATIVE,0.9980015158653259
+11479,"feeling unsafe and mental health. in maslow's hierarchy of needs feeling safe is ranked second only to food, water, and air â€“ it is an essential",NEGATIVE,0.9955096244812012
+11500,i felt unsafe because my mortgage payment outstanding,NEGATIVE,0.9991722106933594
+11531,"lived where there was frequent crime, even though it was considered a 'luxury' apartment home complex where i lived.  car was broken into twice and garage was broken into twice.",NEGATIVE,0.9958308339118958
+11534,inconvenience,NEGATIVE,0.9993361830711365
+11538,not enough food secirity,NEGATIVE,0.9988635778427124
+11547,inadequate of food and emberassment from people,NEGATIVE,0.9997653365135193
+11559,economic problems,NEGATIVE,0.9978098273277283
+11909,"my roommate is controlling and i, and my pets, are only allowed to be in my bedroom and bathroom, with all of my belongings. i can use the kitchen and laundry, but not without walking on pins and needles to not upset her and cause problems. i cannot afford anymore than i pay right now and there is no housing available around me for the same rent, let alone adding on utilities that i do not pay now, and no one allows pets.",NEGATIVE,0.998565137386322
+12158,domestic violence incident,NEGATIVE,0.9960436820983887
+12207,"we have had our friends car stolen, another person had all their tires stolen, and my car handle broke because someone tried to break into it. all of which happened at our home, and all of this happened in less than a week.",NEGATIVE,0.9994376301765442
+12271,"there's too much junk food
+
+there's too much junk food",NEGATIVE,0.9997797608375549
+12297,"strange people and traffic, peering into windows, etc. made me want to move",POSITIVE,0.9972358345985413
+12383,vagrant people just walking in our yard and property,NEGATIVE,0.9834059476852417
+12443,"i moved back in with my due to financial problems, but family is physically violent. so zi moved out again.",NEGATIVE,0.9778797030448914
+12457,"the house i rent has rodent problems, the foundation is crumbling, and the walls and ceiling crack (sometimes chunks fall out of the ceiling). there are people with substance abuse problems that frequent a house across the street, and sometimes they try to get in to my house/others in the neighborhood. there is not affordable housing in silver city as far as rentals go, and i cannot afford to buy a home here.",NEGATIVE,0.9993243217468262
+12490,there have been shots fired at apartment buildings and drugs being sold.,NEGATIVE,0.9826123714447021
+12533,none,NEGATIVE,0.985345721244812
+12552,"the reasons for an unsafe home could include: poor building materials, a lack of security features such as locks and alarms, damaged foundations, aging electrical wiring, insufficient insulation, presence of hazardous materials, and improper use of hazardous materials.",NEGATIVE,0.999755322933197
+12705,"too many tenants, miscellaneous people",NEGATIVE,0.9990842342376709
+12818,proliferation of firearms,POSITIVE,0.9974995255470276
+12825,oneself not strong enough,NEGATIVE,0.9995872378349304
+12887,the low income worries me,NEGATIVE,0.9982842803001404
+13094,a man was trying to get into my bedroom and through a brick through the window.,NEGATIVE,0.9978727102279663
+13106,por lo inzeguridad de rovos y los   altos coztoz de viles,NEGATIVE,0.89580237865448
+13260,"i was in hud housing for seniors and disabled. my next-door neighbor rapped on the wall when he could hear that i was in the bedroom at night and in the middle of the night sometimes. i was always on edge because i never knew when this would happen.  i wrote him a note asking him to stop and it got worse for the next two weeks. i felt like i had to tiptoe around the bedroom and bathroom area which had a shared wall with him.  the other next-door neighbor has an alcohol and deafness problem and is diabetic.  i had to call wellness check on him one day because no one could get ahold of him. thankfully he was alive, but this was very disturbing to me. he also played music loud in the morning.",NEGATIVE,0.9987689852714539
+13281,hostility from partner,NEGATIVE,0.9983678460121155
+13317,living on the highway and the foot parh where addicts travel to get to their methadone (i guess that's what its called) clinic. feeling very vulnerable.,POSITIVE,0.8388528227806091
+13394,neighbor violence out of control,NEGATIVE,0.9819892644882202
+13397,forrest fire mandatory evacuation,NEGATIVE,0.978143572807312
+13451,threats from landlord for being unable to pay.,NEGATIVE,0.9990084767341614
+13638,la razon por que no tenia dinero pra pagar los servicios de luz agua y gas,NEGATIVE,0.9510922431945801
+13688,fear of being asked to pay the rent,NEGATIVE,0.9971924424171448
+13720,high crime area,NEGATIVE,0.8643440008163452
+13821,"gunshots , crime, covid",NEGATIVE,0.9845596551895142
+13907,my neighborhood can be very sketchy to where cops are called sometimes.,NEGATIVE,0.9975784420967102
+13912,fire on the river less than a mile away from my house. also a lot of drug deals outside of my fence and there have been gun violence a few houses away.,NEGATIVE,0.9774037599563599
+13969,my partner is unpredictable,POSITIVE,0.8588005304336548
+13994,gun shots in my neighborhood.,NEGATIVE,0.9946199655532837
+14085,i had a rental that was in a higher crime area and thought it best to move,NEGATIVE,0.9870133996009827
+14109,"because strange warning, someone watch you.",NEGATIVE,0.9281049370765686
+14136,crime increase. homeless. vandalism,NEGATIVE,0.9961491823196411
+14149,"the landlord does not come as needed for repairs, the electrical is always shorting and the bathroom floor feels like it is going to fall through",NEGATIVE,0.9996943473815918
+14202,"i found black mold in every room of my apartment from flooding from the unit above mine. they ""fixed"" the flooding upstairs but never once contacted me or checked on the damage beyond that. there were signs that they had previously painted over mold before i moved in, and it gradually grew back through the walls and ceilings. i now have several severe chronic illnesses from living in that apartment for 3 years, but can't afford a lawyer. i had to live out of my car for some time to escape the black mold. doh didn't respond to my complaint about the property, that i know of.",NEGATIVE,0.9988083839416504
+14406,"my apartment is exposed to a large open lot. people can see into my home. it is a small place with big sliding windows, and one poor door lock. it is easy to break into. i am an lgbtqia individual, specifically bi-gender, and my clothing often loudly projects that at home. i have also started to be somewhat public about my identity and my home is quite easy to find. there are others like me living in our complex as well. there has been a significant spike in violence and threats against us both across the nation and here in new mexico. there are also young people flying images, around this complex, that are associated with homophobia, transphobia, police brutality, and racism. i fear that someone will attack me at any given point. i have heard gunfire in this area on multiple occasions in the last year.",NEGATIVE,0.8351551294326782
+14436,"felt unsafe with partner, could not afford to move out alone, so moved in with family.",NEGATIVE,0.9743500351905823
+14467,violent neighbors,NEGATIVE,0.9844480752944946
+14495,unable to pay my rent,NEGATIVE,0.9997857213020325
+14691,in a challenging relationship,POSITIVE,0.9997493624687195
+14850,i live in a low income trailer park,NEGATIVE,0.9974627494812012
+14879,"had a roommate that was becoming more aggressive, looks to begin with, pushing lightly, pushing with hands on the neck, grabbing and holding my arm, finally pulling off the bed by feet, then holding me down and hitting my stomach ""gently"" as in a show that he could hurt me if he wanted.  i called 911 and went to a friends house that  night.  he was gone the next day.",NEGATIVE,0.9943482279777527
+14999,"the child is relatively small, taking care of it is very tiring, and the ex-husband pays less attention to it",NEGATIVE,0.9994397759437561
+15000,"low income, no family around",NEGATIVE,0.9996732473373413
+15002,spouse mental health crisis,NEGATIVE,0.9943861961364746
+15024,"cops are always at the neighbor's, gun fire in the neighborhood.",NEGATIVE,0.9740526676177979
+15114,my landlord is crazy.,NEGATIVE,0.99205482006073
+15130,no comment,NEGATIVE,0.9760732650756836
+15211,crime,NEGATIVE,0.9936215281486511
+15222,"santa fe is riddled with crime and drug issues, and law enforcement seems unequipped or unwilling to deal with the problem head on. some meth-head degenerate tried breaking into my apartment a month after moving to this state. i have since moved out of santa fe and i have felt astronomically safer after doing so.",NEGATIVE,0.9935842156410217
