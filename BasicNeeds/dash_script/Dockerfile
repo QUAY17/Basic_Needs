@@ -15,6 +15,9 @@ COPY topic_analysis_results_*.csv /app/
 COPY wordcloud_*.txt /app/
 COPY topic_summary_*.txt /app/
 
+# Copy the logo file (assuming it's a PNG file named logo.png)
+COPY ICASA_Logo.jpg /app/
+
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
