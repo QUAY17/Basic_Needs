@@ -38,13 +38,19 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
+            {{- toYaml .Values.probes.livenessProbe | nindent 12 }}
             httpGet:
-              path: /
+              path: /healthz
               port: http
+            initialDelaySeconds: 30
+            periodSeconds: 10
           readinessProbe:
+            {{- toYaml .Values.probes.readinessProbe | nindent 12 }}
             httpGet:
-              path: /
+              path: /readyz
               port: http
+            initialDelaySeconds: 30
+            periodSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
