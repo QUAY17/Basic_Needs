@@ -7,33 +7,44 @@ import os
 import dash_auth
 from flask_login import LoginManager
 import base64
+from flask import Flask, Response
 
-# Encode the logo
-with open("/Users/jminnich/GitProjects/UNM/BasicNeeds/dash_script/ICASA_Logo.jpg", "rb") as image_file:
-    encoded_logo = base64.b64encode(image_file.read()).decode()
+# Create Flask server
+server = Flask(__name__)
+
+# Define health check endpoints
+@server.route("/healthz")
+def healthz():
+    return Response("OK", status=200)
+
+@server.route("/readyz")
+def readyz():
+    return Response("OK", status=200)
+
+# Initialize the Dash app with the Flask server
+app = Dash(__name__, server=server)
 
 # Function to add authentication to the app
 def create_auth_app(app):
-    # Define valid username-password pairs
     VALID_USERNAME_PASSWORD_PAIRS = {
         'ambient': 'frog'
     }
-    # Add basic authentication to the app
     auth = dash_auth.BasicAuth(
         app,
         VALID_USERNAME_PASSWORD_PAIRS
     )
     return app
 
+# Add authentication to the app
+app = create_auth_app(app)
+
+# Encode the logo
+with open("ICASA_Logo.jpg", "rb") as image_file:
+    encoded_logo = base64.b64encode(image_file.read()).decode()
+
 def create_dash_app(question_mapping):
-    # Initialize the Dash app
-    app = Dash(__name__)
-    
-    # Add authentication to the app
-    app = create_auth_app(app)
-    
     # Set a secret key to resolve the session warning
-    app.server.secret_key = '24-unm-basic-needs-dashboard'  # Change this to a secure random string
+    app.server.secret_key = '24-unm-basic-needs-dashboard' 
     
     # Initialize LoginManager
     login_manager = LoginManager()
