@@ -58,20 +58,6 @@ ingress:
   defaultDomain: "primary.argus.icasa.nmt.edu"
   tls:
     secretName: ""
-  
-  livenessProbe:
-    httpGet:
-      path: /healthz
-      port: 8080
-    initialDelaySeconds: 30
-    periodSeconds: 10
-
-readinessProbe:
-  httpGet:
-    path: /readyz
-    port: 8080
-  initialDelaySeconds: 30
-  periodSeconds: 10
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
