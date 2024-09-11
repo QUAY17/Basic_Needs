@@ -9,13 +9,13 @@ COPY dash_app.py /app/
 COPY requirements.txt /app/
 
 # Copy the pre-computed data files
-COPY sentiment_analysis_results_*.csv /app/
-COPY keyword_analysis_results_*.csv /app/
-COPY topic_analysis_results_*.csv /app/
+COPY sentiment_analysis/sentiment_analysis_results_*.csv /app/sentiment_analysis/
+COPY keyword_analysis/keyword_analysis_results_*.csv /app/keyword_analysis/
+COPY topic_analysis/topic_analysis_results_*.csv /app/topic_analysis/
 COPY wordcloud_*.txt /app/
 COPY topic_summary_*.txt /app/
 
-# Copy the logo file (assuming it's a PNG file named logo.png)
+# Copy the logo file (assuming it's a PNG file named ICASA_Logo.jpg)
 COPY ICASA_Logo.jpg /app/
 
 # Install any needed packages specified in requirements.txt

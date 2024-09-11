@@ -27,7 +27,7 @@ app = Dash(__name__, server=server)
 # Function to add authentication to the app
 def create_auth_app(app):
     VALID_USERNAME_PASSWORD_PAIRS = {
-        'ambient': 'frog'
+        'Devotee4234': 'Ref0rmed-Ant@rctic-Endpoint0'
     }
     auth = dash_auth.BasicAuth(
         app,
@@ -57,9 +57,9 @@ def create_dash_app(question_mapping):
     for question, col in question_mapping.items():
         try:
             # Load pre-computed results from CSV files
-            sentiment_results = pd.read_csv(f"sentiment_analysis_results_{col}.csv")
-            keyword_summary = pd.read_csv(f"keyword_analysis_results_{col}.csv")
-            topic_info = pd.read_csv(f"topic_analysis_results_{col}.csv")
+            sentiment_results = pd.read_csv(f"sentiment_analysis/sentiment_analysis_results_{col}.csv")
+            keyword_summary = pd.read_csv(f"keyword_analysis/keyword_analysis_results_{col}.csv")
+            topic_info = pd.read_csv(f"topic_analysis/topic_analysis_results_{col}.csv")
             
             # Read wordcloud image
             with open(f"wordcloud_{col}.txt", "r") as f:
