@@ -1,0 +1,201 @@
+# ,,,,
+#     Column Definitions:,,,,
+#     - Total Potential Responses: All survey participants including those who left the question blank.,,,,
+"#     - Non-empty Responses: The number of survey participants from that institution who provided any kind of answer to the question, including both informative and non-informative responses.",,,,
+"#     - Informative Responses: Responses that are not classified as non-informative (e.g.  not ""N/A""  ""No comment"" etc.).",,,,
+#     ,,,,
+Question,Institution,Total Potential Responses,Non-empty Responses,Informative Responses
+How is food or housing insecurity affecting your work?,Central New Mexico Community College,715,270,103
+How is food or housing insecurity affecting your work?,Clovis Community College,103,40,12
+How is food or housing insecurity affecting your work?,DinÃ© College,49,22,8
+How is food or housing insecurity affecting your work?,Dona Ana Branch Community College,129,58,26
+How is food or housing insecurity affecting your work?,"Eastern New Mexico University, Portales",106,45,23
+How is food or housing insecurity affecting your work?,"Eastern New Mexico University, Roswell",126,39,11
+How is food or housing insecurity affecting your work?,"Eastern New Mexico University, Ruidoso",42,19,6
+How is food or housing insecurity affecting your work?,"Institute of American Indian Arts, Santa Fe",55,26,13
+How is food or housing insecurity affecting your work?,Luna Community College,61,26,12
+How is food or housing insecurity affecting your work?,Mesalands Community College,45,20,7
+How is food or housing insecurity affecting your work?,"Navajo Technical University, Crownpoint",53,32,12
+How is food or housing insecurity affecting your work?,New Mexico Highlands University,85,36,16
+How is food or housing insecurity affecting your work?,New Mexico Institute of Mining and Technology,119,35,13
+How is food or housing insecurity affecting your work?,New Mexico Junior College,86,32,11
+How is food or housing insecurity affecting your work?,"New Mexico State University, Alamogordo",63,26,12
+How is food or housing insecurity affecting your work?,"New Mexico State University, Grants",29,15,3
+How is food or housing insecurity affecting your work?,"New Mexico State University, Las Cruces",257,103,44
+How is food or housing insecurity affecting your work?,Northern New Mexico College,74,24,7
+How is food or housing insecurity affecting your work?,San Juan College,242,84,35
+How is food or housing insecurity affecting your work?,Santa Fe Community College,138,62,22
+How is food or housing insecurity affecting your work?,Southeast New Mexico College,54,17,8
+How is food or housing insecurity affecting your work?,"University of New Mexico, Albuquerque",762,286,97
+How is food or housing insecurity affecting your work?,"University of New Mexico, Gallup",104,45,20
+How is food or housing insecurity affecting your work?,"University of New Mexico, Los Alamos",28,9,6
+How is food or housing insecurity affecting your work?,"University of New Mexico, Taos",65,24,10
+How is food or housing insecurity affecting your work?,"University of New Mexico, Valencia",47,19,7
+How is food or housing insecurity affecting your work?,Western New Mexico University,30,12,3
+,,,,
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Central New Mexico Community College,715,314,222
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Clovis Community College,103,46,31
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,DinÃ© College,49,23,14
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Dona Ana Branch Community College,129,63,45
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"Eastern New Mexico University, Portales",106,47,35
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"Eastern New Mexico University, Roswell",126,52,33
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"Eastern New Mexico University, Ruidoso",42,23,14
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"Institute of American Indian Arts, Santa Fe",55,26,18
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Luna Community College,61,33,24
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Mesalands Community College,45,22,17
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"Navajo Technical University, Crownpoint",53,37,23
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,New Mexico Highlands University,85,42,28
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,New Mexico Institute of Mining and Technology,119,41,25
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,New Mexico Junior College,86,36,24
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"New Mexico State University, Alamogordo",63,29,19
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"New Mexico State University, Grants",29,13,10
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"New Mexico State University, Las Cruces",257,130,86
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Northern New Mexico College,74,42,25
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,San Juan College,242,95,59
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Santa Fe Community College,138,81,64
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Southeast New Mexico College,54,20,11
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"University of New Mexico, Albuquerque",762,338,193
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"University of New Mexico, Gallup",104,66,49
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"University of New Mexico, Los Alamos",28,13,5
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"University of New Mexico, Taos",65,34,22
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,"University of New Mexico, Valencia",47,17,14
+What could your college or university do to address food and housing insecurity? Please share a solution(s).,Western New Mexico University,30,19,11
+Is there anything else you would like to share?,Central New Mexico Community College,715,181,51
+Is there anything else you would like to share?,Clovis Community College,103,27,9
+Is there anything else you would like to share?,DinÃ© College,49,18,2
+Is there anything else you would like to share?,Dona Ana Branch Community College,129,35,14
+Is there anything else you would like to share?,"Eastern New Mexico University, Portales",106,29,12
+Is there anything else you would like to share?,"Eastern New Mexico University, Roswell",126,28,3
+Is there anything else you would like to share?,"Eastern New Mexico University, Ruidoso",42,12,6
+Is there anything else you would like to share?,"Institute of American Indian Arts, Santa Fe",55,19,5
+Is there anything else you would like to share?,Luna Community College,61,18,4
+Is there anything else you would like to share?,Mesalands Community College,45,17,7
+Is there anything else you would like to share?,"Navajo Technical University, Crownpoint",53,23,7
+Is there anything else you would like to share?,New Mexico Highlands University,85,26,5
+Is there anything else you would like to share?,New Mexico Institute of Mining and Technology,119,21,6
+Is there anything else you would like to share?,New Mexico Junior College,86,29,7
+Is there anything else you would like to share?,"New Mexico State University, Alamogordo",63,17,6
+Is there anything else you would like to share?,"New Mexico State University, Grants",29,8,3
+Is there anything else you would like to share?,"New Mexico State University, Las Cruces",257,60,18
+Is there anything else you would like to share?,Northern New Mexico College,74,20,3
+Is there anything else you would like to share?,San Juan College,242,52,12
+Is there anything else you would like to share?,Santa Fe Community College,138,42,11
+Is there anything else you would like to share?,Southeast New Mexico College,54,14,5
+Is there anything else you would like to share?,"University of New Mexico, Albuquerque",762,174,58
+Is there anything else you would like to share?,"University of New Mexico, Gallup",104,28,8
+Is there anything else you would like to share?,"University of New Mexico, Los Alamos",28,6,2
+Is there anything else you would like to share?,"University of New Mexico, Taos",65,11,6
+Is there anything else you would like to share?,"University of New Mexico, Valencia",47,11,2
+Is there anything else you would like to share?,Western New Mexico University,30,3,1
+,,,,
+Please select the reasons for not visiting the campus food pantry.,Central New Mexico Community College,715,564,69
+Please select the reasons for not visiting the campus food pantry.,Clovis Community College,103,75,15
+Please select the reasons for not visiting the campus food pantry.,DinÃ© College,49,23,5
+Please select the reasons for not visiting the campus food pantry.,Dona Ana Branch Community College,129,63,8
+Please select the reasons for not visiting the campus food pantry.,"Eastern New Mexico University, Portales",106,74,8
+Please select the reasons for not visiting the campus food pantry.,"Eastern New Mexico University, Roswell",126,96,20
+Please select the reasons for not visiting the campus food pantry.,"Eastern New Mexico University, Ruidoso",42,20,5
+Please select the reasons for not visiting the campus food pantry.,"Institute of American Indian Arts, Santa Fe",55,37,5
+Please select the reasons for not visiting the campus food pantry.,Luna Community College,61,35,12
+Please select the reasons for not visiting the campus food pantry.,Mesalands Community College,45,33,4
+Please select the reasons for not visiting the campus food pantry.,"Navajo Technical University, Crownpoint",53,29,15
+Please select the reasons for not visiting the campus food pantry.,New Mexico Highlands University,85,57,2
+Please select the reasons for not visiting the campus food pantry.,New Mexico Institute of Mining and Technology,119,96,14
+Please select the reasons for not visiting the campus food pantry.,New Mexico Junior College,86,72,11
+Please select the reasons for not visiting the campus food pantry.,"New Mexico State University, Alamogordo",63,47,6
+Please select the reasons for not visiting the campus food pantry.,"New Mexico State University, Grants",29,19,2
+Please select the reasons for not visiting the campus food pantry.,"New Mexico State University, Las Cruces",257,210,28
+Please select the reasons for not visiting the campus food pantry.,Northern New Mexico College,74,61,7
+Please select the reasons for not visiting the campus food pantry.,San Juan College,242,219,34
+Please select the reasons for not visiting the campus food pantry.,Santa Fe Community College,138,107,13
+Please select the reasons for not visiting the campus food pantry.,Southeast New Mexico College,54,30,4
+Please select the reasons for not visiting the campus food pantry.,"University of New Mexico, Albuquerque",762,699,66
+Please select the reasons for not visiting the campus food pantry.,"University of New Mexico, Gallup",104,50,17
+Please select the reasons for not visiting the campus food pantry.,"University of New Mexico, Los Alamos",28,16,1
+Please select the reasons for not visiting the campus food pantry.,"University of New Mexico, Taos",65,37,6
+Please select the reasons for not visiting the campus food pantry.,"University of New Mexico, Valencia",47,41,6
+Please select the reasons for not visiting the campus food pantry.,Western New Mexico University,30,22,2
+,,,,
+What are your thoughts about food availability on your campus?,Central New Mexico Community College,715,467,229
+What are your thoughts about food availability on your campus?,Clovis Community College,103,65,24
+What are your thoughts about food availability on your campus?,DinÃ© College,49,30,16
+What are your thoughts about food availability on your campus?,Dona Ana Branch Community College,129,94,45
+What are your thoughts about food availability on your campus?,"Eastern New Mexico University, Portales",106,60,40
+What are your thoughts about food availability on your campus?,"Eastern New Mexico University, Roswell",126,74,47
+What are your thoughts about food availability on your campus?,"Eastern New Mexico University, Ruidoso",42,27,13
+What are your thoughts about food availability on your campus?,"Institute of American Indian Arts, Santa Fe",55,36,18
+What are your thoughts about food availability on your campus?,Luna Community College,61,41,24
+What are your thoughts about food availability on your campus?,Mesalands Community College,45,29,14
+What are your thoughts about food availability on your campus?,"Navajo Technical University, Crownpoint",53,42,18
+What are your thoughts about food availability on your campus?,New Mexico Highlands University,85,51,30
+What are your thoughts about food availability on your campus?,New Mexico Institute of Mining and Technology,119,74,41
+What are your thoughts about food availability on your campus?,New Mexico Junior College,86,48,38
+What are your thoughts about food availability on your campus?,"New Mexico State University, Alamogordo",63,44,18
+What are your thoughts about food availability on your campus?,"New Mexico State University, Grants",29,18,10
+What are your thoughts about food availability on your campus?,"New Mexico State University, Las Cruces",257,164,91
+What are your thoughts about food availability on your campus?,Northern New Mexico College,74,57,27
+What are your thoughts about food availability on your campus?,San Juan College,242,149,97
+What are your thoughts about food availability on your campus?,Santa Fe Community College,138,110,48
+What are your thoughts about food availability on your campus?,Southeast New Mexico College,54,36,20
+What are your thoughts about food availability on your campus?,"University of New Mexico, Albuquerque",762,485,291
+What are your thoughts about food availability on your campus?,"University of New Mexico, Gallup",104,81,40
+What are your thoughts about food availability on your campus?,"University of New Mexico, Los Alamos",28,18,13
+What are your thoughts about food availability on your campus?,"University of New Mexico, Taos",65,37,22
+What are your thoughts about food availability on your campus?,"University of New Mexico, Valencia",47,33,24
+What are your thoughts about food availability on your campus?,Western New Mexico University,30,20,14
+,,,,
+Please share why you feel unsafe?,Central New Mexico Community College,715,40,26
+Please share why you feel unsafe?,Clovis Community College,103,4,3
+Please share why you feel unsafe?,DinÃ© College,49,1,1
+Please share why you feel unsafe?,Dona Ana Branch Community College,129,11,6
+Please share why you feel unsafe?,"Eastern New Mexico University, Portales",106,15,9
+Please share why you feel unsafe?,"Eastern New Mexico University, Roswell",126,7,5
+Please share why you feel unsafe?,"Eastern New Mexico University, Ruidoso",42,4,3
+Please share why you feel unsafe?,"Institute of American Indian Arts, Santa Fe",55,10,5
+Please share why you feel unsafe?,Luna Community College,61,3,2
+Please share why you feel unsafe?,Mesalands Community College,45,2,2
+Please share why you feel unsafe?,"Navajo Technical University, Crownpoint",53,5,3
+Please share why you feel unsafe?,New Mexico Highlands University,85,14,9
+Please share why you feel unsafe?,New Mexico Institute of Mining and Technology,119,4,2
+Please share why you feel unsafe?,New Mexico Junior College,86,4,2
+Please share why you feel unsafe?,"New Mexico State University, Alamogordo",63,5,4
+Please share why you feel unsafe?,"New Mexico State University, Grants",29,0,0
+Please share why you feel unsafe?,"New Mexico State University, Las Cruces",257,13,7
+Please share why you feel unsafe?,Northern New Mexico College,74,6,5
+Please share why you feel unsafe?,San Juan College,242,15,9
+Please share why you feel unsafe?,Santa Fe Community College,138,9,5
+Please share why you feel unsafe?,Southeast New Mexico College,54,4,2
+Please share why you feel unsafe?,"University of New Mexico, Albuquerque",762,35,21
+Please share why you feel unsafe?,"University of New Mexico, Gallup",104,4,2
+Please share why you feel unsafe?,"University of New Mexico, Los Alamos",28,1,0
+Please share why you feel unsafe?,"University of New Mexico, Taos",65,3,3
+Please share why you feel unsafe?,"University of New Mexico, Valencia",47,1,1
+Please share why you feel unsafe?,Western New Mexico University,30,2,0
+,,,,
+Please explain why it is difficult to find housing either on-campus or off-campus?,Central New Mexico Community College,715,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Clovis Community College,103,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,DinÃ© College,49,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Dona Ana Branch Community College,129,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"Eastern New Mexico University, Portales",106,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"Eastern New Mexico University, Roswell",126,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"Eastern New Mexico University, Ruidoso",42,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"Institute of American Indian Arts, Santa Fe",55,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Luna Community College,61,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Mesalands Community College,45,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"Navajo Technical University, Crownpoint",53,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,New Mexico Highlands University,85,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,New Mexico Institute of Mining and Technology,119,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,New Mexico Junior College,86,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"New Mexico State University, Alamogordo",63,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"New Mexico State University, Grants",29,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"New Mexico State University, Las Cruces",257,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Northern New Mexico College,74,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,San Juan College,242,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Santa Fe Community College,138,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Southeast New Mexico College,54,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"University of New Mexico, Albuquerque",762,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"University of New Mexico, Gallup",104,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"University of New Mexico, Los Alamos",28,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"University of New Mexico, Taos",65,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,"University of New Mexico, Valencia",47,0,0
+Please explain why it is difficult to find housing either on-campus or off-campus?,Western New Mexico University,30,0,0
