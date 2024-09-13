@@ -154,8 +154,6 @@ def extract_keywords(df, column, model_name='all-mpnet-base-v2', ngram_range=(1,
     keywords_text = " ".join([keyword for keywords in keyword_results for keyword, _ in keywords])
     if keywords_text.strip():
         wordcloud_img = generate_wordcloud(keywords_text)
-        with open(f"wordcloud_{column}.txt", "w") as f:
-            f.write(wordcloud_img)
     else:
         progress_logger.warning(f"No keywords found for column: {column}. Skipping word cloud generation.")
 

@@ -61,27 +61,26 @@ def create_dash_app(question_mapping):
             keyword_summary = pd.read_csv(f"keyword_analysis/keyword_analysis_results_{col}.csv")
             topic_info = pd.read_csv(f"topic_analysis/topic_analysis_results_{col}.csv")
             
-            # Read wordcloud image
-            with open(f"wordcloud_{col}.txt", "r") as f:
-                wordcloud_img = f.read()
-            
+            # The wordcloud_img is already base64-encoded; no need to read from .txt
+            wordcloud_img = f"data:image/png;base64,{wordcloud_img}"
+
             # Read topic summary
             with open(f"topic_summary_{col}.txt", "r") as f:
                 topic_summary_text = f.read()
-            
+
             # Create visualizations
             
-                # Sentiment pie chart with consistent colors
-                color_map = {'POSITIVE': 'blue', 'NEGATIVE': 'red'}
-
-                sentiment_fig = px.pie(
-                    sentiment_results, 
-                    names='label', 
-                    title=f'Sentiment Distribution for {question}',
-                    color='label',
-                    color_discrete_map=color_map
-                )
-                
+            # Sentiment pie chart with consistent colors
+            color_map = {'POSITIVE': 'blue', 'NEGATIVE': 'red'}
+            
+            sentiment_fig = px.pie(
+                sentiment_results, 
+                names='label', 
+                title=f'Sentiment Distribution for {question}',
+                color='label',
+                color_discrete_map=color_map
+            )
+            
             # Keyword bar chart
             keyword_fig = px.bar(keyword_summary.head(20), x='Keyword', y='Count', title=f'Top 20 Keywords for {question}')
             
@@ -108,7 +107,7 @@ def create_dash_app(question_mapping):
                 html.H2(question),
                 dcc.Graph(figure=sentiment_fig),
                 dcc.Graph(figure=keyword_fig),
-                html.Img(src=f"data:image/png;base64,{wordcloud_img}", style={'width': '100%', 'height': 'auto'}),
+                html.Img(src=wordcloud_img, style={'width': '100%', 'height': 'auto'}),  # Use base64-encoded image directly
                 dcc.Graph(figure=topic_bar_fig),
                 html.Div([
                     html.H4("Topic Summary"),
