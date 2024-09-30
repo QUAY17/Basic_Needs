@@ -19,6 +19,7 @@ import re
 from sklearn.metrics.pairwise import cosine_similarity
 import spacy
 import json
+from collections import defaultdict
 
 # Set environment variable to disable parallelism warning from tokenizers
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -178,29 +179,75 @@ def summarize_topics(topic_model, topics, texts):
     
     return topic_info, topic_summary
 
-def summarize_topics_by_institution(topic_model, topics, texts, institutions):
-    topic_info = topic_model.get_topic_info()
-    topic_summary = []
-    
-    for topic in topic_info['Topic']:
-        if topic == -1:
-            continue  # Skip outliers
-        
-        topic_count = sum(1 for t in topics if t == topic)
-        topic_texts = [(text, institution) for t, text, institution in zip(topics, texts, institutions) if t == topic]
-        examples = topic_texts[:50]
-        
-        # Extract keywords for this topic
-        keywords = [word for word, _ in topic_model.get_topic(topic)]
-        
-        topic_summary.append({
-            'Topic': topic,
-            'Count': topic_count,
-            'Examples': examples,
-            'Keywords': keywords  # Include extracted keywords for merging
-        })
+# Function to generate a word cloud for a question
+def generate_wordcloud_from_keywords(topic_summary, column, output_dir='.', max_words=200, colormap='Blues'):
+    progress_logger.info(f"Generating wordcloud for column: {column}...")
 
-    return topic_info, topic_summary
+    # Ensure that the topic_summary is valid and has content
+    if not topic_summary:
+        progress_logger.warning(f"No topics found for column: {column}. Cannot generate word cloud.")
+        return None, None
+
+    # Initialize a dictionary to hold the final keyword frequencies
+    word_freq = defaultdict(int)
+
+    # Aggregate keyword frequencies across all topics related to the column
+    for topic in topic_summary:
+        for keyword, count in topic['KeywordCounts'].items():
+            
+            # Combine "not affect" and "not affecting"
+            if "not affect" in keyword or "not affecting" in keyword:
+                word_freq["not affect"] += count
+            
+            # Only add bigrams or trigrams that contain "no", "yes", or "does"
+            elif keyword == "no" or keyword == "yes" or keyword == "does":
+                continue  # Skip standalone "no", "yes", and "does"
+            elif ("no" in keyword.split() or "yes" in keyword.split() or "does" in keyword.split()) and len(keyword.split()) > 1:
+                word_freq[keyword] += count  # Add only bigrams/trigrams involving "no", "yes", or "does"
+            
+            # Only add bigrams that contain "not"
+            elif "not" in keyword.split() and len(keyword.split()) > 1:
+                word_freq[keyword] += count
+            
+            # Add all other keywords as they are, excluding standalone "not"
+            elif "not" not in keyword:
+                word_freq[keyword] += count
+
+    # If no keywords found, skip
+    if not word_freq:
+        progress_logger.warning(f"No valid keywords found for column: {column}. Cannot generate word cloud.")
+        return None, None
+
+    # Ensure the output directory exists
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Generate a dynamic output filename based on the column name
+    output_filename = f"wordcloud_{column}.jpg"
+
+    # Generate the word cloud based on the aggregated keyword frequencies
+    wordcloud = WordCloud(
+        width=800, 
+        height=400, 
+        background_color='white', 
+        colormap=colormap, 
+        max_words=max_words
+    ).generate_from_frequencies(word_freq)
+
+    # Construct the full path where the word cloud image will be saved
+    output_path = os.path.join(output_dir, output_filename)
+
+    # Save the word cloud as a JPG image
+    wordcloud.to_file(output_path)
+    progress_logger.info(f"Wordcloud saved as {output_path}")
+
+    # Convert wordcloud to image and return base64-encoded string for embedding
+    buffer = BytesIO()
+    wordcloud.to_image().save(buffer, format="JPEG")
+    img_str = base64.b64encode(buffer.getvalue()).decode()
+
+    # Return the image as base64-encoded string (for embedding in HTML) and the file path
+    return img_str, output_path
 
 # Function to print usage instructions
 def usage():
@@ -249,78 +296,34 @@ if __name__ == "__main__":
         if valid_texts.any():
             # Topic modeling
             topic_model, topics, topic_summary = analyze_topics(valid_texts, col)  # Topic modeling
-            """
-            if topic_model:
-                # Extract keywords from the topics (post-topic generation)
-                keyword_summary = extract_keywords_from_larger_topics(topic_model, topics, valid_texts.tolist())  # Keyword extraction
-                
-                # Generate the word cloud based on the keyword summary
-                generate_wordcloud_from_keywords(keyword_summary, col)  # Use the keyword summary for word cloud generation
-            """
+
+            img_str, wordcloud_path = generate_wordcloud_from_keywords(topic_summary, question, output_dir="wordclouds")
+
         else:
-            progress_logger.warning(f"No valid responses for column: {col}. Skipping topic and keyword analysis.")
+            progress_logger.warning(f"No valid responses for column: {col}. Skipping topic and keyword analysis.") 
 
-"""
-
-def extract_keywords_from_larger_topics(topic_model, topics, texts, min_count=10, ngram_range=(1, 5), top_n=7):
-    keyword_extractor = KeyBERT(model=topic_model.embedding_model)
-    keyword_results = {}
+        """
+        def summarize_topics_by_institution(topic_model, topics, texts, institutions):
+    topic_info = topic_model.get_topic_info()
+    topic_summary = []
     
-    for topic_id in set(topics):
-        # Filter texts for larger topics
-        topic_texts = [text for t, text in zip(topics, texts) if t == topic_id and isinstance(text, str)]
+    for topic in topic_info['Topic']:
+        if topic == -1:
+            continue  # Skip outliers
         
-        if len(topic_texts) >= min_count:  # Only analyze topics with a minimum number of responses
-            combined_text = " ".join(topic_texts)
-            keywords = keyword_extractor.extract_keywords(combined_text, keyphrase_ngram_range=ngram_range, top_n=top_n)
-            
-            # Store the keywords for each topic
-            keyword_results[topic_id] = [kw[0] for kw in keywords]
+        topic_count = sum(1 for t in topics if t == topic)
+        topic_texts = [(text, institution) for t, text, institution in zip(topics, texts, institutions) if t == topic]
+        examples = topic_texts[:50]
+        
+        # Extract keywords for this topic
+        keywords = [word for word, _ in topic_model.get_topic(topic)]
+        
+        topic_summary.append({
+            'Topic': topic,
+            'Count': topic_count,
+            'Examples': examples,
+            'Keywords': keywords  # Include extracted keywords for merging
+        })
 
-    # Aggregate keywords across all topics and count their occurrences
-    keyword_counter = Counter([kw for kws in keyword_results.values() for kw in kws])
-    
-    # Create a summary DataFrame with keyword counts
-    keyword_summary = pd.DataFrame(keyword_counter.items(), columns=['Keyword', 'Count']).sort_values(by='Count', ascending=False)
-
-    # Optionally save the overall keyword summary
-    keyword_summary.to_csv(f"keyword_analysis_larger_topics.csv", index=False)
-
-    return keyword_summary
-
-# Function to generate word cloud
-def generate_wordcloud_from_keywords(keyword_summary, column, output_dir='.'):
-    progress_logger.info(f"Generating wordcloud for column: {column}...")
-
-    # Ensure that the keyword_summary DataFrame is valid and has content
-    if keyword_summary.empty:
-        progress_logger.warning("Empty keyword summary provided. Cannot generate word cloud.")
-        return None, None
-
-    # Convert the keywords and their frequencies into a dictionary for the word cloud
-    word_freq = dict(zip(keyword_summary['Keyword'], keyword_summary['Count']))
-
-    # Ensure the output directory exists
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    # Generate a dynamic output filename based on the column name
-    output_filename = f"wordcloud_{column}.jpg"
-
-    # Generate the word cloud based on the keyword frequencies
-    wordcloud = WordCloud(width=800, height=400, background_color='white', colormap='Blues').generate_from_frequencies(word_freq)
-
-    # Construct the full path where the word cloud image will be saved
-    output_path = os.path.join(output_dir, output_filename)
-
-    # Save the word cloud as a JPG image
-    wordcloud.to_file(output_path)
-    progress_logger.info(f"Wordcloud saved as {output_path}")
-
-    # Convert wordcloud to image and return base64-encoded string for embedding
-    buffer = BytesIO()
-    wordcloud.to_image().save(buffer, format="JPEG")
-    img_str = base64.b64encode(buffer.getvalue()).decode()
-
-    return img_str, output_path
+    return topic_info, topic_summary
     """
