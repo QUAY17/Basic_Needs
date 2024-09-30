@@ -109,22 +109,18 @@ def analyze_topics(valid_texts, column, model_name='all-mpnet-base-v2', min_topi
     topic_info, topic_summary = summarize_topics(topic_model, topics, valid_texts)
 
     # Merge similar topics based on the threshold
-    topic_summary = merge_similar_topics(topic_summary, threshold=merge_threshold)
+    # topic_summary = merge_similar_topics(topic_summary, threshold=merge_threshold)
 
     # Save topic info
     topic_info.to_csv(f"topic_analysis_results_{column}.csv", index=False)
 
-    # Save topic info and summaries categorized by institution
-    output_path = f"topic_summary_{column}.txt"
-    with open(output_path, "w") as f:
-        for topic in topic_summary:
-            f.write(f"Topic {topic['Topic']} (Count: {topic['Count']})\n")
-            f.write("Examples:\n")
-            for response, institution in topic['Examples']:
-                f.write(f"Institution: {institution} | Response: {response}\n")
-            f.write("\n")
+    # Save topic info and summaries 
+    file = f"topic_summary_{column}.txt"
+    with open(file, "w") as f:
+        f.write(f"Question: {question}\n\n")
+        json.dump(topic_summary, f, indent=4)
     
-    progress_logger.info(f"Topic analysis completed for column: {column}. Summary saved to {output_path}")
+    progress_logger.info(f"Topic analysis completed for column: {column}. Summary saved to {file}")
     return topic_model, topics, topic_summary
 
 # Function to summarize topics and count keyword occurrences
@@ -179,12 +175,6 @@ def summarize_topics(topic_model, topics, texts):
             'Keywords': sorted_keywords,  # Sorted keywords
             'KeywordCounts': sorted_keyword_counts  # Sorted keyword counts
         })
-
-    # Write the topic_summary to the file in JSON format for readability
-    with open('output.txt', 'w') as file:
-        json.dump(topic_summary, file, indent=4)
-    
-    exit(0)
     
     return topic_info, topic_summary
 
@@ -211,26 +201,6 @@ def summarize_topics_by_institution(topic_model, topics, texts, institutions):
         })
 
     return topic_info, topic_summary
-
-def merge_similar_topics(topic_summary, threshold=0.7):
-    # We can compute similarity between topics based on their keyword distributions and merge them
-    for i, topic_a in enumerate(topic_summary):
-        for j, topic_b in enumerate(topic_summary):
-            if i != j:
-                # Compute similarity between topic keywords
-                common_keywords = set(topic_a['Keywords']).intersection(set(topic_b['Keywords']))
-                similarity = len(common_keywords) / max(len(topic_a['Keywords']), len(topic_b['Keywords']))
-                
-                if similarity > threshold:
-                    # Log the merging process
-                    progress_logger.info(f"Merging topics {i} and {j} with similarity score: {similarity:.2f}")
-                    
-                    # Merge topics
-                    topic_summary[i]['Count'] += topic_summary[j]['Count']
-                    topic_summary[i]['Examples'].extend(topic_summary[j]['Examples'])
-                    topic_summary[j] = None  # Mark as merged
-    # Return filtered topic_summary without None
-    return [topic for topic in topic_summary if topic]
 
 # Function to print usage instructions
 def usage():
