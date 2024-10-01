@@ -88,9 +88,9 @@ def analyze_topics(valid_texts, column, model_name='all-mpnet-base-v2', min_topi
 
     # Custom stopwords list (excluding negations)
     from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
-    custom_stopwords = list(ENGLISH_STOP_WORDS.difference({'no', 'not',  'nor', 'neither', 'never', 'none', 'nothing', 'nobody', 'nowhere', 'without',
+    custom_stopwords = list(ENGLISH_STOP_WORDS.difference({'no', 'nor', 'neither', 'never', 'nothing', 'nobody', 'nowhere', 'without',
     'don\'t', 'won\'t', 'isn\'t', 'aren\'t', 'wasn\'t', 'weren\'t', 'doesn\'t', 'didn\'t',
-    'shouldn\'t', 'wouldn\'t', 'couldn\'t', 'mustn\'t', 'mightn\'t', 'always', 'never', 'sometimes', 'often', 'seldom', 'rarely', 'frequently', 'usually', 'every', 'all', 'any', 'none'}))
+    'shouldn\'t', 'wouldn\'t', 'couldn\'t', 'mustn\'t', 'mightn\'t', 'always', 'never', 'sometimes', 'often', 'seldom', 'rarely', 'frequently', 'usually', 'every', 'any'}))
 
     # Initialize vectorizer with adjusted settings
     vectorizer_model = CountVectorizer(
@@ -275,12 +275,12 @@ if __name__ == "__main__":
     # Question-to-column mapping
     question_mapping = {
         "How is food or housing insecurity affecting your work?": "OE1",
-        # "What could your college or university do to address food and housing insecurity?": "OE2",
-        # "Is there anything else you would like to share?": "OE3",
-        # "Please select the reasons for not visiting the campus food pantry.": "Foodpantry_reasons",
-        # "What are your thoughts about food availability on your campus?": "Foodavail",
-        # "Please share why you feel unsafe?": "Unsafe_why",
-        # "Please explain why it is difficult to find housing either on-campus or off-campus?": "Housingdiff_why"
+        "What could your college or university do to address food and housing insecurity?": "OE2",
+        "Is there anything else you would like to share?": "OE3",
+        "Please select the reasons for not visiting the campus food pantry.": "Foodpantry_reasons",
+        "What are your thoughts about food availability on your campus?": "Foodavail",
+        "Please share why you feel unsafe?": "Unsafe_why",
+        "Please explain why it is difficult to find housing either on-campus or off-campus?": "Housingdiff_why"
     }
 
     # Preprocess and analyze each question
