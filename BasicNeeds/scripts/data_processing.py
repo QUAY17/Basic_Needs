@@ -179,8 +179,98 @@ def summarize_topics(topic_model, topics, texts):
     
     return topic_info, topic_summary
 
-# Function to generate a word cloud for a question, emphasizing thematic keywords
-def generate_wordcloud_from_keywords(topic_summary, column, output_dir='.', max_words=200, colormap='Blues'):
+# Function to get thematic keywords and filters for each question
+def get_thematic_keywords(question):
+    thematic_keywords_map = {
+        "How is food or housing insecurity affecting your work?": {
+            "thematic_keywords": set([
+                "hungry", "hunger", "stress", "mental health", "afford", "food costs", "housing insecurity", 
+                "rent", "bills", "focus", "concentrate", "productivity", "meal skipping", "low energy", 
+                "housing stress", "unable to afford food", "worry", "anxiety"
+            ]),
+            "filter_out_keywords": set(["work", "na", "affect", "affecting", "currently", "sometimes", "does", "no", "yes"])
+        },
+         "What could your college or university do to address food and housing insecurity?": {
+            "thematic_keywords": set([
+                "affordable meals", "raise wages", "increase salary", "lower prices", 
+                "food pantry", "emergency fund", "SNAP", "food bank", "meal plans", "nutritious meals", 
+                "on-campus housing", "affordable housing", "temporary housing", "housing assistance",
+                "work-study", "employment contracts", "fair wages", "benefits for staff", 
+                "support services", "funding", "systemic issues", "equity", "address poverty", 
+                "childcare", "daycare", "cafeteria", "food trucks", "consistent hours"
+            ]),
+            "filter_out_keywords": set(["don\u00e2t", "donât", "unsure", "no", "think", "know", "people", "sure", "doing", "like", "good", "great", "just", "nothing"])
+        },
+        "Is there anything else you would like to share?": {
+            "thematic_keywords": set([
+                "cost of living", "inflation", "wages", "housing support", "economic inequality", "thanks",
+                "thank you", "grateful", "appreciate", "survey", "help", "food", "expensive", "housing",
+                "support", "resources", "food pantry", "housing assistance", "students", "survey", "need help", "help"
+                "inequality", "struggling", "hardships", "unaffordable", "time", "hungry", "low income", "cost of living", "inflation", "wages", "housing support", "economic inequality",
+                "thank you", "grateful", "appreciate", "survey", "help", "food", "expensive", "housing",
+                "support", "resources", "food pantry", "housing assistance", "students", "survey", "need help", "action",
+                "inequality", "struggling", "hardships", "unaffordable", "time", "hungry", "low income"
+            ]),
+            "filter_out_keywords": set([
+                "no", "think", "nothing", "good", "really", "needed", "life", "share", "said", "thanks"
+            ])
+        },
+        "Please select the reasons for not visiting the campus food pantry.": {
+            "thematic_keywords": set([
+                "need assistance", "obtaining food", "household supplies", "other students need", 
+                "eligible", "unsure eligibility", "food insecure", "stigma", "privacy concerns", "vegetarian", 
+                "vegan", "halal", "kosher", "dietary needs", "location", "inconvenient", "hours", "operation"
+            ]),
+            "filter_out_keywords": set([
+                "students", "food", "supplies", "need", "think", "good", "sure", "really"
+            ])
+        },
+        "What are your thoughts about food availability on your campus?": {
+            "thematic_keywords": set([
+                "options", "limited options", "variety", "selection", "choices",
+                "cost", "expensive", "overpriced", "affordable", 
+                "availability", "accessible", 
+                "healthy", "healthy options", "nutritious", "unhealthy", 
+                "vending machines", "cafeteria", "food trucks", "snack bar",
+                "students", "staff", "faculty", "food pantry"
+            ]),
+            "filter_out_keywords": set([
+                "think", "know", "people", "sure", "doing", "like", "good", "great", "just"
+            ])
+        },
+        "Why do you feel unsafe?": {
+            "thematic_keywords": set([
+                "crime", "gun violence", "shootings", "break-ins", "robbery", "assault", "homelessness",
+                "domestic violence", "abusive relationships", "verbal abuse", "physical abuse", "partner", "family issues",
+                "unsafe housing", "homeless", "poor neighborhood", "unaffordable housing", "drug use", "mentally ill",
+                "unstable", "rent increase", "inflation", "economic instability", "people", "apartment", "home","live"
+            ]),
+            "filter_out_keywords": set([
+                "no"
+            ])
+        },
+        "There are many reasons why people are food insecure. Please share an obstacle (or two) that affects your ability to access healthy food.": {
+            "thematic_keywords": set([
+                "cost", "expensive", "inflation", "rising prices", "food costs", "access", "availability", "grocery stores", 
+                "healthy food", "fresh food", "afford", "time", "limited options", "rural", "transportation", 
+                "low income", "wages", "financial", "produce", "meat", "vegetables", "supply chain", "food desert", 
+                "distance", "affordability", "budget", "choices", "grocery", "convenience", "unavailable", "income"
+            ]),
+            "filter_out_keywords": set([
+                "no", "none", "na", "think", "good", "sure", "people", "food", "like", "get", "just"
+            ])
+        }
+    }
+    
+    # Return the thematic and filter-out keywords for the specific question
+    return thematic_keywords_map.get(question, {"thematic_keywords": set(), "filter_out_keywords": set()})
+
+def custom_teal_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+    teal_color = "#1E566C"
+    return teal_color  # Use the specified teal color
+
+# Function to generate a word cloud for a question, dynamically selecting thematic keywords
+def generate_wordcloud_from_keywords(topic_summary, column, question, output_dir='.', max_words=20, colormap='greys'):
     progress_logger.info(f"Generating wordcloud for column: {column}...")
 
     # Ensure that the topic_summary is valid and has content
@@ -191,15 +281,10 @@ def generate_wordcloud_from_keywords(topic_summary, column, output_dir='.', max_
     # Initialize a dictionary to hold the final keyword frequencies
     word_freq = defaultdict(int)
 
-    # Predefined strong thematic keywords for emphasis
-    thematic_keywords = set([
-        "hungry", "hunger", "stress", "mental health", "afford", "food costs", "housing insecurity", 
-        "rent", "bills", "focus", "concentrate", "productivity", "meal skipping", "low energy", 
-        "housing stress", "unable to afford food", "worry", "anxiety"
-    ])
-
-    # Generic words to filter out
-    filter_out_keywords = set(["work", "affect", "affecting", "currently", "sometimes", "does", "no", "yes"])
+    # Get thematic and filter-out keywords from the function based on the question
+    thematic_data = get_thematic_keywords(question)
+    thematic_keywords = thematic_data["thematic_keywords"]
+    filter_out_keywords = thematic_data["filter_out_keywords"]
 
     # Aggregate keyword frequencies across all topics related to the column
     for topic in topic_summary:
@@ -226,15 +311,15 @@ def generate_wordcloud_from_keywords(topic_summary, column, output_dir='.', max_
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Generate a dynamic output filename based on the column name
-    output_filename = f"wordcloud_{column}.jpg"
+    # Generate a dynamic output filename based on the column name and question
+    output_filename = f"wordcloud_{column}_{question}.jpg"
 
     # Generate the word cloud based on the aggregated keyword frequencies
     wordcloud = WordCloud(
         width=800, 
         height=400, 
         background_color='white', 
-        colormap=colormap, 
+        color_func=custom_teal_color_func, 
         max_words=max_words
     ).generate_from_frequencies(word_freq)
 
@@ -279,20 +364,21 @@ if __name__ == "__main__":
 
     # Question-to-column mapping
     question_mapping = {
-        "How is food or housing insecurity affecting your work?": "OE1",
+        # "How is food or housing insecurity affecting your work?": "OE1",
         # "What could your college or university do to address food and housing insecurity?": "OE2",
         # "Is there anything else you would like to share?": "OE3",
         # "Please select the reasons for not visiting the campus food pantry.": "Foodpantry_reasons",
         # "What are your thoughts about food availability on your campus?": "Foodavail",
         # "Please share why you feel unsafe?": "Unsafe_why",
-        # "Please explain why it is difficult to find housing either on-campus or off-campus?": "Housingdiff_why"
+        # "Please explain why it is difficult to find housing either on-campus or off-campus?": "Housingdiff_why",
+        "There are many reasons why people are food insecure. Please share an obstacle (or two) that affects your ability to access healthy food.": "Obstacles"
     }
 
     # Preprocess and analyze each question
     for question, col in question_mapping.items():
         df[col] = df[col].apply(preprocess_text)  # Preprocess text
 
-        institutions = df['Institution'].tolist()
+        # institutions = df['Institution'].tolist()
 
         # Filter out empty or invalid rows after preprocessing
         valid_texts = df[col].dropna()
@@ -302,7 +388,7 @@ if __name__ == "__main__":
             # Topic modeling
             topic_model, topics, topic_summary = analyze_topics(valid_texts, col)  # Topic modeling
 
-            img_str, wordcloud_path = generate_wordcloud_from_keywords(topic_summary, question, output_dir="wordclouds")
+            img_str, wordcloud_path = generate_wordcloud_from_keywords(topic_summary, col, question, output_dir="wordclouds")
 
         else:
             progress_logger.warning(f"No valid responses for column: {col}. Skipping topic and keyword analysis.") 
