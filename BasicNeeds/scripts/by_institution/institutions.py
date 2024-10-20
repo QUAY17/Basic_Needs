@@ -2,6 +2,9 @@ import pandas as pd
 import numpy as np
 from collections import Counter
 import os
+import csv
+import logging
+import argparse
 
 # Set environment variable to disable parallelism warning from tokenizers
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -62,7 +65,7 @@ def list_responses_per_institution(df, column, institution_column):
     
     return grouped_responses
 
-def perform_institution_based_analysis(df, question_mapping, institution_column):
+def perform_institution_based_analysis(df, question_mapping, institution_column, output_file):
     all_results = []
     
     column_definitions = """
@@ -73,31 +76,35 @@ def perform_institution_based_analysis(df, question_mapping, institution_column)
     - Response: Individual informative responses, with each response on a separate row.
     """
     
-    #print(column_definitions)
-    
     for question, col in question_mapping.items():
         print(f"\nAnalyzing question: {question}")
         
-        response_counts = count_responses_per_institution(df, col, institution_column)
-        responses = list_responses_per_institution(df, col, institution_column)
+        # Use the original responses for listing
+        original_responses = list_responses_per_institution(df, col, institution_column)
         
-        # Merge counts and responses
-        combined = pd.merge(response_counts, responses, on=institution_column)
+        # Create a preprocessed version of the DataFrame for analysis
+        df_preprocessed = df.copy()
+        df_preprocessed[col] = df_preprocessed[col].apply(preprocess_text)
+        
+        # Count responses using preprocessed data
+        response_counts = count_responses_per_institution(df_preprocessed, col, institution_column)
+        
+        # Merge counts and original responses
+        combined = pd.merge(response_counts, original_responses, on=institution_column, how='left')
         
         # Create the final dataframe with the desired structure
         final_data = []
         for _, row in combined.iterrows():
-            # Add the row with count information
+            responses = row['Responses'] if isinstance(row['Responses'], list) else []
             final_data.append({
                 'Question': question,
                 'Institution': row[institution_column],
                 'Total Potential Responses': row['Total Potential Responses'],
                 'Non-empty Responses': row['Non-empty Responses'],
                 'Informative Responses': row['Informative Responses'],
-                'Response': row['Responses'][0] if row['Responses'] else ''
+                'Response': responses[0] if responses else ''
             })
-            # Add rows for additional responses
-            for response in row['Responses'][1:]:
+            for response in responses[1:]:
                 final_data.append({
                     'Question': '',
                     'Institution': '',
@@ -110,22 +117,33 @@ def perform_institution_based_analysis(df, question_mapping, institution_column)
         question_results = pd.DataFrame(final_data)
         all_results.append(question_results)
     
-    # Combine all results into a single DataFrame
     combined_results = pd.concat(all_results, ignore_index=True)
     
     # Save to CSV with column definitions as a comment
-    filename = "faculty_counts.csv"
-    with open(filename, 'w', encoding='utf-8') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         f.write(f"# {column_definitions.replace(chr(10), chr(10)+'# ')}\n")
         combined_results.to_csv(f, index=False, quoting=1)  # quoting=1 ensures all fields are quoted
-    print(f"\nAll results saved to '{filename}'")
+    print(f"\nAll results saved to '{output_file}'")
     
     return combined_results
 
-# Example usage
-if __name__ == "__main__":
-    csv_file = "faculty_data.csv"
-    df = pd.read_csv(csv_file, encoding="utf-8", delimiter=',')
+def write_original_responses(df, output_file):
+    # Select only the necessary columns
+    columns_to_write = ['Institution', 'Question', 'Response']
+    df_to_write = df[columns_to_write]
+
+    # Write to CSV without any preprocessing
+    df_to_write.to_csv(output_file, index=False, quoting=csv.QUOTE_ALL)
+    logging.info(f"Original responses written to {output_file}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Analyze survey responses by institution.")
+    parser.add_argument('input_file', type=str, help='Path to the input CSV file containing survey data.')
+    parser.add_argument('output_file', type=str, help='Path to the output CSV file for saving results.')
+    args = parser.parse_args()
+
+    # Read the CSV file specified by the user
+    df = pd.read_csv(args.input_file, encoding="utf-8", delimiter=',')
 
     question_mapping = {
         "How is food or housing insecurity affecting your work?": "OE1",
@@ -137,12 +155,12 @@ if __name__ == "__main__":
         "Please explain why it is difficult to find housing either on-campus or off-campus?": "Housingdiff_why"
     }
 
-
     institution_column = "Institution"
 
-    for col in question_mapping.values():
-        df[col] = df[col].apply(preprocess_text)
-
-    results = perform_institution_based_analysis(df, question_mapping, institution_column)
+    # Preprocess only for analysis, not for output
+    results = perform_institution_based_analysis(df, question_mapping, institution_column, args.output_file)
     # print("\nCombined results (sample):")
     # print(results.head(10).to_string(index=False))
+
+if __name__ == "__main__":
+    main()
