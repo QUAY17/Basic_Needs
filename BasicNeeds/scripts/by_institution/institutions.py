@@ -25,42 +25,47 @@ def is_non_informative(text):
     ]
     return any(response in text.lower() for response in non_informative_responses)
 
-def count_responses_per_institution(df, column, institution_column):
-    # Count all potential responses (including empty ones)
+def count_responses_per_institution(df, column, other_column, institution_column, is_multiple_choice=False):
     total_potential_responses = df.groupby(institution_column).size()
-    
-    # Count non-empty responses (excluding null/NaN and empty strings)
     non_empty_responses = df.groupby(institution_column)[column].apply(lambda x: (~x.isnull() & (x != '')).sum())
     
-    # Count informative responses (excluding those classified as non-informative)
-    informative_responses = df.groupby(institution_column)[column].apply(lambda x: (~x.apply(is_non_informative)).sum())
+    if is_multiple_choice:
+        # Count all non-empty as informative for multiple-choice
+        informative_responses = non_empty_responses
+        # Count write-in responses in the 'other' column
+        other_responses = df.groupby(institution_column)[other_column].apply(lambda x: x.notnull().sum())
+    else:
+        # Count informative responses for open-ended
+        informative_responses = df.groupby(institution_column)[column].apply(
+            lambda x: (~x.apply(is_non_informative)).sum()
+        )
+        other_responses = pd.Series(0, index=informative_responses.index)  # No "Other" for open-ended
     
-    # Combine the counts into a DataFrame
     response_counts = pd.DataFrame({
         'Total Potential Responses': total_potential_responses,
         'Non-empty Responses': non_empty_responses,
-        'Informative Responses': informative_responses
+        'Informative Responses': informative_responses,
+        'Other Responses': other_responses
     }).reset_index()
     
     return response_counts
 
-# Function to count non-empty responses for each question, excluding null/NaN and empty strings
-def count_non_empty_responses_per_question(df, question_columns):
-    response_counts = {}
-    
-    for column in question_columns:
-        # Count non-empty responses (excluding null/NaN and empty strings)
-        non_empty_responses = (~df[column].isnull() & (df[column] != '')).sum()
-        response_counts[column] = non_empty_responses  # Store non-empty counts
-    
-    return response_counts
-
-def list_responses_per_institution(df, column, institution_column):
-    # Filter out non-informative responses
+def list_responses_per_institution(df, column, other_column, institution_column, is_multiple_choice=False):
     informative_df = df[~df[column].apply(is_non_informative)]
     
-    # Group responses by institution
-    grouped_responses = informative_df.groupby(institution_column)[column].apply(list).reset_index()
+    if is_multiple_choice:
+        # Handle multiple-choice with open-ended "Other"
+        informative_df = informative_df.copy()  # Avoid SettingWithCopyWarning
+        informative_df['MultipleChoice'] = informative_df[column].apply(lambda x: ', '.join([part for part in x.split(',') if 'Other:' not in part]))
+        informative_df['OpenEnded'] = df[other_column].apply(lambda x: f"Other: {x}" if pd.notna(x) and x.strip() != '' else '')
+        informative_df['CombinedResponses'] = informative_df.apply(
+            lambda row: [row['MultipleChoice']] + ([row['OpenEnded']] if row['OpenEnded'] else []), axis=1
+        )
+        grouped_responses = informative_df.groupby(institution_column)['CombinedResponses'].apply(list).reset_index()
+    else:
+        # Handle purely open-ended
+        grouped_responses = informative_df.groupby(institution_column)[column].apply(list).reset_index()
+    
     grouped_responses.columns = [institution_column, 'Responses']
     
     return grouped_responses
@@ -73,21 +78,25 @@ def perform_institution_based_analysis(df, question_mapping, institution_column,
     - Total Potential Responses: All survey participants, including those who left the question blank.
     - Non-empty Responses: All responses that are not null or empty string.
     - Informative Responses: Responses that are not classified as non-informative (e.g., not "N/A", "No comment", etc.).
+    - Other Responses: Responses that include a write-in for "Other" in multiple-choice questions.
     - Response: Individual informative responses, with each response on a separate row.
     """
     
     for question, col in question_mapping.items():
         print(f"\nAnalyzing question: {question}")
         
+        is_multiple_choice = (question == "Please select the reasons for not visiting the campus food pantry.")
+        other_column = 'Foodpantry_reasons_other' if is_multiple_choice else None
+        
         # Use the original responses for listing
-        original_responses = list_responses_per_institution(df, col, institution_column)
+        original_responses = list_responses_per_institution(df, col, other_column, institution_column, is_multiple_choice)
         
         # Create a preprocessed version of the DataFrame for analysis
         df_preprocessed = df.copy()
         df_preprocessed[col] = df_preprocessed[col].apply(preprocess_text)
         
         # Count responses using preprocessed data
-        response_counts = count_responses_per_institution(df_preprocessed, col, institution_column)
+        response_counts = count_responses_per_institution(df_preprocessed, col, other_column, institution_column, is_multiple_choice)
         
         # Merge counts and original responses
         combined = pd.merge(response_counts, original_responses, on=institution_column, how='left')
@@ -102,6 +111,7 @@ def perform_institution_based_analysis(df, question_mapping, institution_column,
                 'Total Potential Responses': row['Total Potential Responses'],
                 'Non-empty Responses': row['Non-empty Responses'],
                 'Informative Responses': row['Informative Responses'],
+                'Other Responses': row['Other Responses'],
                 'Response': responses[0] if responses else ''
             })
             for response in responses[1:]:
@@ -111,6 +121,7 @@ def perform_institution_based_analysis(df, question_mapping, institution_column,
                     'Total Potential Responses': '',
                     'Non-empty Responses': '',
                     'Informative Responses': '',
+                    'Other Responses': '',
                     'Response': response
                 })
         
@@ -146,13 +157,13 @@ def main():
     df = pd.read_csv(args.input_file, encoding="utf-8", delimiter=',')
 
     question_mapping = {
-        "How is food or housing insecurity affecting your work?": "OE1",
-        "What could your college or university do to address food and housing insecurity? Please share a solution(s).": "OE2",
-        "Is there anything else you would like to share?": "OE3",
+        # "How is food or housing insecurity affecting your work?": "OE1",
+        # "What could your college or university do to address food and housing insecurity? Please share a solution(s).": "OE2",
+        # "Is there anything else you would like to share?": "OE3",
         "Please select the reasons for not visiting the campus food pantry.": "Foodpantry_reasons",
-        "What are your thoughts about food availability on your campus?": "Foodavail",
-        "Please share why you feel unsafe?": "Unsafe_why",
-        "Please explain why it is difficult to find housing either on-campus or off-campus?": "Housingdiff_why"
+        # "What are your thoughts about food availability on your campus?": "Foodavail",
+        # "Please share why you feel unsafe?": "Unsafe_why",
+        # "Please explain why it is difficult to find housing either on-campus or off-campus?": "Housingdiff_why"
     }
 
     institution_column = "Institution"
