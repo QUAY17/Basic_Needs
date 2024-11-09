@@ -36,37 +36,86 @@ def setup_logging():
     
     return logger
 
-def preprocess_text(text, logger):
-    """Enhanced preprocessing with better logging"""
+# Usage in preprocessing
+def preprocess_text(text, stopword_config):
+    """
+    Preprocess survey text with configured stopwords
+    """
     if pd.isna(text) or not isinstance(text, str):
         return None
-
-    try:
-        # Convert to lowercase and normalize whitespace
-        text = text.lower().strip()
         
-        # Expand contractions
-        text = contractions.fix(text)
-        
-        # Remove punctuation and extra whitespace
-        text = re.sub(r'[^\w\s]', '', text)
-        text = re.sub(r'\s+', ' ', text)
-        
-        return text
-    except Exception as e:
-        logger.error(f"Error preprocessing text: {e}")
+    # Check non-informative responses FIRST
+    if text.lower().strip() in stopword_config['non_informative_responses']:
         return None
+        
+    # Add NA variations to filter
+    na_patterns = ['n/a', 'na', 'not applicable', 'none', 'no answer', 
+                  'prefer not to answer', 'prefer not to say']
+    if any(pattern in text.lower() for pattern in na_patterns):
+        return None
+        
+    # Clean text
+    text = text.lower().strip()
+    text = contractions.fix(text)
+    
+    # Remove non-word characters but keep spaces
+    text = re.sub(r'[^a-zA-Z\s]', '', text)
+    
+    # Remove extra whitespace
+    text = ' '.join(text.split())
+    
+    # Remove single characters and numbers
+    words = [w for w in text.split() if len(w) > 1]
+    
+    # Filter stopwords
+    words = [w for w in words if w not in stopword_config['stopwords']]
+    
+    # If nothing meaningful left, return None
+    if not words:
+        return None
+        
+    return ' '.join(words)
+
+def get_survey_specific_stopwords():
+    """
+    Get stopwords specifically tailored for this basic needs survey,
+    preserving important negative and frequency words
+    """
+
+    # Non-informative complete responses to filter out
+    non_informative_responses = {
+        # Uncertainty responses
+        "unsure", "not sure", "i don't know", "im not sure", 
+        "dont know", "i am not sure", "i'm not too sure",
+        "i am not knowledgeable about this", "i have no idea","la", "el", "los", "de", "son"
+        
+        # Empty/negative responses
+        "nothing", "no", "none", "prefer not to say", "no comment",
+        "sorry no ideas", "i have no comment", "i am unsure",
+        "i have no suggestions", "not at this time", "no thank you", "dont", "don't"
+    }
+
+    # Start with sklearn's English stopwords
+    stopwords = set(ENGLISH_STOP_WORDS)
+
+    return {
+        'stopwords': stopwords,
+        'non_informative_responses': list(non_informative_responses)
+    }
+
 
 def prepare_data(df: pd.DataFrame, 
                 question_col: str,
                 logger,
+                stopword_config: dict,
                 test_size=0.2,
                 val_size=0.1) -> tuple:
     """
     Prepare and split data for ML pipeline
     """
     # Preprocess texts
-    texts = df[question_col].apply(lambda x: preprocess_text(x, logger))
+    # Preprocess texts with stopwords
+    texts = df[question_col].apply(lambda x: preprocess_text(x, stopword_config))
     valid_texts = texts.dropna()
     
     # Split data
@@ -94,19 +143,16 @@ def train_topic_model(train_texts: pd.Series,
         
         # Initialize models
         embedding_model = SentenceTransformer(model_name)
-        
-        # Custom stopwords as in original
-        """custom_stopwords = list(ENGLISH_STOP_WORDS.difference({
-            'no', 'nor', 'not', 'don\'t', 'won\'t', 'isn\'t', 'aren\'t',
-            'wasn\'t', 'weren\'t', 'doesn\'t', 'didn\'t'
-        }))
-        """
+
+        # Convert stopwords set to list for CountVectorizer
+        stopwords = list(get_survey_specific_stopwords()['stopwords'])
         
         # Initialize vectorizer
         vectorizer = CountVectorizer(
-            # ngram_range=(1, 3),
-            # stop_words=custom_stopwords,
-            # min_df=2
+            ngram_range=(1, 3),
+            stop_words=stopwords,
+            token_pattern=r'\b\w+\b',
+            min_df=2
         )
         
         # Initialize topic model
@@ -143,48 +189,51 @@ def train_topic_model(train_texts: pd.Series,
 def evaluate_topic_model(model, train_embeddings, val_embeddings, 
                         train_topics, val_topics) -> dict:
     """
-    Comprehensive evaluation of topic model
+    Simple evaluation focusing on topic distribution and coverage
     """
     metrics = {}
     
     try:
-        # Topic coherence - using topic distributions instead of probabilities
-        topic_distr_train = model.transform(train_embeddings)[1]
-        topic_distr_val = model.transform(val_embeddings)[1]
+        # Basic topic distribution stats
+        total_docs = len(train_topics)
+        meaningful_topics = [t for t in train_topics if t != -1]  # Exclude outlier topic (-1)
+        num_topics = len(set(meaningful_topics))
         
-        metrics['train_coherence'] = np.mean(np.max(topic_distr_train, axis=1))
-        metrics['val_coherence'] = np.mean(np.max(topic_distr_val, axis=1))
+        metrics.update({
+            'total_documents': total_docs,
+            'number_of_topics': num_topics,
+            'percent_in_topics': len(meaningful_topics) / total_docs * 100,  # % docs in meaningful topics
+            'percent_outliers': (total_docs - len(meaningful_topics)) / total_docs * 100  # % docs in outlier topic
+        })
         
-    except Exception as e:
-        logger.warning(f"Could not calculate coherence scores: {e}")
-        metrics['train_coherence'] = 0.0
-        metrics['val_coherence'] = 0.0
-    
-    # Clustering metrics
-    try:
-        if len(np.unique(train_topics)) > 1:
-            metrics['train_silhouette'] = silhouette_score(train_embeddings, train_topics)
-            metrics['train_calinski'] = calinski_harabasz_score(train_embeddings, train_topics)
-        
-        if len(np.unique(val_topics)) > 1:
-            metrics['val_silhouette'] = silhouette_score(val_embeddings, val_topics)
-            metrics['val_calinski'] = calinski_harabasz_score(val_embeddings, val_topics)
+        # Topic size distribution
+        topic_sizes = Counter(train_topics)
+        if -1 in topic_sizes:
+            del topic_sizes[-1]
+            
+        if topic_sizes:
+            sizes = list(topic_sizes.values())
+            metrics.update({
+                'max_topic_size': max(sizes),
+                'min_topic_size': min(sizes),
+                'avg_topic_size': sum(sizes) / len(sizes)
+            })
             
     except Exception as e:
-        logger.warning(f"Could not calculate clustering metrics: {e}")
-        metrics['train_silhouette'] = 0.0
-        metrics['train_calinski'] = 0.0
-        metrics['val_silhouette'] = 0.0
-        metrics['val_calinski'] = 0.0
+        logger.warning(f"Error calculating topic metrics: {e}")
     
     return metrics
 
 def analyze_student_responses(file_paths: dict,
                             question_mapping: dict,
+                            stopword_config: dict,
                             logger) -> dict:
     """
     Main analysis pipeline with ML best practices
     """
+    # Get stopwords configuration once
+    stopwords = get_survey_specific_stopwords()['stopwords']
+    
     results = {}
     
     for group, filepath in file_paths.items():
@@ -196,7 +245,7 @@ def analyze_student_responses(file_paths: dict,
         group_results = {}
         for question, col in question_mapping.items():
             # Prepare data
-            train_texts, val_texts, test_texts = prepare_data(df, col, logger)
+            train_texts, val_texts, test_texts = prepare_data(df, col, logger, stopword_config)
             
             # Train and evaluate topic model
             topic_model, topics, metrics = train_topic_model(
@@ -205,13 +254,14 @@ def analyze_student_responses(file_paths: dict,
                 logger
             )
             
-            # Extract keywords in format compatible with wordcloud
+            # Extract keywords with stopwords
             topic_summary = extract_keywords(
                 train_texts,
                 topic_model,
                 topics,
                 question,
-                logger
+                logger,
+                stopwords=stopword_config['stopwords']  # Pass stopwords here
             )
             
             # Generate visualizations using original wordcloud function
@@ -239,115 +289,115 @@ def extract_keywords(texts: pd.Series,
                     topic_model: BERTopic,
                     topics: list,
                     question: str,
-                    logger) -> dict:
+                    logger,
+                    stopwords=None) -> dict:
     """
-    Extract keywords using BERTopic and KeyBERT without thematic filtering
+    Extract keywords using BERTopic and KeyBERT.
     """
     logger.info(f"Extracting keywords for question: {question}")
-    
-    # Initialize KeyBERT
+
+    # Initialize KeyBERT with stopwords handling
     kw_model = KeyBERT()
-    
+
+    # Get stopwords if not provided
+    if stopwords is None:
+        stopwords = get_survey_specific_stopwords()['stopwords']
+
     # Initialize topic summary
     topic_summary = []
-    
+    keyword_counts = defaultdict(int)  # To aggregate keyword frequencies globally
+
     for topic_idx in set(topics):
         if topic_idx == -1:
             continue
-            
+
         # Get texts for this topic
         topic_texts = texts[np.array(topics) == topic_idx]
-        
+
         # Get keywords from BERTopic
         bert_keywords = topic_model.get_topic(topic_idx)
-        
-        # Get keywords from KeyBERT
-        keybert_keywords = kw_model.extract_keywords(
-            ' '.join(topic_texts),
-            keyphrase_ngram_range=(1, 2),
-            top_n=10
-        )
-        
-        # Combine keyword scores
-        keyword_counts = {}
-        
-        # Add BERTopic keywords
+
+        # Aggregate keywords and their counts, ensure consistent processing
         for word, score in bert_keywords:
-            keyword_counts[word] = int(score * 100)
-            
-        # Add KeyBERT keywords
-        for word, score in keybert_keywords:
-            if word in keyword_counts:
-                keyword_counts[word] += int(score * 100)
-            else:
-                keyword_counts[word] = int(score * 100)
-        
+            word = word.lower().strip()
+            if word in stopwords:
+                continue
+            keyword_counts[word] += int(score * 100)
+
+        logger.info(f"Keywords for topic {topic_idx}: {keyword_counts}")
+
         topic_summary.append({
             'Topic': topic_idx,
             'Count': len(topic_texts),
-            'Examples': topic_texts[:50].tolist(),
+            'Examples': topic_texts[:30].tolist(),
             'Keywords': list(keyword_counts.keys()),
-            'KeywordCounts': keyword_counts
+            'KeywordCounts': dict(keyword_counts)  # Add global count here
         })
-        
-        logger.info(f"Extracted {len(keyword_counts)} keywords for topic {topic_idx}")
-    
+
     return topic_summary
 
-def generate_wordcloud_from_keywords(topic_summary: dict,
-                                   column: str,
-                                   question: str,
-                                   output_dir: str = '.',
-                                   max_words: int = 20) -> tuple:
+
+def generate_wordcloud_from_keywords(topic_summary, column, question, output_dir='.', stopwords=None, max_words=30) -> tuple:
     """
-    Generate wordcloud from raw topic modeling results without thematic filtering
+    Generate a wordcloud from the given topic summary, emphasizing important keywords and filtering out irrelevant terms.
     """
     logger.info(f"Generating wordcloud for column: {column}...")
 
-    # Validate topic summary
+    # Ensure that the topic_summary is valid and has content
     if not topic_summary:
         logger.warning(f"No topics found for column: {column}. Cannot generate word cloud.")
         return None, None
 
-    # Initialize word frequency dictionary
+    # Initialize a dictionary to hold the final keyword frequencies
     word_freq = defaultdict(int)
 
-    # Aggregate raw keyword frequencies across topics
+    # Aggregate keyword frequencies across all topics related to the column
     for topic in topic_summary:
         for keyword, count in topic['KeywordCounts'].items():
+            # Convert keyword to lowercase and strip spaces to ensure consistency
+            keyword = keyword.lower().strip()
+
+            # Skip stopwords
+            if stopwords and keyword in stopwords:
+                continue
+
+            # Add keyword count to the frequency dictionary
             word_freq[keyword] += count
 
-    # Check for valid keywords
+    # If no valid keywords are found after aggregation
     if not word_freq:
         logger.warning(f"No valid keywords found for column: {column}. Cannot generate word cloud.")
         return None, None
 
-    # Create output directory
+    # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
-    # Generate output filename
+    # Generate a dynamic output filename based on the column name and question
     output_filename = f"wordcloud_{column}_{question[:30]}.jpg"
     output_path = os.path.join(output_dir, output_filename)
 
-    # Create wordcloud
+    # Create the word cloud based on the aggregated keyword frequencies
     wordcloud = WordCloud(
         width=800,
         height=400,
         background_color='white',
-        color_func=custom_teal_color_func,
-        max_words=max_words
+        color_func=custom_teal_color_func,  # Apply the custom teal color function
+        max_words=max_words,
+        collocations=False  # Prevent bigrams/trigrams from getting undue prominence
     ).generate_from_frequencies(word_freq)
 
-    # Save wordcloud
+    # Save the word cloud as a JPG image
     wordcloud.to_file(output_path)
     logger.info(f"Wordcloud saved as {output_path}")
 
-    # Generate base64 string
+    # Convert wordcloud to image and return base64-encoded string for embedding
     buffer = BytesIO()
     wordcloud.to_image().save(buffer, format="JPEG")
     img_str = base64.b64encode(buffer.getvalue()).decode()
 
+    # Return the image as base64-encoded string (for embedding in HTML) and the file path
     return img_str, output_path
+
 
 def custom_teal_color_func(word: str, 
                           font_size: int, 
@@ -540,11 +590,13 @@ def convert_numpy_types(obj):
     return obj
 
 def main():
-    
+    # Initialize stopwords configuration once
+    stopword_config = get_survey_specific_stopwords()
+
     file_paths = {
         'undergrad_ft': 'data/student/undergrad_ft_data.csv',
-        #'undergrad_pt': 'undergrad_pt_data.csv',
-        #'graduate': 'grad_data.csv'
+        # 'undergrad_pt': 'undergrad_pt_data.csv',
+        # 'graduate': 'grad_data.csv'
     }
     
     # Get and split questions
@@ -555,7 +607,13 @@ def main():
     
     # Run analyses
     logger.info("Starting qualitative analysis...")
-    qual_results = analyze_student_responses(file_paths, qualitative_questions, logger)
+    # Pass to analysis functions
+    qual_results = analyze_student_responses(
+        file_paths, 
+        qualitative_questions,
+        stopword_config,  # Pass stopwords once
+        logger
+    )
     
     logger.info("Starting categorical analysis...")
     cat_results = analyze_categorical_responses(file_paths, categorical_questions, logger)
@@ -571,7 +629,7 @@ def main():
         'categorical_analysis': convert_numpy_types(cat_results)
     }
     
-    output_file = f'analysis_results_{timestamp}.json'
+    output_file = f'analysis_results.json'
     try:
         with open(output_file, 'w') as f:
             json.dump(final_results, f, indent=4)
