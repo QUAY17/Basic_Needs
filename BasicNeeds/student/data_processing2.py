@@ -2,12 +2,8 @@ import pandas as pd
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from bertopic import BERTopic
-from keybert import KeyBERT
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import silhouette_score, calinski_harabasz_score
 from sklearn.feature_extraction.text import CountVectorizer
-import mlflow
-import logging
 import contractions
 import re
 from collections import Counter, defaultdict
@@ -17,196 +13,96 @@ import os
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 import base64
 from io import BytesIO
+from datetime import datetime
 
-def setup_logging():
-    """Setup logging configuration"""
-    logger = logging.getLogger()
-    logger.setLevel(logging.DEBUG)
-    
-    # Handlers setup as in original code
-    file_handler = logging.FileHandler("analysis.log")
-    stream_handler = logging.StreamHandler()
-    
-    formatter = logging.Formatter('%(asctime)s %(levelname)s:%(message)s')
-    file_handler.setFormatter(formatter)
-    stream_handler.setFormatter(formatter)
-    
-    logger.addHandler(file_handler)
-    logger.addHandler(stream_handler)
-    
-    return logger
-
-# Usage in preprocessing
 def preprocess_text(text, stopword_config):
     """
-    Preprocess survey text with configured stopwords
+    Unified preprocessing for text cleaning while preserving readability
     """
     if pd.isna(text) or not isinstance(text, str):
         return None
         
-    # Check non-informative responses FIRST
     if text.lower().strip() in stopword_config['non_informative_responses']:
         return None
         
-    # Add NA variations to filter
     na_patterns = ['n/a', 'na', 'not applicable', 'none', 'no answer', 
                   'prefer not to answer', 'prefer not to say']
     if any(pattern in text.lower() for pattern in na_patterns):
         return None
         
-    # Clean text
-    text = text.lower().strip()
+    # Clean text while preserving structure
+    text = text.strip()
     text = contractions.fix(text)
+    text = ' '.join(text.split())  # Remove extra whitespace
+    text = re.sub(r'[^\w\s.,!?;:\'"-]', '', text)  # Keep punctuation
     
-    # Remove non-word characters but keep spaces
-    text = re.sub(r'[^a-zA-Z\s]', '', text)
-    
-    # Remove extra whitespace
-    text = ' '.join(text.split())
-    
-    # Remove single characters and numbers
-    words = [w for w in text.split() if len(w) > 1]
-    
-    # Filter stopwords
-    words = [w for w in words if w not in stopword_config['stopwords']]
-    
-    # If nothing meaningful left, return None
-    if not words:
+    if not text or text.isspace():
         return None
         
-    return ' '.join(words)
+    return text
 
 def get_survey_specific_stopwords():
-    """
-    Get stopwords specifically tailored for this basic needs survey,
-    preserving important negative and frequency words
-    """
-
-    # Non-informative complete responses to filter out
+    """Get unified stopwords configuration"""
     non_informative_responses = {
         # Uncertainty responses
-        "unsure", "not sure", "i don't know", "im not sure", 
-        "dont know", "i am not sure", "i'm not too sure",
-        "i am not knowledgeable about this", "i have no idea","la", "el", "los", "de", "son"
+        "unsure", "not sure", "i don't know", "i'm not sure", "don't know",
+        "i am not sure", "i'm not too sure", "i am not knowledgeable about this",
+        "i have no idea",
         
         # Empty/negative responses
         "nothing", "no", "none", "prefer not to say", "no comment",
         "sorry no ideas", "i have no comment", "i am unsure",
-        "i have no suggestions", "not at this time", "no thank you", "dont", "don't"
+        "i have no suggestions", "not at this time", "no thank you"
     }
 
-    # Start with sklearn's English stopwords
     stopwords = set(ENGLISH_STOP_WORDS)
-
+    
     return {
         'stopwords': stopwords,
         'non_informative_responses': list(non_informative_responses)
     }
 
-
 def prepare_data(df: pd.DataFrame, 
                 question_col: str,
-                logger,
                 stopword_config: dict,
-                test_size=0.2,
-                val_size=0.1) -> tuple:
-    """
-    Prepare and split data for ML pipeline
-    """
-    # Preprocess texts
-    # Preprocess texts with stopwords
-    texts = df[question_col].apply(lambda x: preprocess_text(x, stopword_config))
+                test_size: float = 0.2,
+                val_size: float = 0.1) -> tuple:
+    """Prepare and split data for ML pipeline"""
+    # Convert to string first and then preprocess
+    texts = df[question_col].astype(str).apply(lambda x: preprocess_text(x, stopword_config))
     valid_texts = texts.dropna()
     
-    # Split data
+    # Add minimum length check
+    valid_texts = valid_texts[valid_texts.str.split().str.len() >= 3]
+    
+    if len(valid_texts) < 50:  # Minimum threshold for meaningful analysis
+        raise ValueError(f"Not enough valid responses for {question_col} after preprocessing")
+    
     train_val, test = train_test_split(valid_texts, test_size=test_size, random_state=42)
     train, val = train_test_split(train_val, test_size=val_size/(1-test_size), random_state=42)
     
-    logger.info(f"Data split: Train={len(train)}, Val={len(val)}, Test={len(test)}")
-    
     return train, val, test
 
-def train_topic_model(train_texts: pd.Series,
-                     val_texts: pd.Series,
-                     logger,
-                     min_topic_size=7,
-                     model_name='all-mpnet-base-v2') -> tuple:
-    """
-    Train and evaluate topic model with proper ML practices
-    """
-    with mlflow.start_run():
-        # Log parameters
-        mlflow.log_params({
-            "model_name": model_name,
-            "min_topic_size": min_topic_size
-        })
-        
-        # Initialize models
-        embedding_model = SentenceTransformer(model_name)
 
-        # Convert stopwords set to list for CountVectorizer
-        stopwords = list(get_survey_specific_stopwords()['stopwords'])
-        
-        # Initialize vectorizer
-        vectorizer = CountVectorizer(
-            ngram_range=(1, 3),
-            stop_words=stopwords,
-            token_pattern=r'\b\w+\b',
-            min_df=2
-        )
-        
-        # Initialize topic model
-        topic_model = BERTopic(
-            embedding_model=embedding_model,
-            vectorizer_model=vectorizer,
-            min_topic_size=min_topic_size
-        )
-        
-        # Fit model on training data
-        train_topics, _ = topic_model.fit_transform(train_texts.tolist())
-        
-        # Get embeddings for evaluation
-        train_embeddings = embedding_model.encode(train_texts.tolist())
-        val_embeddings = embedding_model.encode(val_texts.tolist())
-        
-        # Evaluate on validation set
-        val_topics, _ = topic_model.transform(val_texts.tolist())
-        
-        # Calculate metrics
-        metrics = evaluate_topic_model(
-            topic_model, 
-            train_embeddings, 
-            val_embeddings,
-            train_topics,
-            val_topics
-        )
-        
-        # Log metrics
-        mlflow.log_metrics(metrics)
-        
-        return topic_model, train_topics, metrics
-
-def evaluate_topic_model(model, train_embeddings, val_embeddings, 
-                        train_topics, val_topics) -> dict:
-    """
-    Simple evaluation focusing on topic distribution and coverage
-    """
+def evaluate_topic_model(model: BERTopic,
+                        train_embeddings: np.ndarray,
+                        val_embeddings: np.ndarray,
+                        train_topics: list,
+                        val_topics: list) -> dict:
     metrics = {}
     
     try:
-        # Basic topic distribution stats
         total_docs = len(train_topics)
-        meaningful_topics = [t for t in train_topics if t != -1]  # Exclude outlier topic (-1)
+        meaningful_topics = [t for t in train_topics if t != -1]
         num_topics = len(set(meaningful_topics))
         
         metrics.update({
             'total_documents': total_docs,
             'number_of_topics': num_topics,
-            'percent_in_topics': len(meaningful_topics) / total_docs * 100,  # % docs in meaningful topics
-            'percent_outliers': (total_docs - len(meaningful_topics)) / total_docs * 100  # % docs in outlier topic
+            'percent_in_topics': len(meaningful_topics) / total_docs * 100,
+            'percent_outliers': (total_docs - len(meaningful_topics)) / total_docs * 100
         })
         
-        # Topic size distribution
         topic_sizes = Counter(train_topics)
         if -1 in topic_sizes:
             del topic_sizes[-1]
@@ -216,188 +112,348 @@ def evaluate_topic_model(model, train_embeddings, val_embeddings,
             metrics.update({
                 'max_topic_size': max(sizes),
                 'min_topic_size': min(sizes),
-                'avg_topic_size': sum(sizes) / len(sizes)
+                'avg_topic_size': sum(sizes) / len(sizes),
+                'topic_size_std': np.std(sizes),
+                'size_distribution': {str(k): v for k, v in sorted(topic_sizes.items())}  # Convert keys to strings
             })
             
+        try:
+            topic_info = model.get_topic_info()
+            metrics['coherence'] = float(topic_info['Coherence'].mean())
+            
+            similarities = model.topic_similarities(topics=list(topic_sizes.keys()))
+            avg_similarity = np.mean([s for s in similarities.flatten() if s < 1.0])
+            metrics['avg_topic_similarity'] = float(avg_similarity)
+            
+        except Exception as e:
+            print(f"Warning: Could not calculate some quality metrics: {e}")
+        
     except Exception as e:
-        logger.warning(f"Error calculating topic metrics: {e}")
+        print(f"Error in topic model evaluation: {e}")
     
     return metrics
 
-def analyze_student_responses(file_paths: dict,
-                            question_mapping: dict,
-                            stopword_config: dict,
-                            logger) -> dict:
+def train_topic_model(train_texts: pd.Series,
+                     val_texts: pd.Series,
+                     model_name: str = 'all-mpnet-base-v2') -> tuple:
     """
-    Main analysis pipeline with ML best practices
+    Train topic model with adjusted parameters for better topic discovery
     """
-    # Get stopwords configuration once
-    stopwords = get_survey_specific_stopwords()['stopwords']
+    n_responses = len(train_texts)
     
-    results = {}
+    # More lenient minimum topic size
+    min_topic_size = max(5, int(n_responses * 0.02))  # 2% of responses or at least 5
     
-    for group, filepath in file_paths.items():
-        logger.info(f"Analyzing {group} responses...")
+    embedding_model = SentenceTransformer(model_name)
+    stopwords = list(get_survey_specific_stopwords()['stopwords'])
+    
+    vectorizer = CountVectorizer(
+        ngram_range=(1, 2),  # Reduced from (1,3) to catch more basic patterns
+        stop_words=stopwords,
+        token_pattern=r'\b\w+\b',
+        min_df=1,  # Reduced from 2 to catch rare but important terms
+        max_df=0.95
+    )
+    
+    # Initialize with more lenient parameters
+    topic_model = BERTopic(
+        embedding_model=embedding_model,
+        vectorizer_model=vectorizer,
+        min_topic_size=min_topic_size,
+        n_gram_range=(1, 2),
+        top_n_words=15,
+        verbose=True,
+        calculate_probabilities=False,  # Speed up processing
+        nr_topics='auto'  # Let the model determine the optimal number of topics
+    )
+    
+    # Fit and transform
+    try:
+        train_topics, _ = topic_model.fit_transform(train_texts.tolist())
         
-        # Load data
-        df = pd.read_csv(filepath, low_memory=False)
+        # Get embeddings
+        train_embeddings = embedding_model.encode(train_texts.tolist())
+        val_embeddings = embedding_model.encode(val_texts.tolist())
         
-        group_results = {}
-        for question, col in question_mapping.items():
-            # Prepare data
-            train_texts, val_texts, test_texts = prepare_data(df, col, logger, stopword_config)
-            
-            # Train and evaluate topic model
-            topic_model, topics, metrics = train_topic_model(
-                train_texts,
-                val_texts,
-                logger
-            )
-            
-            # Extract keywords with stopwords
-            topic_summary = extract_keywords(
-                train_texts,
+        # Get final topic assignments
+        train_topics, _ = topic_model.transform(train_texts.tolist())
+        val_topics, _ = topic_model.transform(val_texts.tolist())
+        
+        # Calculate metrics with error handling
+        try:
+            metrics = evaluate_topic_model(
                 topic_model,
-                topics,
-                question,
-                logger,
-                stopwords=stopword_config['stopwords']  # Pass stopwords here
+                train_embeddings,
+                val_embeddings,
+                train_topics,
+                val_topics
             )
-            
-            # Generate visualizations using original wordcloud function
-            wordcloud_img, wordcloud_path = generate_wordcloud_from_keywords(
-                topic_summary,
-                col,
-                question,
-                output_dir=f"wordclouds_{group}"
-            )
-            
-            group_results[question] = {
-                'metrics': metrics,
-                'topic_summary': topic_summary,
-                'wordcloud': {
-                    'image': wordcloud_img,
-                    'path': wordcloud_path
-                }
+        except Exception as e:
+            print(f"Warning: Error calculating metrics: {e}")
+            metrics = {
+                'total_documents': len(train_topics),
+                'number_of_topics': len(set(t for t in train_topics if t != -1))
             }
-            
-        results[group] = group_results
-    
-    return results
+        
+        return topic_model, train_topics, metrics
+        
+    except Exception as e:
+        raise RuntimeError(f"Error in topic modeling: {e}")
 
 def extract_keywords(texts: pd.Series,
                     topic_model: BERTopic,
                     topics: list,
                     question: str,
-                    logger,
-                    stopwords=None) -> dict:
+                    stopwords=None) -> list:
     """
-    Extract keywords using BERTopic and KeyBERT.
+    Extract diverse keywords and meaningful examples
     """
-    logger.info(f"Extracting keywords for question: {question}")
-
-    # Initialize KeyBERT with stopwords handling
-    kw_model = KeyBERT()
-
-    # Get stopwords if not provided
     if stopwords is None:
         stopwords = get_survey_specific_stopwords()['stopwords']
 
-    # Initialize topic summary
     topic_summary = []
-    keyword_counts = defaultdict(int)  # To aggregate keyword frequencies globally
-
+    
+    # Convert texts to strings if they aren't already
+    texts = texts.astype(str)
+    
     for topic_idx in set(topics):
-        if topic_idx == -1:
+        if topic_idx == -1:  # Skip outlier topic
             continue
 
         # Get texts for this topic
-        topic_texts = texts[np.array(topics) == topic_idx]
+        topic_mask = np.array(topics) == topic_idx
+        topic_texts = texts[topic_mask]
+        
+        if len(topic_texts) < 3:  # Skip very small topics
+            continue
+        
+        try:
+            # Get keywords and their scores
+            topic_words = topic_model.get_topic(topic_idx)
+            cleaned_keywords = {}
+            
+            for word, score in topic_words:
+                word = str(word).lower().strip()
+                if word in stopwords or len(word) < 3:
+                    continue
+                if not any(word in existing or existing in word 
+                          for existing in cleaned_keywords.keys()):
+                    cleaned_keywords[word] = int(score * 100)
 
-        # Get keywords from BERTopic
-        bert_keywords = topic_model.get_topic(topic_idx)
+            # Select diverse examples
+            examples = []
+            sorted_responses = sorted(topic_texts.astype(str), key=len, reverse=True)
+            
+            for response in sorted_responses:
+                if len(response.split()) < 3:
+                    continue
+                    
+                # Skip if too similar to existing examples
+                content_words = set(response.lower().split())
+                if any(len(content_words.intersection(set(ex.lower().split()))) / len(content_words) > 0.7 
+                      for ex in examples):
+                    continue
+                    
+                examples.append(response)
+                if len(examples) >= 5:
+                    break
 
-        # Aggregate keywords and their counts, ensure consistent processing
-        for word, score in bert_keywords:
-            word = word.lower().strip()
-            if word in stopwords:
-                continue
-            keyword_counts[word] += int(score * 100)
+            if examples:  # Only add topics with valid examples
+                topic_summary.append({
+                    'Topic': topic_idx,
+                    'Count': len(topic_texts),
+                    'Examples': examples[:5],
+                    'Keywords': list(cleaned_keywords.keys())[:10],
+                    'KeywordCounts': cleaned_keywords
+                })
 
-        logger.info(f"Keywords for topic {topic_idx}: {keyword_counts}")
+        except Exception as e:
+            print(f"Warning: Error processing topic {topic_idx}: {e}")
+            continue
 
-        topic_summary.append({
-            'Topic': topic_idx,
-            'Count': len(topic_texts),
-            'Examples': topic_texts[:30].tolist(),
-            'Keywords': list(keyword_counts.keys()),
-            'KeywordCounts': dict(keyword_counts)  # Add global count here
-        })
-
+    # Sort topics by size
+    topic_summary.sort(key=lambda x: x['Count'], reverse=True)
+    
     return topic_summary
 
+def analyze_student_responses(file_paths: dict,
+                            question_mapping: dict,
+                            stopword_config: dict,
+                            ) -> dict:
+    """
+    Enhanced analysis pipeline handling both qualitative and categorical questions
+    """
+    results = {}
+    
+    for group, filepath in file_paths.items():
+        try:
+            df = pd.read_csv(filepath, low_memory=False)
+            group_results = {'qualitative': {}, 'categorical': {}}
+            
+            # Process each question based on its type
+            for question, info in question_mapping.items():
+                if isinstance(info, str):  # Qualitative/open-ended question
+                    column = info
+                    # Prepare data
+                    train_texts, val_texts, test_texts = prepare_data(
+                        df, column, stopword_config)
+                    
+                    if len(train_texts) < 50:
+                        print(f"Insufficient responses for {column} in {group}")
+                        continue
+                    
+                    # Train topic model
+                    topic_model, topics, metrics = train_topic_model(
+                        train_texts,
+                        val_texts
+                    )
+                    
+                    # Extract keywords
+                    topic_summary = extract_keywords(
+                        train_texts,
+                        topic_model,
+                        topics,
+                        question,
+                        stopwords=stopword_config['stopwords']
+                    )
+                    
+                    # Store qualitative results
+                    group_results['qualitative'][question] = {
+                        'metrics': metrics,
+                        'topic_summary': topic_summary,
+                        'response_stats': {
+                            'total_responses': len(df),
+                            'valid_responses': len(train_texts),
+                            'response_rate': (len(train_texts) / len(df)) * 100
+                        }
+                    }
+                    
+                elif isinstance(info, dict):  # Categorical question
+                    column = info['question']
+                    question_type = info['type']
+                    
+                    if question_type == 'categorical_single':
+                        analysis = analyze_single_categorical(df, column, info)
+                    elif question_type == 'categorical_multiple':
+                        analysis = analyze_multiple_categorical(df, column, info)
+                    
+                    group_results['categorical'][question] = {
+                        'analysis': analysis,
+                        'metadata': info
+                    }
+            
+            results[group] = group_results
+            
+        except Exception as e:
+            print(f"Error analyzing {group}: {str(e)}")
+            continue
+    
+    return results
+
+def analyze_single_categorical(df: pd.DataFrame, column: str, info: dict) -> dict:
+    """Analyze single-select categorical questions"""
+    analysis = {
+        'counts': df[column].value_counts().to_dict(),
+        'percentages': (df[column].value_counts(normalize=True) * 100).to_dict(),
+        'missing': df[column].isna().sum(),
+        'total_responses': len(df),
+        'valid_responses': df[column].notna().sum(),
+        'unique_values': list(df[column].unique()),
+        'options_found': [opt for opt in info['options'] if opt in df[column].unique()],
+        'unexpected_values': [val for val in df[column].unique() 
+                           if val not in info['options'] and pd.notna(val)]
+    }
+    
+    analysis['response_rate'] = (analysis['valid_responses'] / analysis['total_responses']) * 100
+    return analysis
+
+def analyze_multiple_categorical(df: pd.DataFrame, column: str, info: dict) -> dict:
+    """Analyze multiple-select categorical questions"""
+    # Handle dependency if exists
+    if 'dependency' in info:
+        dep_col = info['dependency']['question']
+        dep_val = info['dependency']['value']
+        eligible_df = df[df[dep_col] == dep_val]
+    else:
+        eligible_df = df
+    
+    # Split multiple responses if stored as comma-separated
+    if eligible_df[column].dtype == 'object':
+        responses = eligible_df[column].str.split(',').explode()
+    else:
+        responses = eligible_df[column]
+    
+    analysis = {
+        'counts': responses.value_counts().to_dict(),
+        'percentages': (responses.value_counts(normalize=True) * 100).to_dict(),
+        'missing': responses.isna().sum(),
+        'total_eligible': len(eligible_df),
+        'valid_responses': responses.notna().sum(),
+        'unique_values': list(responses.unique()),
+        'options_found': [opt for opt in info['options'] if opt in responses.unique()],
+        'unexpected_values': [val for val in responses.unique() 
+                           if val not in info['options'] and pd.notna(val)]
+    }
+    
+    # Add multiple selection patterns
+    if eligible_df[column].dtype == 'object':
+        selection_counts = eligible_df[column].str.split(',').str.len().value_counts()
+        analysis['multiple_selection_patterns'] = selection_counts.to_dict()
+    
+    analysis['response_rate'] = (analysis['valid_responses'] / analysis['total_eligible']) * 100
+    return analysis
 
 def generate_wordcloud_from_keywords(topic_summary, column, question, output_dir='.', stopwords=None, max_words=30) -> tuple:
-    """
-    Generate a wordcloud from the given topic summary, emphasizing important keywords and filtering out irrelevant terms.
-    """
-    logger.info(f"Generating wordcloud for column: {column}...")
-
-    # Ensure that the topic_summary is valid and has content
+    """Generate a wordcloud from topic modeling results"""
     if not topic_summary:
-        logger.warning(f"No topics found for column: {column}. Cannot generate word cloud.")
+        print(f"No topics found for column: {column}")
         return None, None
 
-    # Initialize a dictionary to hold the final keyword frequencies
-    word_freq = defaultdict(int)
+    word_freq = defaultdict(float)
+    total_responses = sum(topic['Count'] for topic in topic_summary)
 
-    # Aggregate keyword frequencies across all topics related to the column
     for topic in topic_summary:
-        for keyword, count in topic['KeywordCounts'].items():
-            # Convert keyword to lowercase and strip spaces to ensure consistency
-            keyword = keyword.lower().strip()
+        topic_size = topic['Count']
+        topic_weight = topic_size / total_responses
 
-            # Skip stopwords
+        for keyword, count in topic['KeywordCounts'].items():
+            keyword = keyword.lower().strip()
+            
             if stopwords and keyword in stopwords:
                 continue
+                
+            word_freq[keyword] += count * topic_weight
 
-            # Add keyword count to the frequency dictionary
-            word_freq[keyword] += count
-
-    # If no valid keywords are found after aggregation
     if not word_freq:
-        logger.warning(f"No valid keywords found for column: {column}. Cannot generate word cloud.")
+        print(f"No valid keywords for column: {column}")
         return None, None
 
-    # Ensure the output directory exists
-    os.makedirs(output_dir, exist_ok=True)
+    max_freq = max(word_freq.values())
+    word_freq = {word: (freq/max_freq) * 100 for word, freq in word_freq.items()}
 
-    # Generate a dynamic output filename based on the column name and question
+    os.makedirs(output_dir, exist_ok=True)
     output_filename = f"wordcloud_{column}_{question[:30]}.jpg"
     output_path = os.path.join(output_dir, output_filename)
 
-    # Create the word cloud based on the aggregated keyword frequencies
     wordcloud = WordCloud(
-        width=800,
-        height=400,
+        width=1200,
+        height=800,
         background_color='white',
-        color_func=custom_teal_color_func,  # Apply the custom teal color function
+        color_func=custom_teal_color_func,
         max_words=max_words,
-        collocations=False  # Prevent bigrams/trigrams from getting undue prominence
+        relative_scaling=1,
+        min_font_size=8,
+        max_font_size=120,
+        collocations=False
     ).generate_from_frequencies(word_freq)
 
-    # Save the word cloud as a JPG image
     wordcloud.to_file(output_path)
-    logger.info(f"Wordcloud saved as {output_path}")
 
-    # Convert wordcloud to image and return base64-encoded string for embedding
     buffer = BytesIO()
-    wordcloud.to_image().save(buffer, format="JPEG")
+    wordcloud.to_image().save(buffer, format="JPEG", quality=95)
     img_str = base64.b64encode(buffer.getvalue()).decode()
 
-    # Return the image as base64-encoded string (for embedding in HTML) and the file path
     return img_str, output_path
-
 
 def custom_teal_color_func(word: str, 
                           font_size: int, 
@@ -405,9 +461,7 @@ def custom_teal_color_func(word: str,
                           orientation: int, 
                           random_state: int = None, 
                           **kwargs) -> str:
-    """
-    Custom color function for consistent teal coloring in wordcloud
-    """
+    """Custom color function for consistent teal coloring in wordcloud"""
     return "#1E566C"
 
 def get_question_mapping():
@@ -469,114 +523,10 @@ def get_question_mapping():
         "Is there anything else you would like to share?": "OE3"  # Q88
     }
 
-def analyze_categorical_responses(file_paths: dict,
-                                categorical_questions: dict,
-                                logger: logging.Logger) -> dict:
-    """
-    Analyze categorical responses across different student groups
-    
-    Args:
-        file_paths: Dictionary mapping student groups to their data files
-        categorical_questions: Dictionary of categorical questions with their metadata
-        logger: Logger instance
-    
-    Returns:
-        Dictionary containing analysis results per group and question
-    """
-    results = {}
-    
-    for group, filepath in file_paths.items():
-        logger.info(f"Analyzing categorical responses for {group}")
-        
-        # Load data for this group
-        try:
-            df = pd.read_csv(filepath, low_memory=False)
-            group_results = {}
-            
-            for question, info in categorical_questions.items():
-                column = info['question']
-                question_type = info['type']
-                
-                # Skip if column not in dataframe
-                if column not in df.columns:
-                    logger.warning(f"Column {column} not found in {group} data")
-                    continue
-                
-                # Analyze based on question type
-                if question_type == 'categorical_single':
-                    analysis = {
-                        'counts': df[column].value_counts().to_dict(),
-                        'percentages': (df[column].value_counts(normalize=True) * 100).to_dict(),
-                        'missing': df[column].isna().sum(),
-                        'total_responses': len(df),
-                        'valid_responses': df[column].notna().sum(),
-                        'unique_values': list(df[column].unique()),
-                        'options_found': [opt for opt in info['options'] if opt in df[column].unique()],
-                        'unexpected_values': [val for val in df[column].unique() 
-                                           if val not in info['options'] and pd.notna(val)]
-                    }
-                    
-                    # Add response rate
-                    analysis['response_rate'] = (analysis['valid_responses'] / analysis['total_responses']) * 100
-                    
-                elif question_type == 'categorical_multiple':
-                    # Handle dependency if exists
-                    if 'dependency' in info:
-                        dep_col = info['dependency']['question']
-                        dep_val = info['dependency']['value']
-                        eligible_df = df[df[dep_col] == dep_val]
-                    else:
-                        eligible_df = df
-                    
-                    # Split multiple responses if stored as comma-separated
-                    if eligible_df[column].dtype == 'object':
-                        responses = eligible_df[column].str.split(',').explode()
-                    else:
-                        responses = eligible_df[column]
-                    
-                    analysis = {
-                        'counts': responses.value_counts().to_dict(),
-                        'percentages': (responses.value_counts(normalize=True) * 100).to_dict(),
-                        'missing': responses.isna().sum(),
-                        'total_eligible': len(eligible_df),
-                        'valid_responses': responses.notna().sum(),
-                        'unique_values': list(responses.unique()),
-                        'options_found': [opt for opt in info['options'] if opt in responses.unique()],
-                        'unexpected_values': [val for val in responses.unique() 
-                                           if val not in info['options'] and pd.notna(val)]
-                    }
-                    
-                    # Add multiple selection patterns
-                    if eligible_df[column].dtype == 'object':
-                        selection_counts = eligible_df[column].str.split(',').str.len().value_counts()
-                        analysis['multiple_selection_patterns'] = selection_counts.to_dict()
-                    
-                    # Add response rate
-                    analysis['response_rate'] = (analysis['valid_responses'] / analysis['total_eligible']) * 100
-                
-                # Add to group results
-                group_results[question] = {
-                    'analysis': analysis,
-                    'metadata': info
-                }
-                
-                logger.info(f"Completed analysis of {column} for {group}: "
-                          f"{analysis['valid_responses']} valid responses "
-                          f"({analysis['response_rate']:.1f}% response rate)")
-            
-            # Add group results to overall results
-            results[group] = group_results
-            
-        except Exception as e:
-            logger.error(f"Error analyzing {group}: {str(e)}")
-            continue
-    
-    return results
-
 def convert_numpy_types(obj):
     """Recursively convert numpy types to Python native types"""
     if isinstance(obj, dict):
-        return {k: convert_numpy_types(v) for k, v in obj.items()}
+        return {str(k): convert_numpy_types(v) for k, v in obj.items()}  # Convert all keys to strings
     elif isinstance(obj, list):
         return [convert_numpy_types(item) for item in obj]
     elif isinstance(obj, np.integer):
@@ -590,53 +540,47 @@ def convert_numpy_types(obj):
     return obj
 
 def main():
-    # Initialize stopwords configuration once
+    # Initialize configurations
     stopword_config = get_survey_specific_stopwords()
-
+    
     file_paths = {
         'undergrad_ft': 'data/student/undergrad_ft_data.csv',
-        # 'undergrad_pt': 'undergrad_pt_data.csv',
-        # 'graduate': 'grad_data.csv'
     }
     
-    # Get and split questions
-    question_mapping = get_question_mapping()
-    qualitative_questions = {q: info for q, info in question_mapping.items() if isinstance(info, str)}
-    categorical_questions = {q: info for q, info in question_mapping.items() 
-                           if isinstance(info, dict) and info['type'] in ['categorical_single', 'categorical_multiple']}
-    
-    # Run analyses
-    logger.info("Starting qualitative analysis...")
-    # Pass to analysis functions
-    qual_results = analyze_student_responses(
-        file_paths, 
-        qualitative_questions,
-        stopword_config,  # Pass stopwords once
-        logger
-    )
-    
-    logger.info("Starting categorical analysis...")
-    cat_results = analyze_categorical_responses(file_paths, categorical_questions, logger)
-    
-    # Save all results to one file
-    final_results = {
-        'metadata': {
-            'num_groups': len(file_paths),
-            'num_qualitative_questions': len(qualitative_questions),
-            'num_categorical_questions': len(categorical_questions)
-        },
-        'qualitative_analysis': convert_numpy_types(qual_results),
-        'categorical_analysis': convert_numpy_types(cat_results)
-    }
-    
-    output_file = f'analysis_results.json'
     try:
-        with open(output_file, 'w') as f:
+        # Get question mappings
+        question_mapping = get_question_mapping()
+        
+        # Run combined analysis
+        results = analyze_student_responses(
+            file_paths, 
+            question_mapping,
+            stopword_config,
+        )
+        
+        # Save results
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        final_results = {
+            'metadata': {
+                'timestamp': timestamp,
+                'num_groups': len(file_paths),
+                'num_questions': len(question_mapping)
+            },
+            'analysis_results': convert_numpy_types(results)
+        }
+        
+        os.makedirs('results', exist_ok=True)
+        results_file = os.path.join('results', f'analysis_results_{timestamp}.json')
+        
+        with open(results_file, 'w') as f:
             json.dump(final_results, f, indent=4)
-        logger.info(f"All results successfully saved to {output_file}")
+            
+        print(f"Analysis results saved to {results_file}")
+            
     except Exception as e:
-        logger.error(f"Error saving results: {str(e)}")
+        print(f"Error in main analysis pipeline: {str(e)}")
+        raise
 
 if __name__ == "__main__":
-    logger = setup_logging()
+    
     main()
