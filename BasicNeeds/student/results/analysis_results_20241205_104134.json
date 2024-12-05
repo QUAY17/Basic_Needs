@@ -1,0 +1,1655 @@
+{
+    "metadata": {
+        "timestamp": "20241205_104134",
+        "num_groups": 1,
+        "num_questions": 11
+    },
+    "analysis_results": {
+        "undergrad_ft": {
+            "qualitative": {
+                "Please share obstacle(s) that affects ability to access healthy food.": {
+                    "metrics": {
+                        "total_documents": 1445,
+                        "number_of_topics": 6,
+                        "percent_in_topics": 79.16955017301038,
+                        "percent_outliers": 20.830449826989618,
+                        "max_topic_size": 522,
+                        "min_topic_size": 46,
+                        "avg_topic_size": 190.66666666666666,
+                        "topic_size_std": 161.61133073588073,
+                        "size_distribution": {
+                            "0": 522,
+                            "1": 254,
+                            "2": 132,
+                            "3": 106,
+                            "4": 84,
+                            "5": 46
+                        }
+                    },
+                    "topic_summary": [
+                        {
+                            "Topic": 0,
+                            "Count": 522,
+                            "Examples": [
+                                "Time is the biggest factor for me in not eating as healthy as I would like, as working and going to school keep me pretty busy so I rely a lot on fast food and cheap processed food. I also basically live paycheck to paycheck, and the only reason I have not had to cut back on meals or seek help in the last year is because I received a small inheritance last January that allowed me to actually have savings for once. I still stick to a strict budget, but that has made it so I can fudge it a bit and go shopping the day before my paycheck hits or things like that. Before the last 12 months, I did seek assistance andor not eat as much on occasion.",
+                                "I am in my second year of my fitness journey. Although I did stray away from my favorite foods, I took it upon myself to substitute them for more healthier options. What I learned from changing to my healthy lifestyle, I experienced high prices. It has been complicated and sometimes difficult to \"survive\" on this diet. High price, healthy foods but with low quality and portions.",
+                                "The options at lapo here on campus are extremely expensive and do not support vegetarians when it comes to balanced meals. They are often gross in terms of taste and texture and I almost never get to eat a variety of foods. It is so expensive though that I cannot afford to buy my own groceries on top of lapo and it is required for freshman so I\u00e2m pretty much stuck with it.",
+                                "I do not have enough time to cook. I drop my kid off during the daycare then I will not be home until I pick up my kid which is usually later in the day. Most of the time I boil all veggies, and grains in one pot and cook it for my kidit takes 5 minutes to cook it, and i end up eating noodles or frozen food. As i am tired and do not have enough time to cook.",
+                                "the basic unm meal plan is insufficient especially when there is no guarantee of food that day this is nutritious. this makes it very difficult for those who are physcially active to consume the food that i need for my body to recover. insufficient recovery makes not only physical tasks harder, but mentally keeping up with classes becomes difficult as well."
+                            ],
+                            "Keywords": [
+                                "healthy",
+                                "food",
+                                "expensive",
+                                "eat",
+                                "access",
+                                "buy",
+                                "cost",
+                                "cook",
+                                "cheaper",
+                                "meals"
+                            ],
+                            "KeywordCounts": {
+                                "healthy": 9,
+                                "food": 8,
+                                "expensive": 4,
+                                "eat": 2,
+                                "access": 2,
+                                "buy": 2,
+                                "cost": 1,
+                                "cook": 1,
+                                "cheaper": 1,
+                                "meals": 1
+                            }
+                        },
+                        {
+                            "Topic": 1,
+                            "Count": 254,
+                            "Examples": [
+                                "I lack options for food, as food boxes usually consist of only loaves of bread and I am dealing with stomach issues consuming continuously every meal. I work but only part-time because I am a full-time student and want to invest in my education. The amount of money I make does not cover unexpected obstacles like cars breaking, getting sickinjured, or materials needed to cook. I often cannot accept food meant for a larger fridges as I only have a mini fridge and a hot plate. Moreover, affordable rent in Las Cruces is considered 700 a month, but coming from out of town, I barely make rent. As I do not know anyone for potential roommates who makes minimum wage.",
+                                "I cannot take on an extra job because of school and because I am a primary childcare care giver for my 3 kids. Much of my family's income goes to bills and mortgage. I can only afford to shop 2 times a month transportation, time and money and fresh healthy foods run out or go bad before the next grocery trip.",
+                                "Just money, going to college first year and not knowing how to live on your own. I applied for multiple jobs on and off campus but can\u00e2t get hired. I am a full time student with all in person classes that range to all day on some days. I have no prior experience and live off of payback scholarships.",
+                                "It has been hard to find an employer in my that will work with my school schedule. And because I choose to prioritize my schoolwork over the job I have to leave and don\u00e2t make enough money for food or bills. Because I am a little overweight I feel like I would be judged for asking for assistance.",
+                                "As I am in school full-time it is nigh impossible to work full-time, so I am always surviving on just enough to pay rent and buy food. I never get to develop any savings, because I live paycheck to paycheck, and thus any kind of work disruption affects my ability to buy food."
+                            ],
+                            "Keywords": [
+                                "school",
+                                "student",
+                                "job",
+                                "rent",
+                                "pay",
+                                "working",
+                                "food",
+                                "don\u00e2t",
+                                "able",
+                                "work time"
+                            ],
+                            "KeywordCounts": {
+                                "school": 4,
+                                "student": 4,
+                                "job": 4,
+                                "rent": 3,
+                                "pay": 3,
+                                "working": 2,
+                                "food": 2,
+                                "don\u00e2t": 2,
+                                "able": 1,
+                                "work time": 1,
+                                "college": 1,
+                                "hours": 1,
+                                "having": 1
+                            }
+                        },
+                        {
+                            "Topic": 2,
+                            "Count": 132,
+                            "Examples": [
+                                "Honestly speaking, after the Covid-19 there is a lot of price increase in the food and also the shortage of food in the store. Very hard to find the green vegetables in grocery store. If there then the price is high like 3.00 for one pound. Leaving in the New Mexico and getting a less wages sometimes I could not efforts the food to buy because of the price is high.",
+                                "Cost groceries are just getting too expensive to feed a growing child and family healthy food options are often more expensive than processed food. Limited access to a good grocery store with plenty of food options in rural communities no money for gas to drive to a bigger store for cheaper food prices.",
+                                "Inflation has caused prices to be outrageous. Meat has become a luxury and I am having to stretch things further than I used to. It is hard to afford fresh produce. Eggs, which used to be cheap and a decent source of protein to get me through the day, are now completely out of my budget.",
+                                "The economy's inflation, I have to buy cheaper foods which are not all healthy. It costs more to eat healthy in today's inflation on foods and 75 is not enough for healthy food expences. Even eggs are getting expensive",
+                                "the food cost in stores went significantly up and I am only a server who gets paid 4 dollars an hour and other utilities and rent to pay. I have made my living more of a priority than eating or getting groceries"
+                            ],
+                            "Keywords": [
+                                "food",
+                                "prices",
+                                "inflation",
+                                "cost",
+                                "groceries",
+                                "expensive",
+                                "high",
+                                "going",
+                                "rising",
+                                "gone"
+                            ],
+                            "KeywordCounts": {
+                                "food": 9,
+                                "prices": 8,
+                                "inflation": 7,
+                                "cost": 6,
+                                "groceries": 4,
+                                "expensive": 4,
+                                "high": 3,
+                                "going": 2,
+                                "rising": 2,
+                                "gone": 2
+                            }
+                        },
+                        {
+                            "Topic": 3,
+                            "Count": 106,
+                            "Examples": [
+                                "I have previous injuries and mental health concerns that make it difficult for me to work full time jobs. Also I live in a small town of a little more than 1, 000 people, and the grocery store here doesn\u00e2t always have the best options. They do their best! But often times I\u00e2ll have to travel at least 35 minutes to get access to fresh produce and healthy options. Since I live in the mountains, weather doesn\u00e2t always permit traveling that far and gas has been very expensive.",
+                                "Food prices have gone up a lot, we have dietary restrictions like no sugar, no meat, no processed goods health issues which make the grocery bill more expensive. I would get what my child needed to eat balanced and healthy meals and I would eat whatever was left over. I got food boxes a few times but most of the time the food was expired, rotten, or something we cannot eat due to the dietary restrictions.",
+                                "I am poor. During winter break, since my jobs are both on campus, I had no choice but to take an unpaid month off of work which I really could not afford. When I came back from winter break, I was so worried about making rent that worrying about food was not a priority. Every time I have to take extended time off from work, as it is always unpaid, this happens.",
+                                "I have a lot of food allergies so it can be hard to afford say milk substitutes like Almond milk or soy yogurt. One thing is always true I will starve myself before my child ever knows what hunger is. She is my priority and I will always put her first. Sometimes have borrowed money to help pay for groceries.",
+                                "Once I moved from home, I was eating out because I wasn\u00e2t provided enough in my food card from my college. I was working, but barely making enough to pay bills and barely get by. The only time I had really good meals is when I went home to visit."
+                            ],
+                            "Keywords": [
+                                "grocery",
+                                "store",
+                                "food",
+                                "fresh",
+                                "produce",
+                                "options",
+                                "shop",
+                                "live",
+                                "buy",
+                                "eat"
+                            ],
+                            "KeywordCounts": {
+                                "grocery": 6,
+                                "store": 6,
+                                "food": 5,
+                                "fresh": 4,
+                                "produce": 2,
+                                "options": 2,
+                                "shop": 2,
+                                "live": 2,
+                                "buy": 2,
+                                "eat": 2
+                            }
+                        },
+                        {
+                            "Topic": 4,
+                            "Count": 84,
+                            "Examples": [
+                                "It\u00e2s too expensive in this economy and it takes too much time with how fast this world moves",
+                                "The cost, I do not make a lot of money and once bills are paid cannot afford ir",
+                                "Sometimes, it can be too expensive, due to inflation, just like eggs.",
+                                "They purchase items they want before the address the items needed.",
+                                "It is not readily available or not the highest quality in my area."
+                            ],
+                            "Keywords": [
+                                "expensive",
+                                "price",
+                                "it\u00e2s",
+                                "cost",
+                                "knowledge",
+                                "transportation",
+                                "purchase",
+                                "availability"
+                            ],
+                            "KeywordCounts": {
+                                "expensive": 19,
+                                "price": 10,
+                                "it\u00e2s": 9,
+                                "cost": 8,
+                                "knowledge": 5,
+                                "transportation": 4,
+                                "purchase": 4,
+                                "availability": 3
+                            }
+                        },
+                        {
+                            "Topic": 5,
+                            "Count": 46,
+                            "Examples": [
+                                "The job that I was working was not paying much nor giving many hours to work. There were bills to be paid and after I only had so much for groceries.",
+                                "Busy with classes, insufficient funds from workstudy job, second job burned more gas than it made money",
+                                "My employer closed down leaving me without a job and unemployment took months to go through.",
+                                "There is not enough money, it is hard to save money as well.",
+                                "I lost my funding for my on-campus job, and was out of work."
+                            ],
+                            "Keywords": [
+                                "job",
+                                "lack money",
+                                "money lack",
+                                "funds",
+                                "unemployment",
+                                "paying",
+                                "health",
+                                "laid work",
+                                "mental",
+                                "months"
+                            ],
+                            "KeywordCounts": {
+                                "job": 18,
+                                "lack money": 16,
+                                "money lack": 14,
+                                "funds": 8,
+                                "unemployment": 8,
+                                "paying": 7,
+                                "health": 6,
+                                "laid work": 6,
+                                "mental": 5,
+                                "months": 4
+                            }
+                        }
+                    ],
+                    "response_stats": {
+                        "total_responses": 5320,
+                        "valid_responses": 1445,
+                        "response_rate": 27.16165413533835
+                    }
+                },
+                "What are your thoughts about food availability on your campus?": {
+                    "metrics": {
+                        "total_documents": 1806,
+                        "number_of_topics": 4,
+                        "percent_in_topics": 97.78516057585826,
+                        "percent_outliers": 2.2148394241417497,
+                        "max_topic_size": 665,
+                        "min_topic_size": 115,
+                        "avg_topic_size": 441.5,
+                        "topic_size_std": 203.33900265320472,
+                        "size_distribution": {
+                            "0": 665,
+                            "1": 535,
+                            "2": 451,
+                            "3": 115
+                        }
+                    },
+                    "topic_summary": [
+                        {
+                            "Topic": 0,
+                            "Count": 665,
+                            "Examples": [
+                                "I am an RA on campus and we are not able to leave the building to get food  not even to our cafeteria I live in a hall where we do not have kitchens so I have to have frozen food that does not really count as a healthy meal. I am not sure if this should be brought up to housing but when we are on duty access to food is impossible if you do not have anyone to bring you food. In addition if there is a student on campus who does not have a meal plan and wants a meal, there is mostly coffee shops and grab and go foods  not super health the places that do sell meals is a little expensive and still unhealthy.",
+                                "We have 3 options on campus one of which is the same kitchen that runs the cafeteria. For example you can purchase 1 taco for 10.50 or two for the same price. But is mandatory to spend all 10.50 of the meal ticket. The best place on campus is on the golf course but the service is not available if the cafeteria is not open. So during all prime eating hours, there is only one dining option. If you seek good dining you must go into town or wait till normal dining hours are over and possibly get your hand on food that is goodsometimes. If I were to rate the overall food and dining at NMT id rate a 410",
+                                "There Is very little in terms of nutritious meals on campus. You either have a meal plan and risk getting sick like everyone else I know of, or you have to pay for a meal at a restaurant because there is not actually good nutritious foods on campus that feels edible for part of the meals. I wish that there was more with what I pay for a meal plan, because the ones that are available, only Einsteins has good healthy foods and even then its unhealthy to get so much grease everyday.",
+                                "The food pantry always being during class time is such an inconvenience and most teachers won\u00e2t understand the need we have for food. Even then, the food on campus is very unhealthy and overpriced, and as college students we don\u00e2t have time to rush to the different places on campus during the day. Also, everything closes very early and for those who work until late or have labs until 4:30, eating on campus isn\u00e2t an option.",
+                                "There is a wide variety of foods which is very convenient. However, the only type of \u00e2\u0153healthy\u00e2 meal my campus has is salad. The food is good but there is never enough time to eat a full balanced meal because the staff takes too long to prepare the foods. There are also times when there is not enough staff working the checkout stations so my lunch break is completely taken up before I can eat."
+                            ],
+                            "Keywords": [
+                                "campus",
+                                "food",
+                                "cafeteria",
+                                "eat",
+                                "vending",
+                                "think",
+                                "meal",
+                                "machines",
+                                "good",
+                                "expensive"
+                            ],
+                            "KeywordCounts": {
+                                "campus": 10,
+                                "food": 8,
+                                "cafeteria": 3,
+                                "eat": 2,
+                                "vending": 2,
+                                "think": 2,
+                                "meal": 2,
+                                "machines": 2,
+                                "good": 1,
+                                "expensive": 1
+                            }
+                        },
+                        {
+                            "Topic": 1,
+                            "Count": 535,
+                            "Examples": [
+                                "there is plenty of places to go and grab a bite, but everything is upcharged 4 dollars for ramen at the markets and the cheaper food is garbage food. the food pantry can have some good items but it\u00e2s usually wiped out and only has rice and beans. nothing to really make a good meal with but helpful to hold me over",
+                                "My thoughts about the food availability are that it is okay. I think we need more options to choose from. I think there should be the same food in each store, so i will not have to walk to a specific store just to get that item. More food options at the dining hall would be nice too.",
+                                "Taos is always a good resource to go and eat, sometimes it is hard because as a college student I want to stay healthy, therefore it is hard eating there sometimes. I really enjoy the dinning dollars but they seem to go so fast because the foods I enjoy eating add up pretty quick",
+                                "It is generally they do offer a lot of food and are accessible however, it is extremely hard to get any healthy or beneficial food as a lot of the food is processed or unhealthy to begin with like hamburgers and pizza. There are some days there is a lack of meat too.",
+                                "While it is decent it is ridiculous that it is required for me to have a meal plan. Instead of shopping cheaply for my specific dietary needs, I have to deal with lapos expensive selections that make meeting my dietary needs very difficult and waste a ton of money."
+                            ],
+                            "Keywords": [
+                                "food",
+                                "healthy",
+                                "expensive",
+                                "good",
+                                "meal",
+                                "think",
+                                "healthier",
+                                "nutritious",
+                                "it\u00e2s",
+                                "wish"
+                            ],
+                            "KeywordCounts": {
+                                "food": 10,
+                                "healthy": 6,
+                                "expensive": 3,
+                                "good": 3,
+                                "meal": 2,
+                                "think": 2,
+                                "healthier": 2,
+                                "nutritious": 2,
+                                "it\u00e2s": 1,
+                                "wish": 1
+                            }
+                        },
+                        {
+                            "Topic": 2,
+                            "Count": 451,
+                            "Examples": [
+                                "I think it\u00e2s a good idea for people that are struggling, I\u00e2ve just never looked into it because I am super busy",
+                                "I think it is a wonderful thing to have access to I have just never known it was something that exsisted",
+                                "I think it\u00e2s awesome because it can help some if they don\u00e2t have a transportation they can go over there",
+                                "There are some options available but it can be repetitive and when it comes to price it can be limited.",
+                                "It is surely available, but the Sodexo higherups are not good people and treat their employees poorly."
+                            ],
+                            "Keywords": [
+                                "good",
+                                "it\u00e2s",
+                                "expensive",
+                                "think",
+                                "great",
+                                "variety",
+                                "better",
+                                "pretty",
+                                "wish",
+                                "okay"
+                            ],
+                            "KeywordCounts": {
+                                "good": 12,
+                                "it\u00e2s": 9,
+                                "expensive": 8,
+                                "think": 5,
+                                "great": 4,
+                                "variety": 4,
+                                "better": 3,
+                                "pretty": 3,
+                                "wish": 3,
+                                "okay": 2,
+                                "little": 2
+                            }
+                        },
+                        {
+                            "Topic": 3,
+                            "Count": 115,
+                            "Examples": [
+                                "There seems to be some availability but I am genuinely just always going so fast I never have time, being a full time student and worker.",
+                                "I am an online student for this Spring semester, so I am nowhere near a campus, but there is one about 60 miles away. Almost 2 hours away",
+                                "I\u00e2m not even sure if there is one at my campus. Even if there was one I would feel too insecure to ask.",
+                                "I go to a community college and I work full-time so I do schooling online so I am never on campus",
+                                "I go to school in the evening when everything is already closed, so I do not have this option"
+                            ],
+                            "Keywords": [
+                                "online",
+                                "campus",
+                                "classes",
+                                "attend",
+                                "live",
+                                "school",
+                                "near",
+                                "apply"
+                            ],
+                            "KeywordCounts": {
+                                "online": 26,
+                                "campus": 15,
+                                "classes": 11,
+                                "attend": 10,
+                                "live": 7,
+                                "school": 5,
+                                "near": 4,
+                                "apply": 4
+                            }
+                        }
+                    ],
+                    "response_stats": {
+                        "total_responses": 5320,
+                        "valid_responses": 1806,
+                        "response_rate": 33.94736842105263
+                    }
+                },
+                "Why do you feel unsafe?": {
+                    "metrics": {
+                        "total_documents": 270,
+                        "number_of_topics": 10,
+                        "percent_in_topics": 77.4074074074074,
+                        "percent_outliers": 22.59259259259259,
+                        "max_topic_size": 57,
+                        "min_topic_size": 6,
+                        "avg_topic_size": 20.9,
+                        "topic_size_std": 14.56331006330635,
+                        "size_distribution": {
+                            "0": 57,
+                            "1": 29,
+                            "2": 28,
+                            "3": 23,
+                            "4": 22,
+                            "5": 18,
+                            "6": 12,
+                            "7": 7,
+                            "8": 7,
+                            "9": 6
+                        }
+                    },
+                    "topic_summary": [
+                        {
+                            "Topic": 0,
+                            "Count": 57,
+                            "Examples": [
+                                "we were in a low income neighborhood where the crimes rates were very high and shooting and other violent incidence were becoming quite frequent. I was afraid to let my children out to play. We have since moved to better neighbor of course with higher rent payments but it is worth it to feel safe. I feel saddened for those who do not have that luxery or means to make a move such as I did.",
+                                "The apartment I can afford is in a sketchy area of town. I often hear cars racing and bangs that sound like gunshots. The parking lighting is very poor. My car has been vandalized twice, and my neighbor's car was stolen. Some of my neighbors are also students, and we try to look after each other, but coming or going after dark is pretty nerve-wracking.",
+                                "My current living status is located half a mile away from the college I go to NNMC. I have lived here for 10 years. 6 Months ago my brother-in-law was murdered at his place of work, a block a way from where I live. It is a dangerous town, and very hard to not feel stuck in.",
+                                "the neighborhood in which we live. It is affordable but way to close to drugs and constant crime. I have a 6 year old son who cannot play outside. We live in a 4-plex with no enclosed yard or gate. Random people sleep outside our building. It is unsafe to play outside.",
+                                "The area where I live is very rural and you need 4X4 to access the property, however, it is not always passable during the winter months and I either get snowed in or snowed out. All times of the year you have to worry about wild animals."
+                            ],
+                            "Keywords": [
+                                "neighborhood",
+                                "live",
+                                "apartment",
+                                "area",
+                                "crime",
+                                "people",
+                                "outside",
+                                "bad",
+                                "safe",
+                                "security"
+                            ],
+                            "KeywordCounts": {
+                                "neighborhood": 3,
+                                "live": 3,
+                                "apartment": 3,
+                                "area": 3,
+                                "crime": 2,
+                                "people": 2,
+                                "outside": 2,
+                                "bad": 2,
+                                "safe": 2,
+                                "security": 2,
+                                "homeless": 1,
+                                "high": 1,
+                                "drugs": 1,
+                                "living": 1
+                            }
+                        },
+                        {
+                            "Topic": 1,
+                            "Count": 29,
+                            "Examples": [
+                                "I live with my ex husband who is bipolar with rage and he does not take his medication and in the course of the last year I have been domestically violated against a few times to the point i need vocal chord and throat surgery. and he has yet to be arrested or even been seen by Mental Health resources since July of 2022. Dr. Brunton JUST KEEPS REFILLING HIS SCRIPTS WITHOUT ANY APPOINTMENT. He has been seen since July nor has he taken his meds since December either.",
+                                "Power outage at my apartment for a week during freezing temps. No hot water. 3 years ago I did leave a situation of domestic violence and would have had to answer more of these questions in affirmative.",
+                                "When you live with a partner that is an alcoholic and starts arguments, it is better to leave than stay and get insulted.",
+                                "Domestic issues w my child's father, along w fear of being killed by this person.",
+                                "I was in an unsafe situation at home, some domestic disputes that escalated"
+                            ],
+                            "Keywords": [
+                                "issues",
+                                "domestic",
+                                "family",
+                                "member",
+                                "abusive",
+                                "violence",
+                                "mother",
+                                "alcoholic",
+                                "situation",
+                                "ex husband"
+                            ],
+                            "KeywordCounts": {
+                                "issues": 6,
+                                "domestic": 5,
+                                "family": 5,
+                                "member": 4,
+                                "abusive": 4,
+                                "violence": 4,
+                                "mother": 4,
+                                "alcoholic": 4,
+                                "situation": 3,
+                                "ex husband": 2,
+                                "health": 2,
+                                "marriage": 2
+                            }
+                        },
+                        {
+                            "Topic": 2,
+                            "Count": 28,
+                            "Examples": [
+                                "In order to have independance and live in a area where i can somewhat work and learn from home as i live so far from the city, my housing options were limited. so i found the first place that would take us as many others were too expensive and i foudn that living without water broken plumbing and having to continue paying bills and rent is hard. i cannot clean my dishes and i am always sick. I do everything i can to make more and more money to combat the economic demand needed to repair the water but i am struggling.",
+                                "My ceiling is caving in because the wind has blown my roof apart so when we had rain last year it leaked and messed up my ceiling. Also there has been a plumbing issue my land lady has not fixed because I am so late on rent. I applied for assistance and was told I will only be granted one month. A tree fell on my house last winter. I even caught video of it but it did a lot of damage to my house. My gas is shut off too so it is very cold and the electrical wiring is not up to code",
+                                "Parents yelling and pushing me past my limitations, they were very close to kicking me out at one point. When I moved to the dorms I came with my now ex partner of 4 years, something shifted with them and they became very toxic. One night they assaulted me, thankfully they had already dropped out and were ready to head home two days afterwards.",
+                                "I was living in a home with no water and no electricity because after my parent died who helped cared for me I became independent and didn\u00e2t know how to survive on my own. I was forced out of my home and being evicted by family.",
+                                "It does not really fit into the timeline of 12 months because it was a little over a year ago, but, one of my roommates gave a rape confession. so that forced me to leave and move back in with my parents"
+                            ],
+                            "Keywords": [
+                                "rent",
+                                "pay",
+                                "house",
+                                "family",
+                                "money",
+                                "water",
+                                "living",
+                                "leave",
+                                "home",
+                                "moved"
+                            ],
+                            "KeywordCounts": {
+                                "rent": 6,
+                                "pay": 6,
+                                "house": 4,
+                                "family": 3,
+                                "money": 3,
+                                "water": 3,
+                                "living": 2,
+                                "leave": 2,
+                                "home": 2,
+                                "moved": 2,
+                                "head": 1,
+                                "ex partner": 1,
+                                "loan": 1
+                            }
+                        },
+                        {
+                            "Topic": 3,
+                            "Count": 23,
+                            "Examples": [
+                                "Every night you could the next door neighbors and basically what they were doing. Gun shoots during New Year\u00e2s Eve and even ever so often you hear shooting. Car jackings are no surprise and people walking around during midnight.",
+                                "The realtorlandlord kept coming in without giving a notice and he just kept walking in. The area had a lot of homeless walking through the back yard area and gunshots outside with the helicotor flying around a lot.",
+                                "Gunshot noises outside, neighbors fighting, suspicious activity with random cars parking across the street to meet with a neighbor for less than a minute and then driving away, never coming back.",
+                                "Violence breaking out in neighboring domiciles, we were afraid gunshots would be fired  we could get hit by stray bullets coming through the wall.",
+                                "Strangers approaching me aggressively by my front door and random unexpected gunplay very near me the police mock me for reporting."
+                            ],
+                            "Keywords": [
+                                "neighborhood",
+                                "violence",
+                                "gunshots",
+                                "outside",
+                                "shooting",
+                                "walking",
+                                "activity",
+                                "coming",
+                                "area",
+                                "car"
+                            ],
+                            "KeywordCounts": {
+                                "neighborhood": 6,
+                                "violence": 5,
+                                "gunshots": 4,
+                                "outside": 4,
+                                "shooting": 4,
+                                "walking": 4,
+                                "activity": 4,
+                                "coming": 3,
+                                "area": 3,
+                                "car": 3,
+                                "neighbors": 3
+                            }
+                        },
+                        {
+                            "Topic": 4,
+                            "Count": 22,
+                            "Examples": [
+                                "I am living on campus and UNM and its location feels and often is very unsafe. There are homeless people that roam around campus, there is a man on a bike who has been groping women since August but nothing has been done about it. There has been a deadly shooting and guns pulled in the dorms that I live in. Some of these are out of UNMs control but others are not. I tell people the things that happen on campus and they are speechless at how unsafe this community is.",
+                                "MY FIRST YEAR AT NMSU I WAS HOME INVADED AT CERVANTES VILLAGE, WHEN THE CAMPUS POLICE FOUND OUT I FOUGHT BACK, THERE CONCERN TURNED FROM ME BEING HOME INVADED AND STOLE FROM. TO ME FIGHTING FOR MY PROPERTY. THE GUY AND GIRL ARE NOW IN JAIL FOR AN UNRELATED INCIDENT THERE CHARGES ARE MURDER, AND AIDING AND ABETTING, STOP BLAMING THE VICTIM NMSU! OH YEAH, HE SHOT THE GUY 3 TIMES WITH A SHOTGUN!",
+                                "The UNM campus has had countless incidence that happened within the single semester that I lived there. The main ones that threw me over the edge was the death of my fellow classmate right outside my dorm and then followed by an aggravated assault right outside my dorm once again.",
+                                "I felt unsafe because living in South Campus there are no \u00e2\u0153gated communities\u00e2 and everyone can just come and go as they want. Everyone uses the parking where I live and most aren\u00e2t even residents from the same community or residents on campus.",
+                                "I live in a student housing community off campus in the middle of nowhere. There Is constant gunshots and people screaming. The police and security seem to be there to make everyone anxioud and get students in trouble instead of protecting us."
+                            ],
+                            "Keywords": [
+                                "campus",
+                                "shooting",
+                                "unm",
+                                "outside dorm",
+                                "community",
+                                "housing",
+                                "invaded",
+                                "incident",
+                                "control"
+                            ],
+                            "KeywordCounts": {
+                                "campus": 14,
+                                "shooting": 3,
+                                "unm": 3,
+                                "outside dorm": 3,
+                                "community": 3,
+                                "housing": 2,
+                                "invaded": 2,
+                                "incident": 2,
+                                "control": 2
+                            }
+                        },
+                        {
+                            "Topic": 5,
+                            "Count": 18,
+                            "Examples": [
+                                "My roommates. In a dorm room with 4 party girls and I am more of a stay in. I hear them drinkdrunk with friends screaming in the living room, commonly. Boys being brought in a lot. Not polite either, loud middle of the night boys Once this girl threw a party in the room without telling me. I got angry with her. The second another had a boy over the night before and in a ski mask no joke kept knocking on my door and window until I opened it. Barged in and tried going into her room. Then walked out because he \u00e2\u0153forgot his phone\u00e2. I rightfully yelled at him and bought a taser afterwards.",
+                                "I live in a jack and jill style room with my roommate and our two suite mates. One of our suite mates brings over her boyfriend, who has verbally assaulted us multiple times for \u00e2\u0153snitching\u00e2 on them for having sex in our shower multiple times. We have never met him nor seen him, and I often feel unsafe in my dorm because I don\u00e2t know when he\u00e2ll show up. We have reported them multiple times but as of right now nothing has been resolved.",
+                                "A resident assistant abused his powers and would let himself into my room. Eventually got fired but after months of this going on",
+                                "Horrible roommate situation, RA was letting himself into room for month. Eventually got fired but was a nightmare to go through",
+                                "some incidents regarding my roommate\u00e2s behavior toward my pet has caused me to travel home a lot. the problem is now resolved."
+                            ],
+                            "Keywords": [
+                                "roommate",
+                                "feel unsafe",
+                                "suite",
+                                "mates",
+                                "multiple times",
+                                "got",
+                                "boyfriend",
+                                "eventually"
+                            ],
+                            "KeywordCounts": {
+                                "roommate": 9,
+                                "feel unsafe": 4,
+                                "suite": 4,
+                                "mates": 4,
+                                "multiple times": 4,
+                                "got": 3,
+                                "boyfriend": 3,
+                                "eventually": 2
+                            }
+                        },
+                        {
+                            "Topic": 6,
+                            "Count": 12,
+                            "Examples": [
+                                "I live in dorms, that are always rampant with multiple people and them doing anything they want. I also have PTSD from past experiences so loud noises, accessibility and anyone being able to enter my room will always make me feel unsafe.",
+                                "My roommate during the summer was angry with me and I feared i would not get my belongings back and when I did I thought they would find me and come to my apartment.",
+                                "I didn\u00e2t feel unsafe at home frequently, the feeling just comes and goes and I fear as a student that\u00e2s staying alone I stand I high chance of being in danger",
+                                "I live with my parents and they were out of town. I had paranoia that night, thinking someone was in the house stalking me, when I was completely wrong.",
+                                "Because I feel like, you do not know what people are feeling every day, and it scares me to know that, and I really does give my anxiety every day."
+                            ],
+                            "Keywords": [
+                                "feel",
+                                "anxiety",
+                                "just",
+                                "unsafe",
+                                "thought",
+                                "staying",
+                                "day",
+                                "know",
+                                "fear",
+                                "really"
+                            ],
+                            "KeywordCounts": {
+                                "feel": 7,
+                                "anxiety": 6,
+                                "just": 4,
+                                "unsafe": 4,
+                                "thought": 4,
+                                "staying": 4,
+                                "day": 4,
+                                "know": 3,
+                                "fear": 3,
+                                "really": 3,
+                                "like": 3,
+                                "live": 3
+                            }
+                        },
+                        {
+                            "Topic": 7,
+                            "Count": 7,
+                            "Examples": [
+                                "family situations. and other problems do deal with outside members of the family",
+                                "Family issues rooted in money issues.",
+                                "Domestic problems within the family.",
+                                "Unhealthy family life",
+                                "It is very stressful"
+                            ],
+                            "Keywords": [
+                                "family",
+                                "lack",
+                                "problems",
+                                "issues",
+                                "deal outside",
+                                "concern stressful",
+                                "food"
+                            ],
+                            "KeywordCounts": {
+                                "family": 33,
+                                "lack": 18,
+                                "problems": 16,
+                                "issues": 15,
+                                "deal outside": 13,
+                                "concern stressful": 13,
+                                "food": 13
+                            }
+                        },
+                        {
+                            "Topic": 8,
+                            "Count": 7,
+                            "Examples": [
+                                "My partner and I were being harassed at our old apartment by some drug addicts who went as far as to look inside our window at night. My partner's truck also got stolen in our old apartment's parking lot",
+                                "My neighbor turned out to be an active gang member and I was part of an altercation one night, I spent a couple nights somehere else",
+                                "my next-door neighbor kept harassing my partner and I.",
+                                "I had a stalker for a bit. I got that handleded though",
+                                "Neighbor was abusing kids, had to call police on him"
+                            ],
+                            "Keywords": [
+                                "neighbor",
+                                "partner",
+                                "old apartment",
+                                "got",
+                                "night",
+                                "stolen old",
+                                "threat moved",
+                                "police door",
+                                "look inside"
+                            ],
+                            "KeywordCounts": {
+                                "neighbor": 15,
+                                "partner": 11,
+                                "old apartment": 10,
+                                "got": 6,
+                                "night": 6,
+                                "stolen old": 5,
+                                "threat moved": 5,
+                                "police door": 5,
+                                "look inside": 5
+                            }
+                        },
+                        {
+                            "Topic": 9,
+                            "Count": 6,
+                            "Examples": [
+                                "The long distance with no proper mode of travel",
+                                "Unfamiliar people and places",
+                                "Strange people and things",
+                                "Not everyone is reliable",
+                                "things not working"
+                            ],
+                            "Keywords": [
+                                "things",
+                                "people",
+                                "places reliable",
+                                "strange",
+                                "proper mode",
+                                "working unfamiliar",
+                                "mode travel"
+                            ],
+                            "KeywordCounts": {
+                                "things": 29,
+                                "people": 26,
+                                "places reliable": 20,
+                                "strange": 20,
+                                "proper mode": 20,
+                                "working unfamiliar": 20,
+                                "mode travel": 20
+                            }
+                        }
+                    ],
+                    "response_stats": {
+                        "total_responses": 5320,
+                        "valid_responses": 270,
+                        "response_rate": 5.075187969924812
+                    }
+                },
+                "Please explain why it was difficult to find housing.": {
+                    "metrics": {
+                        "total_documents": 579,
+                        "number_of_topics": 3,
+                        "percent_in_topics": 99.48186528497409,
+                        "percent_outliers": 0.5181347150259068,
+                        "max_topic_size": 243,
+                        "min_topic_size": 132,
+                        "avg_topic_size": 192.0,
+                        "topic_size_std": 45.760244754590204,
+                        "size_distribution": {
+                            "0": 243,
+                            "1": 201,
+                            "2": 132
+                        }
+                    },
+                    "topic_summary": [
+                        {
+                            "Topic": 0,
+                            "Count": 243,
+                            "Examples": [
+                                "Primarily cost. And Credit score. I was able to borrow funds to secure a home , but coming up with first month, a 2000 security deposit, the 100 application fee, and the expense of moving in the first place Uhaul, gas etc is exorbitant to those with an income that is barely livable. I have a few medical collections and those have been detrimental to my credit score - most places require a credit score of 650 and above to be eligible and make 3 times what the rent is. If I had that kind of background, I would have just purchased a home.",
+                                "The rent prices are more than a mortgage payment and I cannot qualify for a home loan because I have not had a job long enough since I was a full-time student. Usually the bank will take school as work history but the degree I earned does not directly relate to the current job I have so it will not count. Even a one bedroom apartment in Alamogordo is almost 1000 a month then utilities on top of that, and 1 bedroom is not big enough since I have children and am a single parent so my income is all we have to pay all of the bills.",
+                                "I have animals that ihave been with me since i was a child that i refuse to part with. Due to my ASD my furry friends are dear to me and vital. housing near campuses of course do not allow them and others do but not all of my pets. i cannot ask them to accomodate the more exotic pets. to add, rent is ridicoulous for most of those places and living with others is not something i am comfortable with.",
+                                "This past year, from what I could tell, every apartment complex raised rent as much as they legally could. Places that used to be in my and my roommates' price range are now way outside of it. There is also a lot of housing competition in Las Cruces and it is always hard to find a place even if you have money.",
+                                "The rents are to high also there are not many options to move into. Also if you do put in an application they expect you to make 3x the amount to even live in an apartment there. Who makes that much money in NM? Most people make minimum wage, so how can they afford or be expected to make 3x rent."
+                            ],
+                            "Keywords": [
+                                "rent",
+                                "housing",
+                                "expensive",
+                                "high",
+                                "places",
+                                "prices",
+                                "affordable",
+                                "hard",
+                                "available",
+                                "cost"
+                            ],
+                            "KeywordCounts": {
+                                "rent": 8,
+                                "housing": 5,
+                                "expensive": 4,
+                                "high": 4,
+                                "places": 3,
+                                "prices": 2,
+                                "affordable": 2,
+                                "hard": 2,
+                                "available": 2,
+                                "cost": 2,
+                                "time": 2,
+                                "area": 2,
+                                "income": 2,
+                                "money": 2
+                            }
+                        },
+                        {
+                            "Topic": 1,
+                            "Count": 201,
+                            "Examples": [
+                                "I cannot afford to live on campus. My roommate moved out of on-campus housing last spring and still owes the university thousands of dollars because he is being charged for not submitting paperwork, letting them know he was not returning to campus housing this academic year 2022-23. He did not enroll this year because of that debt. Now he is working as much as possible and making payments to the university in hopes of returning to school. He is super intelligent, but I do not see how he will be able to afford tuition, take classes, and keep working night shifts. Off-campus, there is limited affordable housing, and there are waiting lists for the cheap options --even the sketchy ones. I was lucky. I moved in with a friend and then took over the lease when she graduated. My roommate plans to do the same when I hopefully graduate in May. After the pandemic quieted, the lease terms have been shortened to six and sometimes even three months. The companies or landlords raise the rent by at least 50 monthly each time the lease is renewed. They know they have us students and our  in their pockets.",
+                                "Their is not enough affordable housing for low income students. The rents have gone up terribly high and low income students cannot afford those prices. Their are hardly any lower rentals available at all. Also some of the landlords make it impossible for low income studentspeople to get into, you have to make 3x the amount of what the rents are, which low income studentspeople do not even get that at their low income paying jobs, the applications that you apply for an apartment says you have to have perfect credit, high paying jobs, no evictions or owe any landlords. So it is basically impossible for anyone who is low income student or regular low income persons.",
+                                "In Albuquerque I drove 200 miles a day and had to buy a new car. Refuse to live in the one of the most dangerous cities in America when there are already enough kids taking weapons into school's any way. Had to buy a bullet proof backpack just to felt okay of on the shuttle from the South lot to the class room on campus. BY THE WAY no bathrooms for the commuter people at the South Lot two hours of driving later. I have to wait till I am off the shuttle and run down the stairs to the basement in Mitchell hall is the most close bathroom.",
+                                "It was extremely difficult for me to find guaranteed housing at UNM. I only found out that I had a place 3 weeks before I was expected to arrive. This was extremely distressing as I was moving from Scotland, a country almost 5000 miles away to a place I had never even been before so not knowing if I had a place to live was majorly distressing.",
+                                "It was difficult to find housing off-campus because of the price range of apartments. The apartments that were in good locations were way out of my budget, but the apartments that were in my budget were not located in safe neighborhoods. Finding an apartment that was not too far from campus was another struggle."
+                            ],
+                            "Keywords": [
+                                "campus",
+                                "housing",
+                                "expensive",
+                                "near",
+                                "rent",
+                                "apartments",
+                                "students",
+                                "high",
+                                "safe",
+                                "college"
+                            ],
+                            "KeywordCounts": {
+                                "campus": 13,
+                                "housing": 8,
+                                "expensive": 4,
+                                "near": 3,
+                                "rent": 3,
+                                "apartments": 2,
+                                "students": 2,
+                                "high": 2,
+                                "safe": 2,
+                                "college": 2
+                            }
+                        },
+                        {
+                            "Topic": 2,
+                            "Count": 132,
+                            "Examples": [
+                                "There are very limited options, they are expensive, and most situations are either beyond capacity or at capacity.",
+                                "The prices were over my budget. I wasn\u00e2t sure how to really fill everything out.",
+                                "Either too expensive or they do not match with my age group and lifestyle",
+                                "It is not accessible and not good on money. Everything is expensive.",
+                                "A lot of it was out of my price range or on unsafe neighborhoods."
+                            ],
+                            "Keywords": [
+                                "expensive",
+                                "options",
+                                "availability",
+                                "cost",
+                                "price",
+                                "available",
+                                "budget",
+                                "range",
+                                "affordable",
+                                "lack"
+                            ],
+                            "KeywordCounts": {
+                                "expensive": 15,
+                                "options": 10,
+                                "availability": 9,
+                                "cost": 9,
+                                "price": 8,
+                                "available": 6,
+                                "budget": 6,
+                                "range": 5,
+                                "affordable": 5,
+                                "lack": 4,
+                                "high": 4
+                            }
+                        }
+                    ],
+                    "response_stats": {
+                        "total_responses": 5320,
+                        "valid_responses": 579,
+                        "response_rate": 10.88345864661654
+                    }
+                },
+                "Please share a personal experience where food or housing insecurity had a direct impact.": {
+                    "metrics": {
+                        "total_documents": 808,
+                        "number_of_topics": 2,
+                        "percent_in_topics": 98.88613861386139,
+                        "percent_outliers": 1.1138613861386137,
+                        "max_topic_size": 748,
+                        "min_topic_size": 51,
+                        "avg_topic_size": 399.5,
+                        "topic_size_std": 348.5,
+                        "size_distribution": {
+                            "0": 748,
+                            "1": 51
+                        }
+                    },
+                    "topic_summary": [
+                        {
+                            "Topic": 0,
+                            "Count": 748,
+                            "Examples": [
+                                "I start having fainting episodes which probably came from the fact the the first ten years out of high school, I spent working as a farmer and landscaper, working my body to exhaustion and using the money to pay for school. I have been enrolled since 2013. I am still an undergraduate but a senior now. No food is equivalent to no study brain power. Its Science. Also, getting enough sleep is another one but universities do not care about anyone except their own freaking income. If they really cared about students I would not have to deal with six T.A's and a tutor before getting to the teacher but you do. Oh and Latin for Fall 2022 would have had a tutor right away and explained that there is an ROTC TABLE and that you CANNOT just sit where ever you want. At the Tutoring center you get bird-walked the whole time with off tangent gibberish and gossip nonsense. One man is the one only giving the right answers and checking out again, but he yells them. Everyone and their mom is so competitive too instead of being kind and uplifting. Its sink or swim and I hated everything about it. One time I ate a packet of Emergence C and drowned it down with water I brought from home in a stainless steel water bottle that was bought from the bookstore since they were on discount. IF ONLY EVERYONE KNEW THE WAYS THE WRAP MORE MONEY AROUND. This was my lunch until i got home 200 miles and two hours later! Monday through Friday! 15 credit hours?! are you kidding me?! Why? Because \"you are honors and decorated student that was awarded a transfer scholarship that require 15 credit hours.\" Yuck Yuck Yuck, you can keep you 2,000 transfer scholarship. I WANT MY MENTAL HEALTH BACK!",
+                                "Prior to the last two years, I was homeless, and going back to school was pretty much a pipe dream. One of my parents got into a situation where I could live with them, and that let me go to school. However, I was still working so much I failed a lot of classes my first couple semesters online learning due to covid was also part of that and all, though. I am really secure now, my parent owns their house and is not going to kick me out or anything, together we play the bills pretty comfortably, but I still often pick up more freelance work in addition to having a part-time regular job than I really need because I am constantly stressing about money and am scared of being homeless again. Sometimes I have missed class because I have too much paid work to do, and sometimes it is difficult to balance work and homework. I know I need to cut back on the freelance work since I do not really need it and a lot of it really does not even pay well, but it is hard not to take anything available because I am kind of in the habit of doing so.",
+                                "On a daily basis, I do not eat breakfast or lunch. My family household including myself is a family of five so food has to last two weeks for the next payday. When I come home from work and school around six or seven sometimes eleven I would be so tired and hungry only to find that there is no dinner. There are times when I do not eat for an entire day I would just drink tea I brought to school or work. I lost weight when I started college, I lost a dramatic amount of weight that people I knew took easy notice. I remember I did not eat for two whole days and when I got to the third day in the afternoon I was studying I got a migraine. When I got a migraine as bad as when I was that time my vision went blurry, I felt lightheaded and I got cold sweats. I was about to past out in the tech building from not eating.",
+                                "I now live in my car, I always try to make it to class. This means i suffer in getting homework done. I usually will go around asking if someone needs work done so i can make some cash. This is because I try to keep the inside of my car from freezing, not for myself but for my dog which I have had for years now. I have adequate blankets and recently bought her a car charger heated blanket. Besides trying to find a way to make money, I also cruise around to find potential parking spots to sleep and have some privacy. I also try hanging out with friends and having a study group and trying to spend the night. I recently got a full time job so the hard times are coming to an end. This is bittersweet feeling for me. Tough time make strong individuals, I am thankful to be alive and able to still experience life.",
+                                "I was sleeping in my car so I had no electricity or internet to do my classes. I was busy worrying how I was going to survive and be safe so it was hard to study and focus on my school classes. Also it was cold and we were hungry and wanting to be inside somewhere safe and warm. Also the police and security guards really intimidate, threaten and harass you if you are homeless and on the streets. It is scary you have to watch out for druggie people, pimps trying to get you if your a girl. They were asking me if I wanted to be pimped out. I told them leave me alone I am not like that kind of person."
+                            ],
+                            "Keywords": [
+                                "food",
+                                "school",
+                                "class",
+                                "work",
+                                "time",
+                                "focus",
+                                "hard",
+                                "money",
+                                "eat",
+                                "hungry"
+                            ],
+                            "KeywordCounts": {
+                                "food": 4,
+                                "school": 3,
+                                "class": 3,
+                                "work": 3,
+                                "time": 3,
+                                "focus": 2,
+                                "hard": 2,
+                                "money": 2,
+                                "eat": 2,
+                                "hungry": 2,
+                                "housing": 2,
+                                "just": 1,
+                                "assignments": 1,
+                                "day": 1
+                            }
+                        },
+                        {
+                            "Topic": 1,
+                            "Count": 51,
+                            "Examples": [
+                                "I never have had this problem in my life and I am very grateful for that.",
+                                "This question is not really relevant to me right now.",
+                                "prefer not too answer, its hard time for me right now",
+                                "I do not remember any specific times at this moment.",
+                                "It was affected sometimes, whenever am heading home"
+                            ],
+                            "Keywords": [
+                                "experience",
+                                "think",
+                                "haven\u00e2t",
+                                "like",
+                                "grateful",
+                                "answer",
+                                "problems",
+                                "question",
+                                "moment",
+                                "does"
+                            ],
+                            "KeywordCounts": {
+                                "experience": 31,
+                                "think": 14,
+                                "haven\u00e2t": 13,
+                                "like": 11,
+                                "grateful": 8,
+                                "answer": 8,
+                                "problems": 8,
+                                "question": 8,
+                                "moment": 7,
+                                "does": 6,
+                                "right": 6,
+                                "life": 6
+                            }
+                        }
+                    ],
+                    "response_stats": {
+                        "total_responses": 5320,
+                        "valid_responses": 808,
+                        "response_rate": 15.18796992481203
+                    }
+                },
+                "What could your college or university do to address food and housing insecurity?": {
+                    "metrics": {
+                        "total_documents": 1312,
+                        "number_of_topics": 7,
+                        "percent_in_topics": 81.70731707317073,
+                        "percent_outliers": 18.29268292682927,
+                        "max_topic_size": 490,
+                        "min_topic_size": 39,
+                        "avg_topic_size": 153.14285714285714,
+                        "topic_size_std": 146.09627801206844,
+                        "size_distribution": {
+                            "0": 490,
+                            "1": 197,
+                            "2": 127,
+                            "3": 99,
+                            "4": 63,
+                            "5": 57,
+                            "6": 39
+                        }
+                    },
+                    "topic_summary": [
+                        {
+                            "Topic": 0,
+                            "Count": 490,
+                            "Examples": [
+                                "I am sure main campuses have more assistants or offices to help in the bigger cities however I think in small branches there might not be so much available. I could be wrong but one thing that could help is knowing where to look and making it easy if someone does need these assistants to access it and apply. if the university would like to address this or help students I think if they made sure each student knew where to go for that would be a start, instead of a student missing out on assistants because they did not know where to go or just simply did not know the school would offer help. I think that is a good first step in helping which is making sure the person sees your helping hand. other than that I think an advisory type system might work where an office with campus staff helping students one on one form start to finish and guiding them in the right direction to get what they need. sort of how class advisors would do and can reach out to when things are unclear or need help with what to do.",
+                                "My university, in general, does not listen to student feedback. There have been numerous times in my enrollment here wherein the university has outright ignored and talked down to students' petitions, and the administration rarely shares information on new policies - and they certainly do not allow students to have any impact on them. The most impactful move would be if the administration actually listened to students, opened channels for official feedback, and allowed our input on new decisions to allow us to more effectively address the problems this institution has ourselves, as the ones these problems actually impact.",
+                                "Students receiving aid should get a free meal plan on campus- even just one swipe per day 7 swipes a week, etc. Also, check in more often with students who might be vulnerable and give them direct solutions. Life situations can change abruptly, and it can be very difficult to ask for help or know how to. Also, help that is offered can often feel like a \"trick\" or students might think that they have to pay it back in some way or maybe that their situation is not severe enough for that kind of help. Help almost needs to be forced onto some students because if not, they might just disappear like I did back in 2015.",
+                                "While my housing situation is not dire, I have heard countless stories of individuals not being able to find housing due to overcapacity issues. It is the universities responsibility to make sure that housing needs are met for individuals who are enrolled, and it appears that they are severely underequipped to do perform this. A solution would be difficult, as it includes enhancing infrastructure demands, but that may be what is required from the growing capacity post COVID. That or providing aid for students who have to seek other housing in a volatile housing market.",
+                                "Having adequate food storage in campus apartments would be huge, those of us in studios only have a mini fridge and those in 2 or 4 bedrooms have one fridge to share and it often is not enough space. Especially with a mini fridge though, it does not keep food cold enough and things go bad so quickly that I end up throwing out so much food every week! It just does not make sense to me to expect students who are 20 years old to live like they are in a dorm for nearly 700month. I could rent a studio off campus for that amount and have a full kitchen to myself."
+                            ],
+                            "Keywords": [
+                                "campus",
+                                "students",
+                                "food",
+                                "housing",
+                                "college",
+                                "help",
+                                "provide",
+                                "pantry",
+                                "school",
+                                "affordable"
+                            ],
+                            "KeywordCounts": {
+                                "campus": 5,
+                                "students": 5,
+                                "food": 4,
+                                "housing": 3,
+                                "college": 1,
+                                "help": 1,
+                                "provide": 1,
+                                "pantry": 1,
+                                "school": 1,
+                                "affordable": 1,
+                                "think": 1,
+                                "lower": 1,
+                                "cost": 1
+                            }
+                        },
+                        {
+                            "Topic": 1,
+                            "Count": 197,
+                            "Examples": [
+                                "I would say to definitely make resources more available to those looking to get food. Also maybe some anonymous counseling as well and a way for people to create a time where they are able to go to the food pantry alone so they do not have to face the insecurity of receiving help.",
+                                "I think they have a food pantry and that is great but it is once a week. I understand that they are trying to serve everyone but I think the food they sell should be more affordable especially is someone needs to eat there every day.",
+                                "Think about your Rural and disabled communities, Some of us may be just barely getting by and that alone can be demoralizing. My suggestion would be to extend the reach of these resources. But that also may be hard.",
+                                "I think something that would be nice is providing more recourses as far as where to go when you\u00e2re struggling. We have the food pantry but other than that there is no other recourse being recommended.",
+                                "I would say make it more descrite because of the stigma associated with food insecurity makes people not get help and stop paying overpaid administration that does less then the teachers and workers"
+                            ],
+                            "Keywords": [
+                                "food",
+                                "pantry",
+                                "people",
+                                "pantries",
+                                "maybe",
+                                "provide",
+                                "hours",
+                                "insecurity",
+                                "bank",
+                                "events"
+                            ],
+                            "KeywordCounts": {
+                                "food": 11,
+                                "pantry": 10,
+                                "people": 3,
+                                "pantries": 2,
+                                "maybe": 2,
+                                "provide": 2,
+                                "hours": 2,
+                                "insecurity": 2,
+                                "bank": 1,
+                                "events": 1,
+                                "information": 1
+                            }
+                        },
+                        {
+                            "Topic": 2,
+                            "Count": 127,
+                            "Examples": [
+                                "Honestly, in order to address these issues it will have to be both a college and state wide movement. The opiod crisis is getting worse and making it unsafe. People cannot afford help and people who are not addicts work hard and still can barely afford anything.",
+                                "I think being more open about their services and talking about it more because I am sure some people do not know about what they provide, myself included. I also think keeping a level of privacy because people tend to get embarrassed.",
+                                "I am not the right person to ask, I am far from the most relevant person affected by this. I, myself, am trying to better understand the needs of those who are directly right on the fringe.",
+                                "there should be support groups so people can connect because we are all incredibly isolated  we need to be forming real, active communities.",
+                                "More info about accessible options emails, flyers, social media, etc I only learn about these things from friends and sometimes professors"
+                            ],
+                            "Keywords": [
+                                "resources",
+                                "help",
+                                "people",
+                                "available",
+                                "information",
+                                "doing",
+                                "issues",
+                                "know",
+                                "provide",
+                                "need"
+                            ],
+                            "KeywordCounts": {
+                                "resources": 6,
+                                "help": 6,
+                                "people": 5,
+                                "available": 4,
+                                "information": 3,
+                                "doing": 3,
+                                "issues": 3,
+                                "know": 3,
+                                "provide": 3,
+                                "need": 2,
+                                "think": 2,
+                                "just": 2,
+                                "fine": 2,
+                                "address": 2,
+                                "emails": 2
+                            }
+                        },
+                        {
+                            "Topic": 3,
+                            "Count": 99,
+                            "Examples": [
+                                "More events promoting pantries, clear, concise promotion of the cafeteria being open to people without meal plans alongside payment options beyond large fees to enroll in meal plans or being able to buy from the cafeteria infrequently.",
+                                "Offer Dining Hall hours that are later and earlier. Offer more diverse food options. Give more options to use meal swipes. Like having a school store, not just the Dining Hall.",
+                                "By making these things more affordable. I had a meal plan at my old college and it was absurdly expensive so I had to get the lowest plan they offered.",
+                                "Better food at lapo, healthier options at the sub, lowering prices at the src and providing wider options for food there and at the sub.",
+                                "If they had a food court with different businesses it would possibly save money for better quality meals instead of bulk cooking"
+                            ],
+                            "Keywords": [
+                                "food",
+                                "meal",
+                                "healthy",
+                                "cheaper",
+                                "healthier",
+                                "plans",
+                                "provide",
+                                "hall",
+                                "dining",
+                                "cafeteria"
+                            ],
+                            "KeywordCounts": {
+                                "food": 9,
+                                "meal": 7,
+                                "healthy": 6,
+                                "cheaper": 6,
+                                "healthier": 4,
+                                "plans": 4,
+                                "provide": 4,
+                                "hall": 3,
+                                "dining": 3,
+                                "cafeteria": 3
+                            }
+                        },
+                        {
+                            "Topic": 4,
+                            "Count": 63,
+                            "Examples": [
+                                "Though I have never gotten to the point of needing the assistance myself, it could be made more readily aware for some students as I had not known about it is availability until researching for the sake of this survey.",
+                                "I think there could be more advertisements for people to be able to know such resources are available. Or there could be survey's done once or twice a year to see what students' needs are.",
+                                "Provide confidential meetings with students. So students feel have a safe environment where they can be honest about the help they need without feeling embarrassed.",
+                                "Have help groups that would help to look for resources for student and help to share mental awareness that happens during struggling times",
+                                "Student support for tapping into community resources. Working with local government to ensure those resources are available to students."
+                            ],
+                            "Keywords": [
+                                "students",
+                                "resources",
+                                "help",
+                                "provide",
+                                "available",
+                                "let",
+                                "surveys",
+                                "hours",
+                                "know",
+                                "teachers"
+                            ],
+                            "KeywordCounts": {
+                                "students": 12,
+                                "resources": 5,
+                                "help": 4,
+                                "provide": 3,
+                                "available": 3,
+                                "let": 3,
+                                "surveys": 3,
+                                "hours": 2,
+                                "know": 2,
+                                "teachers": 2
+                            }
+                        },
+                        {
+                            "Topic": 5,
+                            "Count": 57,
+                            "Examples": [
+                                "We need to lobby against temporary vacation homes Air BNB, VRBO, etc which are elevating the housing rates to an astronomical rate. What good is tourism money if the people who live and work here do not have anywhere to live? My neighborhood alone has far more AirBNBs than they do houses and apartments available for the folks who live there.",
+                                "Maybe more food options and maybe free because i am paying 2,000 for a meal plan I am forced to have that I do not really use. People at my housing vandalize too much arouns the building and my car was broken into recently. Maybe enforce more securith around buildings and parking lots that we are paying for.",
+                                "Monitor the 3rd party housing situations. There is been contracts signed that forced a lease when it was not in the contract. Leases are difficult to get rid of. Could not give my lease to non-residents when I wanted to let go of a lease.",
+                                "More housing options: RV parking, tiny community, container houses, rent vouchers for participating landlords like section 8 for students",
+                                "Affordable Housing is very much lacking across the Country. The Rent has been too damn high, longer than I have been alive."
+                            ],
+                            "Keywords": [
+                                "housing",
+                                "affordable",
+                                "single",
+                                "lease",
+                                "parking",
+                                "food",
+                                "people",
+                                "families",
+                                "build",
+                                "family"
+                            ],
+                            "KeywordCounts": {
+                                "housing": 16,
+                                "affordable": 6,
+                                "single": 3,
+                                "lease": 2,
+                                "parking": 2,
+                                "food": 2,
+                                "people": 2,
+                                "families": 2,
+                                "build": 2,
+                                "family": 2,
+                                "add": 2
+                            }
+                        },
+                        {
+                            "Topic": 6,
+                            "Count": 39,
+                            "Examples": [
+                                "Stop charging 3 for a water bottle and 1.75 for a granola bar, especially when they are stale.",
+                                "They could make it a little cheaper as well as offering incentives to make it cheaper.",
+                                "I am not sure, I wonder if quality is a result of supply chain issues",
+                                "be more understanding and make things a little cheaper",
+                                "Open a new store. Or improve currently existed."
+                            ],
+                            "Keywords": [
+                                "cheaper",
+                                "make affordable",
+                                "little",
+                                "make things",
+                                "affordable make",
+                                "prices"
+                            ],
+                            "KeywordCounts": {
+                                "cheaper": 22,
+                                "make affordable": 19,
+                                "little": 16,
+                                "make things": 15,
+                                "affordable make": 12,
+                                "prices": 7
+                            }
+                        }
+                    ],
+                    "response_stats": {
+                        "total_responses": 5320,
+                        "valid_responses": 1312,
+                        "response_rate": 24.661654135338345
+                    }
+                },
+                "Is there anything else you would like to share?": {
+                    "metrics": {
+                        "total_documents": 278,
+                        "number_of_topics": 4,
+                        "percent_in_topics": 100.0,
+                        "percent_outliers": 0.0,
+                        "max_topic_size": 234,
+                        "min_topic_size": 10,
+                        "avg_topic_size": 69.5,
+                        "topic_size_std": 95.02762756167282,
+                        "size_distribution": {
+                            "0": 234,
+                            "1": 19,
+                            "2": 15,
+                            "3": 10
+                        }
+                    },
+                    "topic_summary": [
+                        {
+                            "Topic": 0,
+                            "Count": 234,
+                            "Examples": [
+                                "I did suffer from housing insecurities after I graduated from my dormitory high-school back in 2018. I did rely on family support to meet my basic needs but, I felt that I was not welcome in the household because I could not handle to stay in a abusive relationship with my relatives. I called them out about the elderly abuse my grandparents, alcohol and substance abuse, and the domestic violence that all occurred within the household. I was not heard and often neglected when I stayed with my family. So I took the obligation to move out. And it was the greatest decision I would ever made. Thanks to the scholarship donors, government subsidy, and the college; I was able to support myself and pursue my goal in academia.",
+                                "I went tthrough a deep depression because of my housing situation from March-September. The job I had with the school did not make me aware from the get go that I could be provided reduced housing. When I reached out for help, they taked about it but it never came through. Luckliy this year I have a job that provides free room and board during the summer. My friend who is being a transfer student has experinced harsher experiences than me and we had a very difficult time getting her enrolled and housing. She luves over campus and has had a year delayed in her college career because of the adults around her not doing their jobs.",
+                                "Receiving more support from advisement. Sometimes as a student we do not receive the advisement we need from our actual advisors. And it would be helpful if other advisors were not limited only to thier specific Department, and be able to devise other students from different departments if needed. Everyone has different points of view and support to offer. It would be helpful to students to have the option to get a second opinion if needed.",
+                                "I wish we had more access to healthy, affordable food options that are not expired and that are very fresh. I wish we had refrigerated water so we would not have to go get bottled water from the store that is pretty far. I wish gas prices were not so high. I wish the access to good health care physicians was better and that our campus and common spaces were more conscious about germs.",
+                                "BIPOC individuals are more at risk for not being able to afford nutritious food. Diabetes, heart disease, hunger, kidney failure, food deserts etc affect people of color the most. Majority of farm workers are latino, yet are not protected and do not own nearly as much landproperty as white people. People of color remain landless and do not have access to healthy foods."
+                            ],
+                            "Keywords": [
+                                "students",
+                                "food",
+                                "help",
+                                "thank",
+                                "school",
+                                "people",
+                                "need",
+                                "housing",
+                                "college",
+                                "like"
+                            ],
+                            "KeywordCounts": {
+                                "students": 3,
+                                "food": 3,
+                                "help": 3,
+                                "thank": 2,
+                                "school": 2,
+                                "people": 2,
+                                "need": 2,
+                                "housing": 2,
+                                "college": 2,
+                                "like": 2,
+                                "campus": 1,
+                                "think": 1,
+                                "just": 1,
+                                "parking": 1
+                            }
+                        },
+                        {
+                            "Topic": 1,
+                            "Count": 19,
+                            "Examples": [
+                                "Yes but it is useless no one helps",
+                                "Not at the moment.",
+                                "Not at this time.",
+                                "I do not think so",
+                                "I am not sure."
+                            ],
+                            "Keywords": [
+                                "moment",
+                                "time",
+                                "helps think",
+                                "useless"
+                            ],
+                            "KeywordCounts": {
+                                "moment": 76,
+                                "time": 73,
+                                "helps think": 16,
+                                "useless": 16
+                            }
+                        },
+                        {
+                            "Topic": 2,
+                            "Count": 15,
+                            "Examples": [
+                                "There is nothing else that I would like to share at the moment.",
+                                "I do not think there is anything else I would like to share.",
+                                "I think I said what I felt like sharing.",
+                                "I cannot think of anything right now",
+                                "I have nothing else to share."
+                            ],
+                            "Keywords": [
+                                "share",
+                                "like",
+                                "think",
+                                "moment",
+                                "say",
+                                "sharing"
+                            ],
+                            "KeywordCounts": {
+                                "share": 59,
+                                "like": 39,
+                                "think": 28,
+                                "moment": 16,
+                                "say": 12,
+                                "sharing": 12
+                            }
+                        },
+                        {
+                            "Topic": 3,
+                            "Count": 10,
+                            "Examples": [
+                                "Not at this moment.",
+                                "No not right now.",
+                                "I am not saying",
+                                "Not right now",
+                                "No not really"
+                            ],
+                            "Keywords": [
+                                "right",
+                                "moment",
+                                "saying",
+                                "really"
+                            ],
+                            "KeywordCounts": {
+                                "right": 109,
+                                "moment": 79,
+                                "saying": 40,
+                                "really": 26
+                            }
+                        }
+                    ],
+                    "response_stats": {
+                        "total_responses": 5320,
+                        "valid_responses": 278,
+                        "response_rate": 5.225563909774436
+                    }
+                }
+            },
+            "categorical": {
+                "Have you used the campus food pantry?": {
+                    "analysis": {
+                        "counts": {
+                            "No": 3643,
+                            "Yes": 1250,
+                            "My campus does not have a food pantry": 260
+                        },
+                        "percentages": {
+                            "No": 70.69668154473122,
+                            "Yes": 24.257713953037065,
+                            "My campus does not have a food pantry": 5.0456045022317095
+                        },
+                        "missing": 167,
+                        "total_responses": 5320,
+                        "valid_responses": 5153,
+                        "unique_values": [
+                            "No",
+                            "Yes",
+                            "My campus does not have a food pantry",
+                            null
+                        ],
+                        "options_found": [
+                            "Yes",
+                            "No",
+                            "My campus does not have a food pantry"
+                        ],
+                        "unexpected_values": [],
+                        "response_rate": 96.8609022556391
+                    },
+                    "metadata": {
+                        "question": "Foodpantry",
+                        "type": "categorical_single",
+                        "options": [
+                            "Yes",
+                            "No",
+                            "My campus does not have a food pantry"
+                        ]
+                    }
+                },
+                "Please select the reasons for not visiting the campus food pantry.": {
+                    "analysis": {
+                        "counts": {
+                            "I do not need assistance with obtaining food and household supplies": 1370,
+                            "Other students need this help more than I do": 1285,
+                            "I am not sure I am eligible to use the campus food pantry": 816,
+                            "The hours of operation for the campus food pantry do not work for me": 454,
+                            "Other": 431,
+                            "I don't want other people to see me and know that I am food insecure": 392,
+                            "The location is inconvenient": 328,
+                            "I visit another food pantry/food bank in my community": 99,
+                            "The items available at the campus food pantry do not align with my dietary needs (vegetarian": 67,
+                            " vegan": 67,
+                            " halal": 67,
+                            " kosher": 67,
+                            " etc.)": 67,
+                            "I do not like the selection offered by the campus food pantry": 55
+                        },
+                        "percentages": {
+                            "I do not need assistance with obtaining food and household supplies": 24.61814914645103,
+                            "Other students need this help more than I do": 23.090745732255165,
+                            "I am not sure I am eligible to use the campus food pantry": 14.663072776280323,
+                            "The hours of operation for the campus food pantry do not work for me": 8.158131176999103,
+                            "Other": 7.744833782569632,
+                            "I don't want other people to see me and know that I am food insecure": 7.044025157232705,
+                            "The location is inconvenient": 5.893980233602876,
+                            "I visit another food pantry/food bank in my community": 1.778975741239892,
+                            "The items available at the campus food pantry do not align with my dietary needs (vegetarian": 1.2039532794249777,
+                            " vegan": 1.2039532794249777,
+                            " halal": 1.2039532794249777,
+                            " kosher": 1.2039532794249777,
+                            " etc.)": 1.2039532794249777,
+                            "I do not like the selection offered by the campus food pantry": 0.9883198562443846
+                        },
+                        "missing": 49,
+                        "total_eligible": 3643,
+                        "valid_responses": 5565,
+                        "unique_values": [
+                            "I am not sure I am eligible to use the campus food pantry",
+                            "Other students need this help more than I do",
+                            "I do not need assistance with obtaining food and household supplies",
+                            "The hours of operation for the campus food pantry do not work for me",
+                            "I don't want other people to see me and know that I am food insecure",
+                            "The location is inconvenient",
+                            "Other",
+                            "The items available at the campus food pantry do not align with my dietary needs (vegetarian",
+                            " vegan",
+                            " halal",
+                            " kosher",
+                            " etc.)",
+                            "I visit another food pantry/food bank in my community",
+                            "I do not like the selection offered by the campus food pantry",
+                            null
+                        ],
+                        "options_found": [
+                            "I do not need assistance with obtaining food and household supplies",
+                            "The location is inconvenient",
+                            "The hours of operation for the campus food pantry do not work for me",
+                            "I visit another food pantry/food bank in my community",
+                            "I do not like the selection offered by the campus food pantry",
+                            "I am not sure I am eligible to use the campus food pantry",
+                            "Other students need this help more than I do",
+                            "I don't want other people to see me and know that I am food insecure",
+                            "Other"
+                        ],
+                        "unexpected_values": [
+                            "The items available at the campus food pantry do not align with my dietary needs (vegetarian",
+                            " vegan",
+                            " halal",
+                            " kosher",
+                            " etc.)"
+                        ],
+                        "multiple_selection_patterns": {
+                            "1.0": 2372,
+                            "2.0": 795,
+                            "3.0": 290,
+                            "4.0": 56,
+                            "5.0": 28,
+                            "7.0": 21,
+                            "6.0": 18,
+                            "8.0": 13,
+                            "10.0": 1
+                        },
+                        "response_rate": 152.7587153444963
+                    },
+                    "metadata": {
+                        "question": "Foodpantry_reasons",
+                        "type": "categorical_multiple",
+                        "options": [
+                            "I do not need assistance with obtaining food and household supplies",
+                            "The location is inconvenient",
+                            "The hours of operation for the campus food pantry do not work for me",
+                            "I visit another food pantry/food bank in my community",
+                            "I do not like the selection offered by the campus food pantry",
+                            "The items available at the campus food pantry do not align with my dietary needs",
+                            "I am not sure I am eligible to use the campus food pantry",
+                            "Other students need this help more than I do",
+                            "I don't want other people to see me and know that I am food insecure",
+                            "Other"
+                        ],
+                        "dependency": {
+                            "question": "Foodpantry",
+                            "value": "No"
+                        }
+                    }
+                },
+                "How safe have you felt?": {
+                    "analysis": {
+                        "counts": {
+                            "Very safe": 2651,
+                            "Moderately safe": 1865,
+                            "Not very safe": 272,
+                            "Not at all safe": 51
+                        },
+                        "percentages": {
+                            "Very safe": 54.7840462905559,
+                            "Moderately safe": 38.54102087208101,
+                            "Not very safe": 5.62099607356892,
+                            "Not at all safe": 1.0539367637941723
+                        },
+                        "missing": 481,
+                        "total_responses": 5320,
+                        "valid_responses": 4839,
+                        "unique_values": [
+                            "Very safe",
+                            "Moderately safe",
+                            "Not very safe",
+                            "Not at all safe",
+                            null
+                        ],
+                        "options_found": [
+                            "Very safe",
+                            "Moderately safe",
+                            "Not very safe",
+                            "Not at all safe"
+                        ],
+                        "unexpected_values": [],
+                        "response_rate": 90.95864661654134
+                    },
+                    "metadata": {
+                        "question": "Safety",
+                        "type": "categorical_single",
+                        "options": [
+                            "Very safe",
+                            "Moderately safe",
+                            "Not very safe",
+                            "Not at all safe"
+                        ]
+                    }
+                },
+                "Was it difficult to find housing on or near campus?": {
+                    "analysis": {
+                        "counts": {
+                            "No": 1486,
+                            "Yes": 1229
+                        },
+                        "percentages": {
+                            "No": 54.7329650092081,
+                            "Yes": 45.2670349907919
+                        },
+                        "missing": 2605,
+                        "total_responses": 5320,
+                        "valid_responses": 2715,
+                        "unique_values": [
+                            null,
+                            "Yes",
+                            "No"
+                        ],
+                        "options_found": [
+                            "Yes",
+                            "No"
+                        ],
+                        "unexpected_values": [],
+                        "response_rate": 51.03383458646616
+                    },
+                    "metadata": {
+                        "question": "Housingdiff",
+                        "type": "categorical_single",
+                        "options": [
+                            "Yes",
+                            "No",
+                            "Not applicable"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

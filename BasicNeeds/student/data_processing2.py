@@ -14,6 +14,7 @@ from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 import base64
 from io import BytesIO
 from datetime import datetime
+from sklearn.feature_extraction.text import CountVectorizer
 
 def preprocess_text(text, stopword_config):
     """
@@ -403,66 +404,6 @@ def analyze_multiple_categorical(df: pd.DataFrame, column: str, info: dict) -> d
     analysis['response_rate'] = (analysis['valid_responses'] / analysis['total_eligible']) * 100
     return analysis
 
-def generate_wordcloud_from_keywords(topic_summary, column, question, output_dir='.', stopwords=None, max_words=30) -> tuple:
-    """Generate a wordcloud from topic modeling results"""
-    if not topic_summary:
-        print(f"No topics found for column: {column}")
-        return None, None
-
-    word_freq = defaultdict(float)
-    total_responses = sum(topic['Count'] for topic in topic_summary)
-
-    for topic in topic_summary:
-        topic_size = topic['Count']
-        topic_weight = topic_size / total_responses
-
-        for keyword, count in topic['KeywordCounts'].items():
-            keyword = keyword.lower().strip()
-            
-            if stopwords and keyword in stopwords:
-                continue
-                
-            word_freq[keyword] += count * topic_weight
-
-    if not word_freq:
-        print(f"No valid keywords for column: {column}")
-        return None, None
-
-    max_freq = max(word_freq.values())
-    word_freq = {word: (freq/max_freq) * 100 for word, freq in word_freq.items()}
-
-    os.makedirs(output_dir, exist_ok=True)
-    output_filename = f"wordcloud_{column}_{question[:30]}.jpg"
-    output_path = os.path.join(output_dir, output_filename)
-
-    wordcloud = WordCloud(
-        width=1200,
-        height=800,
-        background_color='white',
-        color_func=custom_teal_color_func,
-        max_words=max_words,
-        relative_scaling=1,
-        min_font_size=8,
-        max_font_size=120,
-        collocations=False
-    ).generate_from_frequencies(word_freq)
-
-    wordcloud.to_file(output_path)
-
-    buffer = BytesIO()
-    wordcloud.to_image().save(buffer, format="JPEG", quality=95)
-    img_str = base64.b64encode(buffer.getvalue()).decode()
-
-    return img_str, output_path
-
-def custom_teal_color_func(word: str, 
-                          font_size: int, 
-                          position: tuple, 
-                          orientation: int, 
-                          random_state: int = None, 
-                          **kwargs) -> str:
-    """Custom color function for consistent teal coloring in wordcloud"""
-    return "#1E566C"
 
 def get_question_mapping():
     """
@@ -539,6 +480,110 @@ def convert_numpy_types(obj):
         return None
     return obj
 
+def generate_wordcloud_from_keywords(topic_summary, column, question, output_dir='.', stopwords=None, max_words=50):
+    """Generate a wordcloud from topic modeling results with enhanced quality, focusing on space filling, n-grams, and removing improper words."""
+
+    # Initialize word frequency dictionary
+    word_freq = defaultdict(float)
+
+    # Check if topic_summary is a list of dictionaries
+    if isinstance(topic_summary, list) and all(isinstance(topic, dict) for topic in topic_summary):
+        total_responses = sum(topic.get('Count', 0) for topic in topic_summary)
+
+        for topic in topic_summary:
+            topic_size = topic.get('Count', 0)
+            topic_weight = topic_size / total_responses if total_responses > 0 else 0
+
+            keyword_counts = topic.get('KeywordCounts', {})
+            for keyword, count in keyword_counts.items():
+                keyword = keyword.lower().strip()
+
+                # Remove words with strange artifacts or misspellings
+                if "^" in keyword or any(char.isdigit() for char in keyword):
+                    continue
+
+                # Remove non-informative and generic terms explicitly
+                non_informative_words = {
+                    "sure", "think", "students", "like", "time", "just", "really", "okay", "know",
+                    "maybe", "does", "thing", "moment", "say", "help", "need", "right", "it^s", "haven^t"
+                }
+                if keyword in non_informative_words:
+                    continue
+
+                if stopwords and keyword in stopwords:
+                    continue
+
+                word_freq[keyword] += count * topic_weight
+
+    # Check if word_freq has any words
+    if not word_freq:
+        print(f"No valid keywords for column: {column}")
+        return None, None
+
+    # Convert word_freq dictionary to a list of words for vectorization
+    words_list = list(word_freq.keys())
+
+    # Ensure the words_list is not empty before using CountVectorizer
+    if words_list:
+        # Convert stopwords set to list (fixing the error)
+        if isinstance(stopwords, set):
+            stopwords = list(stopwords)
+
+        # Use CountVectorizer to extract n-grams (bigrams and trigrams)
+        vectorizer = CountVectorizer(ngram_range=(2, 3), stop_words=stopwords)
+
+        try:
+            X = vectorizer.fit_transform(words_list)
+            ngram_counts = X.toarray().sum(axis=0)
+            ngram_features = vectorizer.get_feature_names_out()
+
+            # Add n-grams to the word frequency dictionary if they're prevalent
+            for ngram, count in zip(ngram_features, ngram_counts):
+                word_freq[ngram] = count
+        except ValueError as e:
+            # Handle empty vocabulary error
+            print(f"Warning: Could not calculate n-grams for column: {column}. Error: {e}")
+
+    # Normalize the frequencies
+    max_freq = max(word_freq.values())
+    word_freq = {word: (freq / max_freq) * 100 for word, freq in word_freq.items()}
+
+    # Create the output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    output_filename = f"wordcloud_{column}_{question[:30]}.jpg"
+    output_path = os.path.join(output_dir, output_filename)
+
+    # Generate the word cloud with teal as the branding color
+    wordcloud = WordCloud(
+        width=800,  # Reduced width for better compactness
+        height=600,  # Reduced height to make it denser
+        background_color='white',
+        color_func=lambda *args, **kwargs: "#1E566C",  # Consistent teal color for branding
+        max_words=max_words,
+        relative_scaling=0.8,  # Slightly increased scaling for frequency differentiation
+        min_font_size=12,
+        max_font_size=160,  # Increased max font size for better emphasis
+        font_step=1,  # Smaller font steps for smoother variation
+        collocations=False  # Prevent bigrams that are not true n-grams
+    ).generate_from_frequencies(word_freq)
+
+    wordcloud.to_file(output_path)
+
+    buffer = BytesIO()
+    wordcloud.to_image().save(buffer, format="JPEG", quality=95)
+    img_str = base64.b64encode(buffer.getvalue()).decode()
+
+    return img_str, output_path
+
+def custom_teal_color_func(word: str, 
+                          font_size: int, 
+                          position: tuple, 
+                          orientation: int, 
+                          random_state: int = None, 
+                          **kwargs) -> str:
+    """Custom color function for consistent teal coloring in wordcloud"""
+    return "#1E566C"
+
 def main():
     # Initialize configurations
     stopword_config = get_survey_specific_stopwords()
@@ -558,6 +603,27 @@ def main():
             stopword_config,
         )
         
+        # Generate word clouds from topic summaries with enhanced quality
+        if results:
+            output_dir = 'wordclouds'
+            for column, analysis in results.items():
+                if "qualitative" in analysis:
+                    for question, question_data in analysis["qualitative"].items():
+                        topic_summary = question_data.get("topic_summary", [])
+                        
+                        # Generate the word cloud for each column/topic
+                        img_str, output_path = generate_wordcloud_from_keywords(
+                            topic_summary=topic_summary,
+                            column=column,
+                            question=question,
+                            output_dir=output_dir,
+                            stopwords=stopword_config['stopwords'],
+                            max_words=50
+                        )
+                        
+                        if img_str and output_path:
+                            print(f"Generated word cloud for column '{column}' and question '{question}' saved as '{output_path}'.")
+
         # Save results
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         final_results = {
@@ -568,19 +634,19 @@ def main():
             },
             'analysis_results': convert_numpy_types(results)
         }
-        
+
         os.makedirs('results', exist_ok=True)
         results_file = os.path.join('results', f'analysis_results_{timestamp}.json')
-        
+
         with open(results_file, 'w') as f:
             json.dump(final_results, f, indent=4)
-            
+
         print(f"Analysis results saved to {results_file}")
-            
+
     except Exception as e:
         print(f"Error in main analysis pipeline: {str(e)}")
         raise
 
 if __name__ == "__main__":
-    
     main()
+
