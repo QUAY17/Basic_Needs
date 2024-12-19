@@ -1,0 +1,390 @@
+
+Complete breakdown of all types in dataset:
+-------------------------------------------
+Undergraduate student (Full-time, 12 credit hours or more): 5320
+Undergraduate student (Part-time, less than 12 credit hours): 3193
+Staff (Part-time, Full-time, or temporary): 1927
+Graduate or professional student: 1139
+Faculty (Full-time): 897
+Other (please specify): 432
+Faculty (Part-time or Adjunct): 386
+Upper-level administration: 214
+Lecturer (Full-time): 181
+Lecturer (Part-time): 139
+Undergraduate Student - Full Time: 5
+Staff: 2
+Faculty : 1
+Other: 1
+
+Summary:
+--------
+Total students: 9652
+- Full-time undergrad students: 5320
+- Part-time undergrad students: 3193
+- Graduate students: 1139
+
+Total non-student responses: 7254
+
+Breakdown of 'Other' responses (432 total):
+----------------------------------------
+Dual Credit Student: 13
+Dual Credit: 11
+dual credit student: 5
+Dual credit student: 5
+ESL: 5
+student: 4
+ESL : 3
+Dual Credit : 3
+Student : 3
+Dual Credit student : 3
+Dual-Credit Student: 3
+Dual Enrollment: 2
+dual credit: 2
+Estudiante: 2
+non-degree seeking: 2
+Dual credit: 2
+dual-credit: 2
+Certification : 2
+Ged: 2
+Dual credit : 2
+Librarian: 2
+Clases de ESL: 1
+full time staff and grad stu: 1
+estudiante del asociado: 1
+Estudiante de ingles: 1
+Adult Education : 1
+Dual-enrollment. : 1
+Easter N.M University Roswell Adult Education Program : 1
+CNM Bootcamp: 1
+enrolled but not attending classes: 1
+Both Part-time student and part-time Staff: 1
+Staff Full-Time & Master's Student: 1
+Adult Education: 1
+Student in ged: 1
+adult education : 1
+Director of Assessment: 1
+ALP: 1
+Taking classes for non-degree status: 1
+I am here Monday through Thursday : 1
+90 plus credits completed Student.: 1
+Post-Bachelor's Alternative Teacher License Program: 1
+Director Allied Health: 1
+Early college: 1
+Dual Credit High School Student: 1
+Student in a Certificate Program PT: 1
+Part time student: 1
+High School Student taking Dual Credit Classes: 1
+Graduate student MSN and ADN nursing instructor at community College : 1
+Starting classes soon: 1
+ECHS student: 1
+Alternative Teacher Licensure Certification Program: 1
+Considered full time by contract/disability (2 classes, 6 credits): 1
+Bachelor's degree prepping for CS masters: 1
+Senior in High School: 1
+Full time AAS: 1
+Asociado en EducaciÃ³n Temprana: 1
+Estudiante en linea: 1
+Completing a post-degree certificate program.: 1
+RETURNING STUDENT WITH A BACHELOR'S DEGREE WORKING ON AN ASSOCIATES : 1
+ABE: 1
+Community attending student : 1
+Both full time employee and Part time Student Undergrad: 1
+Museum store staff: 1
+I am both employed full time and in school full time. I set no distinction between the importance of one or the other.: 1
+GED: 1
+I am an Undergraduate part-time student, and I am also a temporary student-worker.: 1
+Duel Credit Student: 1
+MId Level Admininstration: 1
+certificate program: 1
+Dual credit HS senior: 1
+Just graduated : 1
+dual-credit highschooler: 1
+Dual Enrollment, 13 credit hours: 1
+Professional: 1
+Part time undergraduate and full time staff: 1
+Returned to get certificate: 1
+I have a BA, but am doing courses I'm missing to get into a Master's program: 1
+CNA: 1
+ECHS: 1
+Audit one clasd: 1
+Upcoming student in fall 2023: 1
+Middle College High School : 1
+Ingles como segunda lengua: 1
+High school and college student : 1
+RN Program: 1
+TRIO SSS Achievement Coach: 1
+occasional student (about 1 class per semester for continuing ed): 1
+Nursing assistant : 1
+AE Student : 1
+Post-baccalaureate student: 1
+GED adult education: 1
+dual enrolled : 1
+Graduate of NMSU, completing AAS in Nursing now.: 1
+Estudiante de CNM  en InglÃ©s para adultos : 1
+Teacher license : 1
+ESL, Student: 1
+Clases para ged: 1
+online 24 semester cred: 1
+Nursing student: 1
+ESL0303: 1
+Welding associates degree : 1
+Clases de inglÃ©s : 1
+Undergraduate: (less than 12 credits), Recently earned an Associate's degree.: 1
+Training program student: 1
+Mid-level administration : 1
+Graduation : 1
+ged: 1
+CDL program student: 1
+Associate Professor Emerita, COEHS: 1
+Retired: 1
+Medical Resident: 1
+Non-degree-seeking student. I take a class a semester that interests me.: 1
+Continuing learning: 1
+My son attends SFCC: 1
+Certificate student: 1
+Audit a gym class. Pickleball : 1
+DUEL CREDIT : 1
+Taking classes for post-degree licensure : 1
+custodia: 1
+Early childhood : 1
+Law Enforcement Cert: 1
+Taking woodshop classes. : 1
+Teaching license : 1
+Maestra : 1
+Post grad: 1
+10th grade The Masters Program: 1
+Graduated in 2019 from university : 1
+Certificate : 1
+Culinary  couse: 1
+a: 1
+Biology Educator/Tutor: 1
+Estudiante de College y Languages para adultos.: 1
+Academic Appointment: 1
+Student to ESL and Hiset : 1
+Just student : 1
+second-degree student: 1
+High School GED: 1
+Duel-credit student: 1
+estudiante medio tiempo: 1
+Estudiante de English Second Language : 1
+I am currently working on an endorsement through CNM for my place of work.: 1
+Non degree: 1
+concurrent enrollment student: 1
+CHW: 1
+Non degree graduate student : 1
+Starting classes this summer.: 1
+uUNM Aumni returning for part time: 1
+Dual program (McKinley Academy): 1
+Full time undergraduate student and part time Staff : 1
+Programa ESL inglÃ©s como segundo idioma : 1
+part-time staff and part-time undergraduate student: 1
+postdoc: 1
+Departmental Chair: 1
+Full-time student and full time employee : 1
+dual enrollment : 1
+Affiliate Faculty: 1
+Program Director/Assistant Professor: 1
+Clinical Psychology Intern (classified as visiting scholar): 1
+Estudiante de inglÃ©s para adultos : 1
+Faculty Part-time: 1
+Graduate Guest Matriculant: 1
+Part time: 1
+Senior Program Manager: 1
+Full time Undergraduate student as well as hired by the housing department.: 1
+Lecturer (Full-time, visiting): 1
+Fulltime student & Full-time Staff: 1
+BSN full time student: 1
+postdoctoral fellow: 1
+Full time staff and part time grad student: 1
+custodio: 1
+Sophomore (Full time student, employed by college as well): 1
+Program Director: 1
+Undergrad student (full time)/ Faculty (Part time): 1
+Both full time staff and part-time undergraduate student  : 1
+psychology postdoctoral fellow: 1
+McKinley Academy Program: 1
+Undergraduate student (full time), student employee(Part time): 1
+Alumni taking audit class: 1
+Emeritus faculty: 1
+affiliate: 1
+Middle College student : 1
+Graduate student and staff: 1
+Associates Degree : 1
+Volunteer EMT classes : 1
+Dental Assistant: 1
+Graduate student completing undergrad prerequisites : 1
+Full-time student and Part-time Staff: 1
+Administrator: 1
+School Operations Coordinator: 1
+Distance learning : 1
+Certification: 1
+mid-level administration: 1
+dual-credit student: 1
+Returning student. Graduated 2020. Fulfilling courses for additional degree. : 1
+Contract instructor part time: 1
+Student Recruiter & Faculty: 1
+Full time student, student staff member: 1
+program advisor/faculty: 1
+I have an MSW but I am working on getting a teaching certificate: 1
+High School student attendi McKinley Academy Programng: 1
+Graduate student and full time staff: 1
+ECHS Program: 1
+Bachelor Degree Holding Employee and part time undergrad: 1
+Full time - 2nd degree returning student : 1
+IoT Deep Dive: 1
+Staff full time and part time student at cnm.: 1
+Extension : 1
+Staff and student: 1
+dual Credit courses: 1
+Graduate student and staff (research tech): 1
+Student worker(part time) and undergradute student (part time): 1
+work at NCKRI: 1
+half Lecturer, half administration (division chair): 1
+I am a member of the staff and i am also attending graduate school: 1
+Graduate student and staff : 1
+Affiliate: 1
+BA done @ UNM & taking classes @ CNM: 1
+Only taking 2 classes for personal growth: 1
+Also a student: 1
+I work and school here but I study in NMSU and work in DACC: 1
+Professional Staff: 1
+Graduate student and Graduate. assistant working at NMSU: 1
+TESOL certification for APS: 1
+High School: 1
+Part time student 90 credits: 1
+dual credit student : 1
+early college student: 1
+adjunct  instructor: 1
+Junior in Highschool/ECHS student: 1
+Staff- Full Time Student- Part time: 1
+student, taking prereq's for graduate program: 1
+Hospital staff: 1
+dual credit : 1
+Return student : 1
+dual credit high school student: 1
+Certificate of Training: 1
+Staff (full time) and Student (Full Time): 1
+Duel Credit: 1
+Dual credit enrollment : 1
+auditing classes: 1
+Enrolled in leveling course work to prepare for a Master's program: 1
+Real Estate : 1
+High school Duel Credit student: 1
+asociado en educacion temprana: 1
+Part time student and employee: 1
+trying to go back to school: 1
+asssociates degree, i already have a bachelors from another college : 1
+Dual Enrollment : 1
+dual credit high school student : 1
+Undergraduate (part-time), but also graduated with a degree. : 1
+Engish class: 1
+Undergraduate student ( part time employee - 15 credits : 1
+Alumni MAT: 1
+Dual credit class: 1
+mid-level administration : 1
+Recent graduate: 1
+Professional Student - Educated Idiot: 1
+Alternative Teachers Licensure: 1
+Estudiante ESL: 1
+High school dual credit student: 1
+I am both a full time staff and a part time student at CNM: 1
+Full time employee, part time student : 1
+Part Time undergrad & full time staff: 1
+GED Student: 1
+Dual-Credit: 1
+Postbacc- working in a lab, about to be a grad student this fall semester: 1
+12 credit hour, still part time dual credit: 1
+part-time and occasional student: 1
+at large student, senior citizen: 1
+Visiting Full time Faculty : 1
+And a student worker here : 1
+I am a Duel-Credit student: 1
+Accessibility: 1
+I work full time at the university and go to school part time. : 1
+Estudiante de ESL: 1
+dual enrollment: 1
+Dual Credit Student : 1
+Second bachelors degree pathway: 1
+preparing to apply to the dental hygiene program: 1
+Dual credit program: 1
+Contracter: 1
+Ged program: 1
+Community Education Student: 1
+BSN- Full time student: 1
+Paramedic student: 1
+provider at UNMH: 1
+Instructor part-time temporary: 1
+Retired Staff: 1
+Alumni : 1
+im going to attend this fall: 1
+Academy student: 1
+Recurring part time student : 1
+English and GED: 1
+TMP high school student taking college classes : 1
+Provider at UNMH: 1
+hlgh school equivalency: 1
+High School Equivalency: 1
+high school equivalency student: 1
+"Temporary Part-time Faculty": 1
+Faculty Full time and Superintendent at an off-campus facility: 1
+TMP student: 1
+Retail Management Program: 1
+GED Program, looking forward to attending college at the same campus. : 1
+adult ed : 1
+High School equivalency: 1
+GED student, looking to attend college. : 1
+Ged program : 1
+Haven't started yet: 1
+hiset: 1
+GED class student : 1
+Masters program: 1
+Nursing Assistant Certificate: 1
+Dual Credit student (Going to Highschool somewhere else but taking classes at the college): 1
+trying to get ged : 1
+Temp Agency worker: 1
+Process into graduation may 2023: 1
+Retired UNM Lecturer : 1
+Museum Curator / Adjunct Faculty: 1
+visiting/auditing student: 1
+Special Ed Teacher Training: 1
+Student- 2nd year: 1
+Estudiante Ingles: 1
+RETIRED STAFF/TEMP EMP: 1
+GED program Hiset : 1
+ABE program: 1
+Work study: 1
+Non degree, 12 credits per year : 1
+Just a visitor: 1
+CDL: 1
+Dual Credit program : 1
+estudiantede ESL y GED en CNM: 1
+Will be a part time student haven't registered yet: 1
+Taking one wellness class for health benefit: 1
+nmsu foundation : 1
+Signing up and starting college.: 1
+student staff and full time student : 1
+HSE: 1
+Segundo idioma : 1
+Duel credit student at CCC: 1
+Programa ESL/ Para aprender segundo ideoma: 1
+ALP program: 1
+Staff/student: 1
+After finishing my MA, wanted to do PHD but told I was not "young and career oriented, so doing UG part-time: 1
+Grad student and part-time staff: 1
+SURGICAL PROCESSING : 1
+Staff(full time) & graduate student: 1
+Part-time student and temporary staff: 1
+(Undergraduate)Consortium agreement : 1
+Full time student, Part time employee: 1
+Teacher resident with SETT: 1
+continuing education: 1
+part time,  no degree path: 1
+Estudiante de asociado: 1
+intern: 1
+Full-time Staff at ENMU/ Undergraduate student at CCC Part-time: 1
+Adult education: 1
+non-degree Senior tuition discount : 1
+I just be in student: 1
+Certificate: 1
+Postdoctoral researcher: 1
+Custodian: 1
