@@ -51,7 +51,7 @@ keybert==0.8.4
 kiwisolver==1.4.5
 langchain==0.3.13
 langchain-community==0.2.19
-langchain-core==0.1.52
+langchain-core==0.1.53
 langchain-text-splitters==0.0.1
 langcodes==3.4.0
 langsmith==0.1.58
