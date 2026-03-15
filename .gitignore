@@ -1,0 +1,17 @@
+# Data files - contains sensitive/private data
+BasicNeeds/data/
+
+# Dash scripts
+dash_script/
+
+# Old files
+old/
+
+# Charts
+charts/
+
+# Log files
+*.log
+
+# ICASA files
+*ICASA*
