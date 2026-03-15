@@ -1,14 +1,14 @@
 # Data files - contains sensitive/private data
-BasicNeeds\data
+BasicNeeds/data/
 
 # Dash scripts
-BasicNeeds\dash_script
+BasicNeeds/dash_script/
 
 # Old files
-BasicNeeds\old
+BasicNeeds/old/
 
 # Charts
-BasicNeeds\scripts\charts
+BasicNeeds/scripts/charts/
 
 # Log files
 *.log

@@ -1,4 +1,0 @@
-1. The application URL is the following:
-{{- if .Values.ingress.enabled }}
-  http{{ if $.Values.ingress.tls }}s{{ end }}://{{- include "basic-needs-dashboard.ingress.url" . -}}
-{{- end }}
