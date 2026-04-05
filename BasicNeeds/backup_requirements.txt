@@ -74,7 +74,7 @@ nest-asyncio==1.6.0
 networkx==3.3
 numba==0.59.1
 numpy==1.26.4
-orjson==3.10.3
+orjson==3.11.6
 packaging==23.2
 pandas==2.2.3
 patsy==0.5.6
