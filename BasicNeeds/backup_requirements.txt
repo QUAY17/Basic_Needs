@@ -117,7 +117,7 @@ spacy-loggers==1.0.5
 SQLAlchemy==2.0.30
 srsly==2.4.8
 statsmodels==0.14.2
-streamlit==1.37.0
+streamlit==1.54.0
 sympy==1.12
 tenacity==8.3.0
 textsearch==0.0.24
