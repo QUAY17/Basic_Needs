@@ -54,7 +54,7 @@ langchain-community==0.3.27
 langchain-core==0.3.81
 langchain-text-splitters==0.3.9
 langcodes==3.4.0
-langsmith==0.1.58
+langsmith==0.7.31
 language_data==1.2.0
 llvmlite==0.42.0
 marisa-trie==1.2.0
